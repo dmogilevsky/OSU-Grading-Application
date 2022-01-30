@@ -1,6 +1,7 @@
+/* Daniel Mogilevsky for CSE 3901 Project 1*/
+
 // 81 Cards
 //Each card has 4 attributes
-
 class Card {
     constructor(id, shade, shape, color, number) {
         this.id = id; // 1-81
@@ -12,12 +13,15 @@ class Card {
 }
 
 let GameBoard = []; // Holds the 12 visible cards
+let Cards = [] // Holds every card regardless of deck status
 let Deck = [];  // The deck of 81 cards
 
 // Do all the necessary initialization
 function StartGame() {
     let AttributeMapping = makeAttributeMappings();
-    initializeDeck(AttributeMapping);
+    if (Cards.length !== 81 || Deck.length !== 81) {
+        initializeCards(AttributeMapping);
+    }
     shuffleDeck();
     createGameBoard();
 }
@@ -37,13 +41,16 @@ function makeAttributeMappings() {
 }
 
 // Make an array of all 81 cards
-function initializeDeck(map) {
+function initializeCards(map) {
+    Cards = [];
+    Deck = [];
     let idCount = 1; // Corresponding with the #.jpg of the card
     for (let i =1; i <= 3;i++) { // The shade of the card, Bold, Striped, or Hollow
-        for (let j =1; j <= 3;j++) { // The shape of the card, Squiggle, Diamond, Oval
-            for (let k =1; k <= 3;k++) { // The color, Red, Purple, Green
-                for (let l=1;l<=3;l++) { // Number of shapes in the card
-                    Deck[idCount-1] = new Card(idCount, map[0][i], map[1][j],map[2][k],l);
+        for (let j = 1; j <= 3; j++) { // The shape of the card, Squiggle, Diamond, Oval
+            for (let k = 1; k <= 3; k++) { // The color, Red, Purple, Green
+                for (let l = 1; l <= 3; l++) { // Number of shapes in the card
+                    Cards[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
+                    Deck[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
                     idCount++
                 }
             }
@@ -70,9 +77,9 @@ function shuffleDeck() {
 // Draw 3 cards to replace matched set and remove the cards from the deck
 function drawCards() {
     let DrawnCards = [
-        Deck.length -1 ,
-        Deck.length - 2,
-        Deck.length - 3,
+        Deck[Deck.length -1],
+        Deck[Deck.length - 2],
+        Deck[Deck.length - 3],
     ];
     Deck.length = Deck.length -3;
     return DrawnCards;
@@ -81,8 +88,16 @@ function drawCards() {
 // Update DOM to start game, needs 12 cards
 function createGameBoard() {
     for (let i=0;i<3;i++) {
-        GameBoard.push.apply(GameBoard, drawCards)
+        GameBoard.push.apply(GameBoard, drawCards);
     }
+}
+
+// Replace the 3 selected cards with newly drawn cards
+function updateBoardAfterSet(index1, index2, index3) {
+    let drawnCards = drawCards;
+    GameBoard[index1] = drawnCards[0];
+    GameBoard[index2] = drawnCards[1];
+    GameBoard[index3] = drawnCards[2];
 }
 
 // A set is defined as follows:
