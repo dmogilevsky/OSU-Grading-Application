@@ -108,3 +108,18 @@ function isSet(x, y, z) {
     (x.number === y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number) &&
     (x.shape === y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape);
 }
+
+// Return the number of sets on the board
+function setsOnBoard() {
+    let numSets = 0;
+    for (let i = 0; i<12;i++) {
+        for (let j = 1 + i; j<12;j++) {
+            for (let k = 2 + j; k<12; k++) {
+                if (isSet(GameBoard[i], GameBoard[j], GameBoard[k])) {
+                    numSets++;
+                }
+            }
+        }
+    }
+    return numSets;
+}
