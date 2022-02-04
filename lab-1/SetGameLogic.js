@@ -10,10 +10,6 @@ class Card {
         this.shape= shape; // Diamond, Squiggle, Oval
         this.shade = shade; // Hollow, Striped, Full
     }
-
-    toString() {
-        console.log("ID: %d, Color: %s, Num: %d, Shape: %s, Shade: %s", this.id, this.color, this.number, this.shape, this.shade);
-    }
 }
 
 let GameBoard = []; // Holds the 12 visible cards
@@ -23,7 +19,9 @@ let Deck = [];  // The deck of 81 cards
 // Do all the necessary initialization
 function StartGame() {
     let AttributeMapping = makeAttributeMappings();
+    console.log("Attribute mapping made")
     if (Cards.length !== 81 || Deck.length !== 81) {
+        console.log("Initializing cards")
         initializeCards(AttributeMapping);
     }
     shuffleDeck();
@@ -49,9 +47,9 @@ function initializeCards(map) {
     Cards = [];
     Deck = [];
     let idCount = 1; // Corresponding with the #.jpg of the card
-    for (let i =1; i <= 3;i++) { // The shade of the card, Bold, Striped, or Hollow
-        for (let j = 1; j <= 3; j++) { // The shape of the card, Squiggle, Diamond, Oval
-            for (let k = 1; k <= 3; k++) { // The color, Red, Purple, Green
+    for (let i =0; i <= 2;i++) { // The shade of the card, Bold, Striped, or Hollow
+        for (let j = 0; j <= 2; j++) { // The shape of the card, Squiggle, Diamond, Oval
+            for (let k = 0; k <= 2; k++) { // The color, Red, Purple, Green
                 for (let l = 1; l <= 3; l++) { // Number of shapes in the card
                     Cards[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
                     Deck[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
@@ -61,7 +59,7 @@ function initializeCards(map) {
         }
     }
     for (let i = 0; i < 81; i++) {
-        Cards[i].toString;
+        console.log(JSON.stringify(Cards[i]));
     }
     shuffleDeck();
 }
