@@ -10,6 +10,10 @@ class Card {
         this.shape= shape; // Diamond, Squiggle, Oval
         this.shade = shade; // Hollow, Striped, Full
     }
+
+    toString() {
+        console.log("ID: %d, Color: %s, Num: %d, Shape: %s, Shade: %s", this.id, this.color, this.number, this.shape, this.shade);
+    }
 }
 
 let GameBoard = []; // Holds the 12 visible cards
@@ -55,6 +59,9 @@ function initializeCards(map) {
                 }
             }
         }
+    }
+    for (let i = 0; i < 81; i++) {
+        Cards[i].toString;
     }
     shuffleDeck();
 }
