@@ -61,9 +61,7 @@ function initializeCards(map) {
             }
         }
     }
-    for (let i = 0; i < 81; i++) {
-        console.log(JSON.stringify(Cards[i]));
-    }
+    // for (let i = 0; i < 81; i++) {    console.log(JSON.stringify(Cards[i])); }
     shuffleDeck();
 }
 
@@ -93,19 +91,21 @@ function drawCards() {
     return DrawnCards;
 }
 
-// Update DOM to start game, needs 12 cards
+// Put 12 cards on the GameBoard
 function createGameBoard() {
     for (let i=0;i<3;i++) {
-        GameBoard.push.apply(GameBoard, drawCards);
+        GameBoard.push.apply(GameBoard, drawCards());
     }
+    syncModelAndUIGameBoard();
 }
 
-// Replace the 3 selected cards with newly drawn cards
+// Replace the set with newly drawn cards
 function updateBoardAfterSet(index1, index2, index3) {
-    let drawnCards = drawCards;
+    let drawnCards = drawCards();
     GameBoard[index1] = drawnCards[0];
     GameBoard[index2] = drawnCards[1];
     GameBoard[index3] = drawnCards[2];
+    syncModelAndUIGameBoard();
 }
 
 // A set is defined as follows:
@@ -130,26 +130,6 @@ function setsOnBoard() {
         }
     }
     return numSets;
-}
-
-//Highlights selected card
-function highlight(el, className) {
-	const element = el;
-        if(element.className.indexOf(className) >= 0) {
-                element.className = element.className.replace(className,"");
-        } else {
-                element.className += className;
-        }
-
-}
-
-//Adds event listener on all cards
-function listenToCards() {
-//Loop for addEventListeners on each card
-for (var i = 0; i < Gameboard.length; i++) {
-        card = Gameboard[i];
-        card.addEventListener("click", cardSelected);
-	}
 }
 
 //Adds selected card into array
