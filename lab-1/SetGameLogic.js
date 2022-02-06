@@ -3,18 +3,21 @@
 // 81 Cards
 //Each card has 4 attributes
 class Card {
-    constructor(id, shade, shape, color, number) {
+    constructor(id, shade, shape, color, number, selected) {
         this.id = id; // 1-81
         this.color = color; // Green, Red, Purple
         this.number = number; // 1, 2, 3
         this.shape= shape; // Diamond, Squiggle, Oval
         this.shade = shade; // Hollow, Striped, Full
+	this.selected = 0; //Card is currently selected or not
     }
 }
 
-let GameBoard = []; // Holds the 12 visible cards
-let Cards = [] // Holds every card regardless of deck status
-let Deck = [];  // The deck of 81 cards
+var GameBoard = []; // Holds the 12 visible cards
+var Cards = []; // Holds every card regardless of deck status
+var Deck = [];  // The deck of 81 cards
+var potentialSet = []; //Holds 3 cards that are user-inputted
+var score = 0; //Holds user score
 
 // Do all the necessary initialization
 function StartGame() {
@@ -51,8 +54,8 @@ function initializeCards(map) {
         for (let j = 0; j <= 2; j++) { // The shape of the card, Squiggle, Diamond, Oval
             for (let k = 0; k <= 2; k++) { // The color, Red, Purple, Green
                 for (let l = 1; l <= 3; l++) { // Number of shapes in the card
-                    Cards[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
-                    Deck[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l);
+                    Cards[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l, 0);
+                    Deck[idCount - 1] = new Card(idCount, map[0][i], map[1][j], map[2][k], l, 0);
                     idCount++
                 }
             }
@@ -128,3 +131,47 @@ function setsOnBoard() {
     }
     return numSets;
 }
+
+//Highlights selected card
+function highlight(el, className) {
+	const element = el;
+        if(element.className.indexOf(className) >= 0) {
+                element.className = element.className.replace(className,"");
+        } else {
+                element.className += className;
+        }
+
+}
+
+//Adds event listener on all cards
+function listenToCards() {
+//Loop for addEventListeners on each card
+for (var i = 0; i < Gameboard.length; i++) {
+        card = Gameboard[i];
+        card.addEventListener("click", cardSelected);
+	}
+}
+
+//Adds selected card into array
+function cardSelected() {
+        if(card.selected == 0) {
+                card.selected = 1;
+                potentialSet.push(card);
+                card.addEventListener("click", cardSelected);
+        } else {
+                card.selected = 0;
+                let a = potentialSet.indexOf(card);
+                let b = potentialSet.splice(a, 1);
+                card.addEventListener("click", cardSelected);
+        }
+        if(potentialSet.length == 3) {
+                let x = potentialSet.shift();
+                let y = potentialSet.shift();
+                let z = potentialSet.shift();
+                if(isSet(x, y, z)) {
+                        score++;
+                //      TODO: Insert function for replacing cards
+                }
+        }
+}
+

@@ -1,19 +1,40 @@
-img {
+img 
+{
     width : 200px;
     height: 100px;
-    padding: 5px;
+    padding: 2px;
 }
-table.center {
-     margin-left: auto; 
-     margin-right: auto;
-    }
-    .btn {
-color: black;
-outline: black;
-border-radius: 5px;
-padding: 1px 1px;
-display: inline-block;
-margin: 1px 1px;
-transition-duration: .5s;
-cursor: pointer;
+
+.gridview
+{
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	margin: 0px 10px 10px 0;
+	box-shadow: 3px 3px 4px #bbb;
+
+}
+
+.btn
+{
+	color: black;
+	outline: black;
+	border-radius: 3px;
+	padding: 1px 1px;
+	display: inline-block;
+	margin: 1px 1px;
+	transition-duration: .5s;
+	cursor: pointer;
+}
+
+.gridview td
+{
+	border: 1px solid #cccccc;
+	padding: 3px 4px;
+	cursor: pointer;
+}
+
+.gridview .select, .gridview tbody .select
+{
+	border: 5px solid #ff0000;
 }
