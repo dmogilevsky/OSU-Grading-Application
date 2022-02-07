@@ -12,6 +12,7 @@ img
 	border-collapse: collapse;
 	margin: 0px 10px 10px 0;
 	box-shadow: 3px 3px 4px #bbb;
+	
 
 }
 
@@ -29,12 +30,15 @@ img
 
 .gridview td
 {
+	
 	border: 1px solid #cccccc;
 	padding: 3px 4px;
 	cursor: pointer;
+	
 }
 
 .gridview .select, .gridview tbody .select
 {
 	border: 5px solid #ff0000;
 }
+
