@@ -21,3 +21,25 @@ function highlight(el, className) {
         }
 
 }
+//Timer 
+var time = 0;
+var startclick = true;
+function padding (seconds) {
+    if (seconds > 9 ) {
+        return seconds;
+    } 
+    else {
+        return "0" + seconds;
+    }
+}
+function begin() {
+    if (startclick) {
+    setInterval( function startTimer(){
+     var seconds = document.getElementById("secs")
+     seconds.innerHTML=padding(++time%60);
+    var minutes = document.getElementById("mins")
+    minutes.innerHTML=padding(parseInt(time/60,10));
+        }, 1000);
+        startclick = false;
+    }
+}
