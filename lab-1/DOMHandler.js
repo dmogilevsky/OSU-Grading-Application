@@ -1,14 +1,20 @@
 // Write this function to update the DOM elements to match our GameBoard
 function syncModelAndUIGameBoard() {
-
+        console.log("Syncing GameBoard with UI");
+        for (let i =0; i<GameBoard.length;i++) {
+                let el = document.getElementById(i);
+                el.src = idToImageSrc(GameBoard[i].id);
+        }
 }
 
-//Adds event listener on all cards
-function listenToCards() {
-    //Loop for addEventListeners on each card
-    for (var i = 0; i < GameBoard.length; i++) {
-            GameBoard[i].addEventListener("click", cardSelected);
-    }
+function idToImageSrc(id) {
+        return "images/" + id + ".png";
+}
+
+function imageSrcToID(str) {
+        let id = parseInt(str.split("images/")[1].replace(".png", ''));
+        console.log("Turned " + str + " into " + id);
+        return id;
 }
 
 //Highlights selected card

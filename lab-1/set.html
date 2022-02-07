@@ -8,25 +8,27 @@
 
 <body>
     <script src="SetGameLogic.js" type="text/javascript"></script>
+    <script src="DOMHandler.js" type="text/javascript"></script>
+    <script>window.onload = StartGame;</script>
     <table class="gridview">
         <caption>Game of Set</caption>
         <tr>
-		<td onclick="highlight(this, 'select');"><img src="images/50.png"></td>
-            <td onclick="highlight(this, 'select');"><img src="images/2.png" alt=""></td>
-	    <td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-	    <td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
+		<td onclick="cardSelected(this, 'select');" id = A0><img src="images/50.png" id=0></td>
+        <td onclick="cardSelected(this, 'select');" id = A1><img src="images/2.png" id=1></td>
+	    <td onclick="cardSelected(this, 'select');" id = A2><img src="images/1.png" id=2></td>
+	    <td onclick="cardSelected(this, 'select');" id = A3><img src="images/1.png" id=3></td>
         </tr>
         <tr>
-		<td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-            <td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-	    <td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-	    <td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
+		<td onclick="cardSelected(this, 'select');" id = A4><img src="images/1.png" id=4></td>
+        <td onclick="cardSelected(this, 'select');" id = A5><img src="images/1.png" id=5></td>
+	    <td onclick="cardSelected(this, 'select');" id = A6><img src="images/1.png" id=6></td>
+	    <td onclick="cardSelected(this, 'select');" id = A7><img src="images/1.png" id=7></td>
         </tr>
         <tr>
-		<td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-		<td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-		<td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
-		<td onclick="highlight(this, 'select');"><img src="images/1.png" alt=""></td>
+		<td onclick="cardSelected(this, 'select');" id = A8><img src="images/1.png" id=8></td>
+		<td onclick="cardSelected(this, 'select');" id = A9><img src="images/1.png" id=9></td>
+		<td onclick="cardSelected(this, 'select');" id = A10><img src="images/1.png" id=10></td>
+		<td onclick="cardSelected(this, 'select');" id = A11><img src="images/1.png" id=11></td>
         </tr>
     </table>
     <button class="btn Shuffle">Shuffle</button>
