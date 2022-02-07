@@ -137,15 +137,17 @@ function setsOnBoard() {
 //Adds selected card into array. el is td element, with it's child being the image
 function cardSelected(el, className) {
     highlight(el, className);
-    highlighted.push(el);
     let card = GameBoard[parseInt(el.id.replace('A', ''))];
     if (card.selected == 0) {
         card.selected = 1;
         potentialSet.push(card);
+        highlighted.push(el);
     } else {
         card.selected = 0;
         let a = potentialSet.indexOf(card);
         potentialSet = potentialSet.splice(a, 1);
+        a = highlighted.indexOf(el);
+        highlighted = highlighted.splice(a, 1);
     }
     if (potentialSet.length == 3) {
         let x = potentialSet.shift();
@@ -160,6 +162,7 @@ function cardSelected(el, className) {
             updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
         }
     }
-    console.log(JSON.stringify(potentialSet));
+    console.log("Potential Set: " + JSON.stringify(potentialSet));
+    console.log("Highlighted: " + JSON.stringify(highlighted));
 }
 
