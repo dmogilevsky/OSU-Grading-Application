@@ -31,7 +31,7 @@ function highlight(el, className) {
 var time = 0;
 var startclick = true;
 function padding (seconds) {
-    if (seconds > 9 ) {
+    if (seconds > 10) {
         return seconds;
     } 
     else {
@@ -42,10 +42,11 @@ function padding (seconds) {
 function begin() {
     if (startclick) {
     setInterval( function startTimer(){
+        time++;
      var seconds = document.getElementById("secs")
-     seconds.innerHTML=padding(++time%60);
+     seconds.innerHTML=padding(time%60);
     var minutes = document.getElementById("mins")
-    minutes.innerHTML=padding(parseInt(time/60,10));
+    minutes.innerHTML=padding(Math.floor(time/60));
         }, 1000);
         startclick = false;
     }
