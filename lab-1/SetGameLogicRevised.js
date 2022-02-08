@@ -17,9 +17,9 @@ class Card {
         this.id = id; // 1-81
         this.color = color; // Green, Red, Purple
         this.number = number; // 1, 2, 3
-        this.shape= shape; // Diamond, Squiggle, Oval
+        this.shape = shape; // Diamond, Squiggle, Oval
         this.shade = shade; // Hollow, Striped, Full
-	      this.selected = 0; //Card is currently selected or not
+        this.selected = 0; //Card is currently selected or not
     }
 }
 
@@ -61,7 +61,7 @@ function initializeCards(map) {
     Cards = [];
     Deck = [];
     let idCount = 1; // Corresponding with the #.jpg of the card
-    for (let i =0; i <= 2;i++) { // The shade of the card, Bold, Striped, or Hollow
+    for (let i = 0; i <= 2; i++) { // The shade of the card, Bold, Striped, or Hollow
         for (let j = 0; j <= 2; j++) { // The shape of the card, Squiggle, Diamond, Oval
             for (let k = 0; k <= 2; k++) { // The color, Red, Purple, Green
                 for (let l = 1; l <= 3; l++) { // Number of shapes in the card
@@ -101,17 +101,17 @@ function shuffleDeck() {
 // Draw 3 cards to replace matched set and remove the cards from the deck
 function drawCards() {
     let DrawnCards = [
-        Deck[Deck.length -1],
+        Deck[Deck.length - 1],
         Deck[Deck.length - 2],
         Deck[Deck.length - 3],
     ];
-    Deck.length = Deck.length -3;
+    Deck.length = Deck.length - 3;
     return DrawnCards;
 }
 
 // Update DOM to start game, needs 12 cards
 function createGameBoard() {
-    for (let i=0;i<3;i++) {
+    for (let i = 0; i < 3; i++) {
         GameBoard.push.apply(GameBoard, drawCards);
     }
 }
@@ -128,17 +128,17 @@ function updateBoardAfterSet(index1, index2, index3) {
 // For each attribute in the set, all cards must be the same or all must be different
 function isSet(x, y, z) {
     return (x.color === y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color) &&
-    (x.shade === y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade) &&
-    (x.number === y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number) &&
-    (x.shape === y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape);
+        (x.shade === y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade) &&
+        (x.number === y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number) &&
+        (x.shape === y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape);
 }
 
 // Return the number of sets on the board
 function setsOnBoard() {
     let numSets = 0;
-    for (let i = 0; i<12;i++) {
-        for (let j = 1 + i; j<12;j++) {
-            for (let k = 2 + j; k<12; k++) {
+    for (let i = 0; i < 12; i++) {
+        for (let j = 1 + i; j < 12; j++) {
+            for (let k = 2 + j; k < 12; k++) {
                 if (isSet(GameBoard[i], GameBoard[j], GameBoard[k])) {
                     numSets++;
                 }
@@ -152,87 +152,84 @@ function setsOnBoard() {
 //Call isSet when select 3 cards
 // TODO: find a way to only allow maximum 3 card to be selected
 
-function highlight(el, className,index_loc) {
-	const element = el;
-        if(element.className.indexOf(className) >= 0) {
-                element.className = element.className.replace(className,"");
-        } else {
-                element.className += className;
+function highlight(el, className, index_loc) {
+    const element = el;
+    if (element.className.indexOf(className) >= 0) {
+        element.className = element.className.replace(className, "");
+    } else {
+        element.className += className;
+    }
+
+    // push the cell id of selected card to an array
+    potentialSet_loc.push(index_loc);
+    // check if the card is selected
+    var if_select = potentialSet.indexOf(index_loc);
+
+    // Deselect card
+    if (if_select >= 0) {
+        potentialSet.splice(potentialSet, 1);
+
+    } else if (if_select < 0 && potentialSet.length < 3) {
+        potentialSet.push(index_loc);
+        console.log(potentialSet.length)
+        if (potentialSet.length == 3) {
+            console.log(potentialSet.length)
+            cardSelected();
         }
 
-        // push the cell id of selected card to an array
-        potentialSet_loc.push(index_loc);
-        // check if the card is selected
-        var if_select = potentialSet.indexOf(index_loc);
-
-        // Deselect card
-        if (if_select >= 0) {
-          potentialSet.splice(potentialSet, 1);
-
-        } else if (if_select < 0 && potentialSet.length < 3) {
-            potentialSet.push(index_loc);
-             console.log(potentialSet.length)
-              if (potentialSet.length == 3) {
-                console.log(potentialSet.length)
-                cardSelected();
-              }
-
-            }
+    }
 }
-
-
-
 
 function cardSelected() {
 
-  if (potentialSet.length == 3){
-    potentialSetCopy = [...potentialSet];
+    if (potentialSet.length == 3) {
+        potentialSetCopy = [...potentialSet];
 
-    let x = potentialSetCopy.shift();
-    let y = potentialSetCopy.shift();
-    let z = potentialSetCopy.shift();
+        let x = potentialSetCopy.shift();
+        let y = potentialSetCopy.shift();
+        let z = potentialSetCopy.shift();
 
-    a=0;// Replcae the simple test variable below with isSet(x, y, z)
-    if(a==0) {
+        a = 0;// Replcae the simple test variable below with isSet(x, y, z)
+        if (a == 0) {
             score++;
             console.log(potentialSet_loc.length)
-    replaceCard(potentialSet_loc);
+            replaceCard(potentialSet_loc);
+        }
     }
-  }
 }
 
 
 // new added dealCard function
-function dealCards(){
-  var grid = document.getElementById("cardsDisplayed");
-  for (var r = 0; r < 3; r++) {
+function dealCards() {
+    var grid = document.getElementById("cardsDisplayed");
+    for (var r = 0; r < 3; r++) {
         for (var c = 0; c < 4; c++) {
             var card_num = Deck.pop();
             var image_tag = '<img src="images/'.concat(card_num.id.toString(), '.png">');
             grid.rows[r].cells[c].innerHTML = image_tag;
             GameBoard.push(card_num);
         }
-}
+    }
 }
 
 // new added replaceCard function
 function replaceCard(card_index) {
 
-  // check if empth deck
-  if (Deck.length > 0){
+    // check if empth deck
+    if (Deck.length > 0) {
 
-    console.log(card_index.length);
-    var i = 0
-    while (i<card_index.length){
-      var newCard = Deck.pop();
-      var imageTag = '<img src="images/'.concat(newCard.id.toString(), '.png">');
-      var cellId = "cell".concat(card_index[i].toString);
-      var cell = document.getElementById("cell".concat(card_index[i].toString()));
-      GameBoard.splice(card_index[i], 1, newCard);
-      cell.innerHTML = imageTag;
-      i++;
+        console.log(card_index.length);
+        var i = 0
+        while (i < card_index.length) {
+            var newCard = Deck.pop();
+            var imageTag = '<img src="images/'.concat(newCard.id.toString(), '.png">');
+            var cellId = "cell".concat(card_index[i].toString);
+            var cell = document.getElementById("cell".concat(card_index[i].toString()));
+            GameBoard.splice(card_index[i], 1, newCard);
+            cell.innerHTML = imageTag;
+            i++;
+        }
+
     }
-
-}
 
 }

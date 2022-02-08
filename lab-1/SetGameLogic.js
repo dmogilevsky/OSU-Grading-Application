@@ -162,7 +162,7 @@ function cardSelected(el, className) {
             updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
         }
     }
-    console.log("Potential Set: " + JSON.stringify(potentialSet));
-    console.log("Highlighted: " + JSON.stringify(highlighted));
+    console.log("Potential Set: " + potentialSet);
+    console.log("Highlighted: " + highlighted);
 }
 

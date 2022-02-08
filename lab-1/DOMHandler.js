@@ -25,8 +25,8 @@ function highlight(el, className) {
         } else {
                 element.className += className;
         }
-
 }
+
 //Timer 
 var time = 0;
 var startclick = true;
@@ -38,6 +38,7 @@ function padding (seconds) {
         return "0" + seconds;
     }
 }
+
 function begin() {
     if (startclick) {
     setInterval( function startTimer(){
