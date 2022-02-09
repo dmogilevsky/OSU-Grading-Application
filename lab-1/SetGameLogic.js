@@ -113,10 +113,10 @@ function updateBoardAfterSet(index1, index2, index3) {
 // A set is defined as follows:
 // For each attribute in the set, all cards must be the same or all must be different
 function isSet(x, y, z) {
-    return ((x.color === y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color)) &&
-        ((x.shade === y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade)) &&
-        ((x.number === y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number)) &&
-        ((x.shape === y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape));
+    return ((x.color === y.color && y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color)) &&
+        ((x.shade === y.shade && y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade)) &&
+        ((x.number === y.number && y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number)) &&
+        ((x.shape === y.shape && y.shape=== z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape));
 }
 
 // Return the number of sets on the board
@@ -150,7 +150,7 @@ function cardSelected(el, className) {
         highlighted.splice(a, 1);
     }
     if (potentialSet.length == 3) {
-        console.log("Set check: " + JSON.stringify(potentialSet));
+        //console.log("Set check: " + JSON.stringify(potentialSet));
         let x = potentialSet.shift();
         let y = potentialSet.shift();
         let z = potentialSet.shift();
