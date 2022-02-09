@@ -27,6 +27,14 @@ function highlight(el, className) {
         }
 }
 
+function unHighlightAll() {
+        selectedList = document.getElementsByClassName("select");
+        for (el in document.getElementsByClassName("select")) {
+                console.log(JSON.stringify(el));
+                el.className = "";
+        }
+}
+
 //Timer 
 var time = 0;
 var startclick = true;
