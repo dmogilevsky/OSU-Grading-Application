@@ -35,6 +35,17 @@ function unHighlightAll() {
         }
 }
 
+//Hint
+var hintclick = true;
+function hintReveal() {
+	if(hintclick) {
+	var hinter = document.getElementById("hint")
+	hinter.innerHTML= setsOnBoard();
+	hinter.innerHTML+= " sets on the current board";
+	hintReveal = false;
+	}
+}
+
 //Timer 
 var time = 0;
 var startclick = true;
