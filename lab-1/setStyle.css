@@ -1,8 +1,27 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+body {
+	font-family: 'Courier New', monospace;
+	background-color: #00ff0080;
+}
+
+
 img 
 {
-    width : 200px;
-    height: 100px;
-    padding: 2px;
+    width : 180px;
+    height: 90px;
+    padding: 1px;
+}
+
+h1
+{
+	font: italic 60px monospace;
+	font-size: 60px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+	text-shadow: 1px 1px 1px #333;
+		
 }
 
 .gridview
@@ -10,10 +29,13 @@ img
 	margin-left: auto;
 	margin-right: auto;
 	border-collapse: collapse;
-	margin: 0px 10px 10px 0;
-	box-shadow: 3px 3px 4px #bbb;
 	
 
+}
+
+.center
+{
+	margin: auto;
 }
 
 .btn
@@ -32,7 +54,7 @@ img
 {
 	
 	border: 1px solid #cccccc;
-	padding: 3px 4px;
+	padding: 1px 2px;
 	cursor: pointer;
 	
 }

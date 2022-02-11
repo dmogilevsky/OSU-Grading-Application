@@ -70,3 +70,13 @@ function begin() {
         startclick = false;
     }
 }
+
+function playingOne() {
+	document.body.style.backgroundColor = '#0000ff80';
+	document.getElementById("playerChosen").innerHTML = "Player One is playing.";
+}
+
+function playingTwo() {
+	document.body.style.backgroundColor = '#ff000080';
+	document.getElementById("playerChosen").innerHTML = "Player Two is playing.";
+}
