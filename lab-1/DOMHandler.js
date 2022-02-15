@@ -58,6 +58,17 @@ function padding (seconds) {
     }
 }
 
+//Shuffle
+var shuffle= true;
+function shuffleDECK(){
+        if(shuffle){    
+                shuffleDeck();
+                shuffle=false;
+        }
+        
+        
+}
+
 function begin() {
     if (startclick) {
     setInterval( function startTimer(){
