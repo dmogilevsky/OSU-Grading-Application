@@ -61,12 +61,8 @@ function padding (seconds) {
 //Shuffle
 var shuffle= true;
 function shuffleDECK(){
-        if(shuffle){
+        if(shuffle){    
                 shuffleDeck();
-                var shuffler = document.getElementById("shuffle")
-	        shuffler.innerHTML= setsOnBoard();
-	        shuffler.innerHTML= "Yes";
-        
                 shuffle=false;
         }
         
