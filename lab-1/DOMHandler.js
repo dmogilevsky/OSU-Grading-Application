@@ -1,7 +1,7 @@
 // Write this function to update the DOM elements to match our GameBoard
 function syncModelAndUIGameBoard() {
         console.log("Syncing GameBoard with UI");
-        for (let i =0; i<GameBoard.length;i++) {
+        for (let i = 0; i < GameBoard.length; i++) {
                 let el = document.getElementById(i);
                 el.src = idToImageSrc(GameBoard[i].id);
         }
@@ -19,9 +19,9 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el, className) {
-	const element = el;
-        if(element.className.indexOf(className) >= 0) {
-                element.className = element.className.replace(className,"");
+        const element = el;
+        if (element.className.indexOf(className) >= 0) {
+                element.className = element.className.replace(className, "");
         } else {
                 element.className += className;
         }
@@ -36,54 +36,46 @@ function unHighlightAll() {
 }
 
 //Hint
-var hintclick = true;
 function hintReveal() {
-	if(hintclick) {
-	var hinter = document.getElementById("hint")
-	hinter.innerHTML= setsOnBoard();
-	hinter.innerHTML+= " sets on the current board";
-	hintReveal = false;
-	}
+        var hinter = document.getElementById("hint")
+        hinter.innerHTML = setsOnBoard();
+        hinter.innerHTML += " sets on the current board";
 }
 
 //Timer 
 var time = 0;
-var startclick = true;
-function padding (seconds) {
-    if (seconds > 10) {
-        return seconds;
-    } 
-    else {
-        return "0" + seconds;
-    }
+function padding(seconds) {
+        if (seconds > 10) {
+                return seconds;
+        }
+        else {
+                return "0" + seconds;
+        }
 }
 
 //Shuffle
-var shuffle= true;
-function shuffleDECK(){
-        if(shuffle){    
+var shuffle = true;
+function shuffleDECK() {
+        if (shuffle) {
                 shuffleDeck();
-                shuffle=false;
+                shuffle = false;
         }
-        
-        
+
+
 }
 
 function beginClock() {
-    if (startclick) {
-    setInterval( function startTimer(){
-        time++;
-     var seconds = document.getElementById("secs")
-     seconds.innerHTML=padding(time%60);
-    var minutes = document.getElementById("mins")
-    minutes.innerHTML=padding(Math.floor(time/60));
+        setInterval(function startTimer() {
+                time++;
+                var seconds = document.getElementById("secs")
+                seconds.innerHTML = padding(time % 60);
+                var minutes = document.getElementById("mins")
+                minutes.innerHTML = padding(Math.floor(time / 60));
         }, 1000);
-        startclick = false;
-    }
 }
 
 // Changes the player
 function changePlayer(playerNumber) {
-	document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
+        document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
         playerPlaying = playerNumber;
 }
