@@ -69,7 +69,7 @@ function shuffleDECK(){
         
 }
 
-function begin() {
+function beginClock() {
     if (startclick) {
     setInterval( function startTimer(){
         time++;

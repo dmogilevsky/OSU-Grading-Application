@@ -29,6 +29,7 @@ function StartGame() {
         initializeCards(AttributeMapping);
     }
     createGameBoard();
+    beginClock();
 }
 
 /* Cards are ordered by:
@@ -124,7 +125,7 @@ function setsOnBoard() {
     let numSets = 0;
     for (let i = 0; i < 12; i++) {
         for (let j = 1 + i; j < 12; j++) {
-            for (let k = 2 + j; k < 12; k++) {
+            for (let k = 1 + j; k < 12; k++) {
                 if (isSet(GameBoard[i], GameBoard[j], GameBoard[k])) {
                     numSets++;
                 }
