@@ -1,5 +1,3 @@
-/* Daniel Mogilevsky for CSE 3901 Project 1*/
-
 // 81 Cards
 //Each card has 4 attributes
 class Card {
@@ -18,7 +16,8 @@ var Cards = []; // Holds every card regardless of deck status
 var Deck = [];  // The deck of 81 cards
 var potentialSet = []; //Holds 3 cards that are user-inputted
 var highlighted = [] // Holds the highlighted cards, TODO MERGE THIS WITH POTENTIAL SET SOMEHOW
-var score = 0; //Holds user score
+var scores = []; //Holds user score
+var playerPlaying;
 
 // Do all the necessary initialization
 function StartGame() {
@@ -151,7 +150,6 @@ function cardSelected(el, className) {
         highlighted.splice(a, 1);
     }
     if (potentialSet.length == 3) {
-        //console.log("Set check: " + JSON.stringify(potentialSet));
         let x = potentialSet.shift();
         let y = potentialSet.shift();
         let z = potentialSet.shift();
@@ -164,12 +162,11 @@ function cardSelected(el, className) {
         }
         highlighted = [];
         if (isSet(x, y, z)) {
-            score++;
-            console.log("Score: " + score);
+            scores[playerPlaying-1]++;
+            console.log("Score: " + scores[playerPlaying-1]);
             updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
         }
     }
     console.log("Potential Set: " + JSON.stringify(potentialSet));
-    //console.log("Highlighted: " + JSON.stringify(highlighted));
 }
 
