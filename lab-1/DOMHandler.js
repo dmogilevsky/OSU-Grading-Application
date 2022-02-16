@@ -70,8 +70,12 @@ function beginClock() {
 
 // Changes the player
 function changePlayer(playerNumber) {
+        if(playerNumber != null) {
         document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
         playerPlaying = playerNumber;
+        } else {
+                document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
+        }
 }
 
 function toggleInstructions() {

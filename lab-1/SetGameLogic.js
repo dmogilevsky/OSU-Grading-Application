@@ -16,8 +16,8 @@ var Cards = []; // Holds every card regardless of deck status
 var Deck = [];  // The deck of 81 cards
 var potentialSet = []; //Holds 3 cards that are user-inputted
 var highlighted = [] // Holds the highlighted cards, TODO MERGE THIS WITH POTENTIAL SET SOMEHOW
-var scores = []; //Holds user score
-var playerPlaying;
+var scores = [0, 0]; //Holds user score
+var playerPlaying = null;
 
 // Do all the necessary initialization
 function StartGame() {
@@ -116,7 +116,7 @@ function isSet(x, y, z) {
     return ((x.color === y.color && y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color)) &&
         ((x.shade === y.shade && y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade)) &&
         ((x.number === y.number && y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number)) &&
-        ((x.shape === y.shape && y.shape=== z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape));
+        ((x.shape === y.shape && y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape));
 }
 
 // Return the number of sets on the board
@@ -136,37 +136,43 @@ function setsOnBoard() {
 
 //Adds selected card into array. el is td element, with it's child being the image
 function cardSelected(el, className) {
-    highlight(el, className);
-    let card = GameBoard[parseInt(el.id.replace('A', ''))];
-    if (card.selected == 0) {
-        card.selected = 1;
-        potentialSet.push(card);
-        highlighted.push(el);
-    } else {
-        card.selected = 0;
-        let a = potentialSet.indexOf(card);
-        potentialSet.splice(a, 1);
-        a = highlighted.indexOf(el);
-        highlighted.splice(a, 1);
-    }
-    if (potentialSet.length == 3) {
-        let x = potentialSet.shift();
-        let y = potentialSet.shift();
-        let z = potentialSet.shift();
-        x.selected = 0;
-        y.selected = 0;
-        z.selected = 0;
-        //unHighlightAll();
-        for (let i = 0; i < highlighted.length; i++) {
-            highlight(highlighted[i], highlighted[i].className)
+    if (playerPlaying != null) {
+        highlight(el, className);
+        let card = GameBoard[parseInt(el.id.replace('A', ''))];
+        if (card.selected == 0) {
+            card.selected = 1;
+            potentialSet.push(card);
+            highlighted.push(el);
+        } else {
+            card.selected = 0;
+            let a = potentialSet.indexOf(card);
+            potentialSet.splice(a, 1);
+            a = highlighted.indexOf(el);
+            highlighted.splice(a, 1);
         }
-        highlighted = [];
-        if (isSet(x, y, z)) {
-            scores[playerPlaying-1]++;
-            console.log("Score: " + scores[playerPlaying-1]);
-            updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
+        if (potentialSet.length == 3) {
+            let x = potentialSet.shift();
+            let y = potentialSet.shift();
+            let z = potentialSet.shift();
+            x.selected = 0;
+            y.selected = 0;
+            z.selected = 0;
+            //unHighlightAll();
+            for (let i = 0; i < highlighted.length; i++) {
+                highlight(highlighted[i], highlighted[i].className)
+            }
+            highlighted = [];
+            if (isSet(x, y, z)) {
+                scores[playerPlaying - 1]++;
+                console.log("Score: " + scores[playerPlaying - 1]);
+                updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
+            } else {
+                scores[playerPlaying - 1]--;
+            }
+            playerPlaying = null;
+            changePlayer(playerPlaying);
         }
+        console.log("Potential Set: " + JSON.stringify(potentialSet));
     }
-    console.log("Potential Set: " + JSON.stringify(potentialSet));
 }
 
