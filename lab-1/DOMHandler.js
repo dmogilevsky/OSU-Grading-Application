@@ -54,13 +54,7 @@ function padding(seconds) {
 }
 
 //Shuffle
-var shuffle = true;
 function shuffleDECK() {
-        if (shuffle) {
-                shuffleDeck();
-                shuffle = false;
-        }
-
 
 }
 
@@ -78,4 +72,24 @@ function beginClock() {
 function changePlayer(playerNumber) {
         document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
         playerPlaying = playerNumber;
+}
+
+function toggleInstructions() {
+        text = `The object of the game is to identify a SET of 3 cards from the 12 cards
+        placed. Each card has four features: Shape, Color, Number, and Shading.
+        
+        A SET consists of 3 cards in which each of the cards' features, looked
+        at one by one, are the same on each card, or, are different on each card.
+        All of the features must separately satisfy this rule.
+        
+        The board will automatically fill up and the timer will begin on its own.
+        When a player sees a Set, they may click the button correponding to their
+        player number. If they correctly highlight a set of 3, they will win a point.
+        The player with the most points by the end of the game wins.`
+
+        if (document.getElementById("Instructions").innerHTML == "") {
+                document.getElementById("Instructions").innerHTML = text;
+        } else {
+                document.getElementById("Instructions").innerHTML = "";
+        }
 }
