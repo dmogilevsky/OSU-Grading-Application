@@ -43,7 +43,7 @@ function hintReveal() {
         hinter.innerHTML += " sets on the current board";
 }
 
-//Timer 
+//Timer
 var time = 0;
 function padding(seconds) {
         if (seconds > 10) {
@@ -82,11 +82,11 @@ function changePlayer(playerNumber) {
 function toggleInstructions() {
         text = `The object of the game is to identify a SET of 3 cards from the 12 cards
         placed. Each card has four features: Shape, Color, Number, and Shading.
-        
+
         A SET consists of 3 cards in which each of the cards' features, looked
         at one by one, are the same on each card, or, are different on each card.
         All of the features must separately satisfy this rule.
-        
+
         The board will automatically fill up and the timer will begin on its own.
         When a player sees a Set, they may click the button correponding to their
         player number. If they correctly highlight a set of 3, they will win a point.
@@ -99,6 +99,25 @@ function toggleInstructions() {
         }
 }
 function scoreUpdate() {
-document.getElementById("p1score").innerHTML = scores[0]; 
-document.getElementById("p2score").innerHTML = scores[1]; 
+document.getElementById("p1score").innerHTML = scores[0];
+document.getElementById("p2score").innerHTML = scores[1];
+}
+
+function finish_game(){
+
+     console.log(scores[0]);
+     var p_win = 0;
+     if(scores[0]>scores[1]){
+       p_win = 1;
+     }else if(scores[0]<scores[1]){
+       p_win =2
+     }
+     
+     if(p_win!=0){
+       alert("Game Finished!\n Player " +p_win + " win the game with total scores: " + scores[p_win-1] + " !");
+     }else{
+       alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!" )
+     }
+
+
 }
