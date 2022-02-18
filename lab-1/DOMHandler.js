@@ -18,7 +18,8 @@ function imageSrcToID(str) {
 }
 
 //Highlights selected card
-function highlight(el, className) {
+function highlight(el) {
+        className = 'select';
         const element = el;
         if (element.className.indexOf(className) >= 0) {
                 element.className = element.className.replace(className, "");
