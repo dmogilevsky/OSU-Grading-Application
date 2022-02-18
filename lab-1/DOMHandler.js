@@ -97,3 +97,7 @@ function toggleInstructions() {
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
+function scoreUpdate() {
+document.getElementById("p1score").innerHTML = scores[0]; 
+document.getElementById("p2score").innerHTML = scores[1]; 
+}

@@ -169,10 +169,12 @@ function cardSelected(el, className) {
             } else {
                 scores[playerPlaying - 1]--;
             }
+            scoreUpdate();
             playerPlaying = null;
             changePlayer(playerPlaying);
         }
         console.log("Potential Set: " + JSON.stringify(potentialSet));
     }
+
 }
 
