@@ -6,7 +6,7 @@ function syncModelAndUIGameBoard() {
                 if (GameBoard[i] != null) {
                         el.src = idToImageSrc(GameBoard[i].id);
                 } else {
-                        el.src = "";
+                        el.src = "images/82.png";
                 }
         }
         document.getElementById("hint").innerHTML = "";
@@ -128,10 +128,11 @@ function finish_game() {
         }
 
         if (p_win != 0) {
-                alert("Game Finished!\n Player " + p_win + " win the game with total scores: " + scores[p_win - 1] + " !");
+                alert("Game Over!\n Player " + p_win + " wins the game with the score: " + scores[p_win - 1] + "!");
         } else {
-                alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!")
+                alert("Game Over!\n Its a draw!");
         }
+
 }
 
 //redraw GameBoard when:

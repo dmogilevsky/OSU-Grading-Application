@@ -61,7 +61,7 @@ function initializeCards(map) {
         }
     }
     shuffleDeck();
-    // Deck = Deck.slice(0, 12); // For testing end of game functionality
+    //Deck = Deck.slice(0, 12); // For testing end of game functionality
 }
 
 // Simply shuffle the Deck array
