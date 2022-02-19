@@ -15,7 +15,6 @@ var GameBoard = []; // Holds the 12 visible cards
 var Cards = []; // Holds every card regardless of deck status
 var Deck = [];  // The deck of 81 cards
 var potentialSet = []; //Holds 3 cards that are user-inputted
-var highlighted = [] // Holds the highlighted cards, TODO MERGE THIS WITH POTENTIAL SET SOMEHOW
 var scores = [0, 0]; //Holds user score
 var playerPlaying = null;
 
@@ -61,8 +60,8 @@ function initializeCards(map) {
             }
         }
     }
-    // for (let i = 0; i < 81; i++) {    console.log(JSON.stringify(Cards[i])); }
     shuffleDeck();
+    // Deck = Deck.slice(0, 12); // For testing end of game functionality
 }
 
 // Simply shuffle the Deck array
@@ -94,24 +93,35 @@ function drawCards(num) {
 // Put 12 cards on the GameBoard
 function createGameBoard() {
     GameBoard.push.apply(GameBoard, drawCards(12));
-    console.log("Created GameBoard: " + JSON.stringify(GameBoard));
+    //console.log("Created GameBoard: " + JSON.stringify(GameBoard));
     syncModelAndUIGameBoard();
 }
 
 // Replace the set with newly drawn cards
-function updateBoardAfterSet(index1, index2, index3) {
-    if (Deck.length > 0) {
-        let drawnCards = drawCards(3);
-        GameBoard[index1] = drawnCards[0];
-        GameBoard[index2] = drawnCards[1];
-        GameBoard[index3] = drawnCards[2];
+function updateBoardAfterSet(indexArr) {
+    let drawnCards;
+    if (Deck.length >= 3) {
+        drawnCards = drawCards(3);
+        for (let i = 0; i < indexArr.length; i++) {
+            GameBoard[indexArr[i]] = drawnCards[i];
+        }
     } else {
-        GameBoard[index1] = null;
-        GameBoard[index2] = null;
-        GameBoard[index3] = null;
-        if (setsOnBoard() == 0) {
-            finish_game();
-            return;
+        // Start by setting all cards to replace to null
+        for (let i = 0; i < indexArr.length; i++) {
+            GameBoard[indexArr[i]] = null;
+        }
+        // If there are cards left in the deck, replace however many we can
+        if (Deck.length > 0) {
+            drawnCards = drawCards(Deck.length);
+            for (let i = 0; i < drawnCards.length; i++) {
+                GameBoard[indexArr[i]] = drawnCards[i];
+            }
+            // If there aren't any cards left, if there are no sets on the board the game is over
+        } else {
+            if (setsOnBoard() == 0) {
+                finish_game();
+                return;
+            }
         }
     }
     syncModelAndUIGameBoard();
@@ -120,10 +130,17 @@ function updateBoardAfterSet(index1, index2, index3) {
 // A set is defined as follows:
 // For each attribute in the set, all cards must be the same or all must be different
 function isSet(x, y, z) {
-    return ((x.color === y.color && y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color)) &&
-        ((x.shade === y.shade && y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade)) &&
-        ((x.number === y.number && y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number)) &&
-        ((x.shape === y.shape && y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape));
+    // check to ensure non are null
+    if (x === null || y === null || z === null) {
+        return false;
+    } else {
+        return (
+            (x.color === y.color && y.color === z.color) || (x.color !== y.color && x.color !== z.color && y.color !== z.color)) &&
+            ((x.shade === y.shade && y.shade === z.shade) || (x.shade !== y.shade && x.shade !== z.shade && y.shade !== z.shade)) &&
+            ((x.number === y.number && y.number === z.number) || (x.number !== y.number && x.number !== z.number && y.number !== z.number)) &&
+            ((x.shape === y.shape && y.shape === z.shape) || (x.shape !== y.shape && x.shape !== z.shape && y.shape !== z.shape)
+            );
+    }
 }
 
 // Return the number of sets on the board
@@ -143,42 +160,40 @@ function setsOnBoard() {
 
 //Adds selected card into array. el is td element, with it's child being the image
 function cardSelected(el) {
-    if (playerPlaying != null) {
-        highlight(el);
-        let card = GameBoard[parseInt(el.id.replace('A', ''))];
-        if (card.selected == 0) {
-            card.selected = 1;
-            potentialSet.push(card);
-            highlighted.push(el);
-        } else {
-            card.selected = 0;
-            let a = potentialSet.indexOf(card);
-            potentialSet.splice(a, 1);
-            a = highlighted.indexOf(el);
-            highlighted.splice(a, 1);
-        }
-        if (potentialSet.length == 3) {
-            let x = potentialSet.shift();
-            let y = potentialSet.shift();
-            let z = potentialSet.shift();
-            x.selected = 0;
-            y.selected = 0;
-            z.selected = 0;
-            unHighlightAll();
-            /* for (let i = 0; i < highlighted.length; i++) {
-                highlight(highlighted[i])
-            } */
-            highlighted = [];
-            if (isSet(x, y, z)) {
-                scores[playerPlaying - 1]++;
-                updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
+        if (playerPlaying != null && el.firstChild.getAttribute("src") != "") {
+            highlight(el);
+            let card = GameBoard[parseInt(el.id.replace('A', ''))];
+            // Add or remove card from the potential set based on selection
+            if (card.selected == 0) {
+                card.selected = 1;
+                potentialSet.push(card);
             } else {
-                scores[playerPlaying - 1]--;
+                card.selected = 0;
+                let a = potentialSet.indexOf(card);
+                potentialSet.splice(a, 1);
             }
-            scoreUpdate();
-            changePlayer(playerPlaying = null);
+            // If the potential set has size 3, unhighlight all the cards and handle set
+            if (potentialSet.length == 3) {
+                handleSetCheck();
+            }
+            console.log("Potential Set: " + JSON.stringify(potentialSet));
         }
-        console.log("Potential Set: " + JSON.stringify(potentialSet));
     }
 
+function handleSetCheck() {
+    let x = potentialSet.shift();
+    let y = potentialSet.shift();
+    let z = potentialSet.shift();
+    x.selected = 0;
+    y.selected = 0;
+    z.selected = 0;
+    unHighlightAll();
+    if (isSet(x, y, z)) {
+        scores[playerPlaying - 1]++;
+        updateBoardAfterSet([GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z)]);
+    } else {
+        scores[playerPlaying - 1]--;
+    }
+    scoreUpdate();
+    changePlayer(playerPlaying = null);
 }

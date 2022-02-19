@@ -3,7 +3,11 @@ function syncModelAndUIGameBoard() {
         console.log("Syncing GameBoard with UI");
         for (let i = 0; i < GameBoard.length; i++) {
                 let el = document.getElementById(i);
-                el.src = idToImageSrc(GameBoard[i].id);
+                if (GameBoard[i] != null) {
+                        el.src = idToImageSrc(GameBoard[i].id);
+                } else {
+                        el.src = "";
+                }
         }
         document.getElementById("hint").innerHTML = "";
 }
@@ -20,13 +24,12 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el) {
-        className = 'select';
-        const element = el;
-        if (element.className.indexOf(className) >= 0) {
-                element.className = element.className.replace(className, "");
+        if (el.className.indexOf('select') >= 0) {
+                el.className = el.className.replace('select', "");
         } else {
-                element.className += className;
+                el.className += 'select';
         }
+
 }
 
 // Unhighlights all selected cards. The length of the selected list is dynamically changing
@@ -113,6 +116,8 @@ function scoreUpdate() {
 
 function finish_game() {
 
+        scoreUpdate();
+        syncModelAndUIGameBoard();
         var p_win = 0;
         if (scores[0] > scores[1]) {
                 p_win = 1;
