@@ -1,11 +1,11 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}
-body { 
+body {
 	font-family: 'Courier New', monospace;
 	background-color: #00ff0080;
 }
 
 
-img /* Card styling */
+img 
 {
     width : 180px;
     height: 90px;
@@ -13,7 +13,7 @@ img /* Card styling */
 	border-radius: 10px;
 }
 
-h1 /* Header for game name */
+h1
 {
 	font: italic 60px monospace;
 	font-size: 60px;
@@ -22,61 +22,29 @@ h1 /* Header for game name */
 	width: 100%;
 	overflow: hidden;
 	text-shadow: 1px 1px 1px #333;
+		
 }
 
-.btn /* General Buttons*/
+.btn
 {
 	color: black;
 	outline: black;
-	padding: 12px 26px;
-	display: flex;
+	border-radius: 3px;
+	padding: 1px 1px;
+	display: inline-block;
+	margin: 1px 1px;
 	transition-duration: .5s;
 	cursor: pointer;
-	background-color: #4CAF50; 
-	border: 2px solid black;
-	text-align: center;
-	font-size: 16px;
-	width: 100px;
-	height:40px;
-}
-.shuf
-{
-	padding: 10px 22px;
-}
-.hint
-{
-	padding: 10px 32px;
-}
-.p1 /*Player select buttons */
-{
-	font-size: 14px;
-	padding: 4px 32px;
-	background-color: #0084ff; 
-}
-.p2 /*Player select buttons */
-{
-	font-size: 14px;
-	padding: 4px 32px;
-	background-color: #ff0000; 
 }
 
-.fin 
+.grid .select
 {
-	background-color: #92999b; 
-	padding: 10px 28px;
-}
-.inst
-{
-	background-color: #92999b; 
-	padding: 10px 6px;
-}
-.grid .select /* Card highlight */
-{
-	border: 5px solid #f50000;
+	border: 5px solid #ff0000;
 	border-radius: 10px;
+
 }
 
-.grid /* Game board styling */
+.grid 
 {
 display:grid;
 grid-template-columns: repeat(4,1fr);
@@ -84,25 +52,5 @@ place-items: start end;
 margin-left:auto;
 margin-right: auto; 
 max-width:500px;
-margin-bottom: -240px;
-}
 
-.btnMenu /* Button menu */
-{
-	display:grid;
-	grid-template-columns: repeat(2,1fr);
-	place-items: center;
-	max-width:200px;
-	max-height:200px;
-	margin-left:5px;
-}
-
-.menuHeader /*Menu header */
-{
-	margin-left: 85px;
-	margin-right:auto;
-}
-.spacing
-{
-	margin-bottom: -50px;
 }
