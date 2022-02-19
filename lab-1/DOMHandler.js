@@ -54,10 +54,6 @@ function padding(seconds) {
         }
 }
 
-//Shuffle
-function shuffleDECK() {
-
-}
 
 function beginClock() {
         setInterval(function startTimer() {
@@ -112,12 +108,18 @@ function finish_game(){
      }else if(scores[0]<scores[1]){
        p_win =2
      }
-     
+
      if(p_win!=0){
        alert("Game Finished!\n Player " +p_win + " win the game with total scores: " + scores[p_win-1] + " !");
      }else{
        alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!" )
      }
+}
 
+//redraw GameBoard when:
+// user click redraw button
+// no set on board
+
+function redrawGameBoard() {
 
 }

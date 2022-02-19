@@ -165,7 +165,12 @@ function cardSelected(el, className) {
             if (isSet(x, y, z)) {
                 scores[playerPlaying - 1]++;
                 console.log("Score: " + scores[playerPlaying - 1]);
-                updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
+                // check remaining card in deck
+                if(Deck.length>= 3){
+                  updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
+                }else{
+                  return finish_game();
+                }
             } else {
                 scores[playerPlaying - 1]--;
             }
@@ -177,4 +182,3 @@ function cardSelected(el, className) {
     }
 
 }
-
