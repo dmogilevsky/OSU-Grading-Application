@@ -41,6 +41,14 @@ function hintReveal() {
         var hinter = document.getElementById("hint")
         hinter.innerHTML = setsOnBoard();
         hinter.innerHTML += " sets on the current board";
+
+        // display message to redraw game board when there is no set on board
+        if(setsOnBoard()==0){
+          var user_answer = window.confirm('There is no set on the board \n Ready to redraw the gameboard?');
+          if(user_answer){
+            redrawGameBoard();
+          }
+        }
 }
 
 //Timer
@@ -121,5 +129,21 @@ function finish_game(){
 // no set on board
 
 function redrawGameBoard() {
+  // copy GameBoard array
+  var tempBoard = [...GameBoard];
+  if(Deck.length<12){
+    finish_game();
+  }else{
+    let drawnCards = drawCards(12);
+    var index_ary = [...Array(12).keys()]
+    GameBoard = [];
+    for (let i = 0; i < index_ary.length; i++) {
+      GameBoard[i] = drawnCards[i];
+    }
+    console.log("Redrawn GameBoard: "+ GameBoard.length + JSON.stringify(GameBoard));
+    syncModelAndUIGameBoard();
+    Deck.push.apply(Deck,tempBoard);
+    shuffleDeck();
+  }
 
 }

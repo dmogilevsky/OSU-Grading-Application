@@ -81,29 +81,26 @@ function shuffleDeck() {
 }
 
 // Draw 3 cards to replace matched set and remove the cards from the deck
-function drawCards() {
-    let DrawnCards = [
-        Deck[Deck.length - 1],
-        Deck[Deck.length - 2],
-        Deck[Deck.length - 3],
-    ];
-    Deck.length = Deck.length - 3;
+function drawCards(num) {
+    DrawnCards = [];
+    for(let i = 1; i<=num; i++){
+      DrawnCards.push(Deck[Deck.length-i]);
+    }
+    Deck.length = (Deck.length - num);
     console.log("Drawn cards: " + JSON.stringify(DrawnCards));
     return DrawnCards;
 }
 
 // Put 12 cards on the GameBoard
 function createGameBoard() {
-    for (let i = 0; i < 4; i++) {
-        GameBoard.push.apply(GameBoard, drawCards());
-    }
+    GameBoard.push.apply(GameBoard, drawCards(12));
     console.log("Created GameBoard: " + JSON.stringify(GameBoard));
     syncModelAndUIGameBoard();
 }
 
 // Replace the set with newly drawn cards
 function updateBoardAfterSet(index1, index2, index3) {
-    let drawnCards = drawCards();
+    let drawnCards = drawCards(3);
     GameBoard[index1] = drawnCards[0];
     GameBoard[index2] = drawnCards[1];
     GameBoard[index3] = drawnCards[2];
