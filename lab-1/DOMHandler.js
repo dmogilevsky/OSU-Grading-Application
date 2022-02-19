@@ -103,8 +103,10 @@ function toggleInstructions() {
         The player with the most points by the end of the game wins.`
 
         if (document.getElementById("Instructions").innerHTML == "") {
+		document.getElementById("Instructions").style.padding = "150px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = text;
         } else {
+		document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
