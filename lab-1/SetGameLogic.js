@@ -160,40 +160,40 @@ function setsOnBoard() {
 
 //Adds selected card into array. el is td element, with it's child being the image
 function cardSelected(el) {
-        if (playerPlaying != null && el.firstChild.getAttribute("src") != "") {
-            highlight(el);
-            let card = GameBoard[parseInt(el.id.replace('A', ''))];
-            // Add or remove card from the potential set based on selection
-            if (card.selected == 0) {
-                card.selected = 1;
-                potentialSet.push(card);
-            } else {
-                card.selected = 0;
-                let a = potentialSet.indexOf(card);
-                potentialSet.splice(a, 1);
-            }
-            // If the potential set has size 3, unhighlight all the cards and handle set
-            if (potentialSet.length == 3) {
-                handleSetCheck();
-            }
-            console.log("Potential Set: " + JSON.stringify(potentialSet));
+    if (playerPlaying != null && el.firstChild.getAttribute("src") != "") {
+        highlight(el);
+        let card = GameBoard[parseInt(el.id.replace('A', ''))];
+        // Add or remove card from the potential set based on selection
+        if (card.selected == 0) {
+            card.selected = 1;
+            potentialSet.push(card);
+        } else {
+            card.selected = 0;
+            let a = potentialSet.indexOf(card);
+            potentialSet.splice(a, 1);
         }
+        // If the potential set has size 3, do setChecking
+        if (potentialSet.length == 3) {
+            handleSetCheck();
+        }
+        console.log("Potential Set: " + JSON.stringify(potentialSet));
     }
+}
 
+/* Unhighlights all the cards and checks for set. If it's a set, increment current player's score,
+ else decrement. Update the score and change player to null */
 function handleSetCheck() {
-    let x = potentialSet.shift();
-    let y = potentialSet.shift();
-    let z = potentialSet.shift();
-    x.selected = 0;
-    y.selected = 0;
-    z.selected = 0;
+    for (let i =0; i < 3; i++) {
+        potentialSet[i].selected = 0;
+    }
     unHighlightAll();
-    if (isSet(x, y, z)) {
+    if (isSet(potentialSet[0], potentialSet[1], potentialSet[2])) {
         scores[playerPlaying - 1]++;
-        updateBoardAfterSet([GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z)]);
+        updateBoardAfterSet([GameBoard.indexOf(potentialSet[0]), GameBoard.indexOf(potentialSet[1]), GameBoard.indexOf(potentialSet[2])]);
     } else {
         scores[playerPlaying - 1]--;
     }
+    potentialSet = [];
     scoreUpdate();
     changePlayer(playerPlaying = null);
 }
