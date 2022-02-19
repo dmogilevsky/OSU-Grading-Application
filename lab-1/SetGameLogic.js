@@ -82,9 +82,9 @@ function shuffleDeck() {
 
 // Draw 3 cards to replace matched set and remove the cards from the deck
 function drawCards(num) {
-    DrawnCards = [];
-    for(let i = 1; i<=num; i++){
-      DrawnCards.push(Deck[Deck.length-i]);
+    let DrawnCards = [];
+    for (let i = 1; i <= num; i++) {
+        DrawnCards.push(Deck[Deck.length - i]);
     }
     Deck.length = (Deck.length - num);
     console.log("Drawn cards: " + JSON.stringify(DrawnCards));
@@ -100,10 +100,20 @@ function createGameBoard() {
 
 // Replace the set with newly drawn cards
 function updateBoardAfterSet(index1, index2, index3) {
-    let drawnCards = drawCards(3);
-    GameBoard[index1] = drawnCards[0];
-    GameBoard[index2] = drawnCards[1];
-    GameBoard[index3] = drawnCards[2];
+    if (Deck.length > 0) {
+        let drawnCards = drawCards(3);
+        GameBoard[index1] = drawnCards[0];
+        GameBoard[index2] = drawnCards[1];
+        GameBoard[index3] = drawnCards[2];
+    } else {
+        GameBoard[index1] = null;
+        GameBoard[index2] = null;
+        GameBoard[index3] = null;
+        if (setsOnBoard() == 0) {
+            finish_game();
+            return;
+        }
+    }
     syncModelAndUIGameBoard();
 }
 
@@ -132,9 +142,9 @@ function setsOnBoard() {
 }
 
 //Adds selected card into array. el is td element, with it's child being the image
-function cardSelected(el, className) {
+function cardSelected(el) {
     if (playerPlaying != null) {
-        highlight(el, className);
+        highlight(el);
         let card = GameBoard[parseInt(el.id.replace('A', ''))];
         if (card.selected == 0) {
             card.selected = 1;
@@ -154,26 +164,19 @@ function cardSelected(el, className) {
             x.selected = 0;
             y.selected = 0;
             z.selected = 0;
-            //unHighlightAll();
-            for (let i = 0; i < highlighted.length; i++) {
-                highlight(highlighted[i], highlighted[i].className)
-            }
+            unHighlightAll();
+            /* for (let i = 0; i < highlighted.length; i++) {
+                highlight(highlighted[i])
+            } */
             highlighted = [];
             if (isSet(x, y, z)) {
                 scores[playerPlaying - 1]++;
-                console.log("Score: " + scores[playerPlaying - 1]);
-                // check remaining card in deck
-                if(Deck.length>= 3){
-                  updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
-                }else{
-                  return finish_game();
-                }
+                updateBoardAfterSet(GameBoard.indexOf(x), GameBoard.indexOf(y), GameBoard.indexOf(z));
             } else {
                 scores[playerPlaying - 1]--;
             }
             scoreUpdate();
-            playerPlaying = null;
-            changePlayer(playerPlaying);
+            changePlayer(playerPlaying = null);
         }
         console.log("Potential Set: " + JSON.stringify(potentialSet));
     }

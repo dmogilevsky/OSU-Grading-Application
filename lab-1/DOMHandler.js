@@ -5,6 +5,7 @@ function syncModelAndUIGameBoard() {
                 let el = document.getElementById(i);
                 el.src = idToImageSrc(GameBoard[i].id);
         }
+        document.getElementById("hint").innerHTML = "";
 }
 
 function idToImageSrc(id) {
@@ -28,26 +29,26 @@ function highlight(el) {
         }
 }
 
+// Unhighlights all selected cards. The length of the selected list is dynamically changing
+// based on element criteria, hence the while loop instead of a for loop.
 function unHighlightAll() {
         selectedList = document.getElementsByClassName("select");
-        for (el in document.getElementsByClassName("select")) {
-                console.log(JSON.stringify(el));
-                el.className = "";
+        while (selectedList.length > 0) {
+                selectedList[0].className = selectedList[0].className.replace('select', "");
         }
 }
 
 //Hint
 function hintReveal() {
         var hinter = document.getElementById("hint")
-        hinter.innerHTML = setsOnBoard();
-        hinter.innerHTML += " sets on the current board";
+        hinter.innerHTML = setsOnBoard() + " sets on the current board";
 
         // display message to redraw game board when there is no set on board
-        if(setsOnBoard()==0){
-          var user_answer = window.confirm('There is no set on the board \n Ready to redraw the gameboard?');
-          if(user_answer){
-            redrawGameBoard();
-          }
+        if (setsOnBoard() == 0) {
+                var user_answer = window.confirm('There is no set on the board \n Ready to redraw the gameboard?');
+                if (user_answer) {
+                        redrawGameBoard();
+                }
         }
 }
 
@@ -75,9 +76,9 @@ function beginClock() {
 
 // Changes the player
 function changePlayer(playerNumber) {
-        if(playerNumber != null) {
-        document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
-        playerPlaying = playerNumber;
+        if (playerNumber != null) {
+                document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
+                playerPlaying = playerNumber;
         } else {
                 document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
         }
@@ -94,6 +95,8 @@ function toggleInstructions() {
         The board will automatically fill up and the timer will begin on its own.
         When a player sees a Set, they may click the button correponding to their
         player number. If they correctly highlight a set of 3, they will win a point.
+        If they incorrectly highlight a set, they will lose a point. One players have finished playing,
+        they may hit "Finish" to end the game.
         The player with the most points by the end of the game wins.`
 
         if (document.getElementById("Instructions").innerHTML == "") {
@@ -102,48 +105,47 @@ function toggleInstructions() {
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
+
 function scoreUpdate() {
-document.getElementById("p1score").innerHTML = scores[0];
-document.getElementById("p2score").innerHTML = scores[1];
+        document.getElementById("p1score").innerHTML = scores[0];
+        document.getElementById("p2score").innerHTML = scores[1];
 }
 
-function finish_game(){
+function finish_game() {
 
-     console.log(scores[0]);
-     var p_win = 0;
-     if(scores[0]>scores[1]){
-       p_win = 1;
-     }else if(scores[0]<scores[1]){
-       p_win =2
-     }
+        var p_win = 0;
+        if (scores[0] > scores[1]) {
+                p_win = 1;
+        } else if (scores[0] < scores[1]) {
+                p_win = 2
+        }
 
-     if(p_win!=0){
-       alert("Game Finished!\n Player " +p_win + " win the game with total scores: " + scores[p_win-1] + " !");
-     }else{
-       alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!" )
-     }
+        if (p_win != 0) {
+                alert("Game Finished!\n Player " + p_win + " win the game with total scores: " + scores[p_win - 1] + " !");
+        } else {
+                alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!")
+        }
 }
 
 //redraw GameBoard when:
 // user click redraw button
 // no set on board
-
 function redrawGameBoard() {
-  // copy GameBoard array
-  var tempBoard = [...GameBoard];
-  if(Deck.length<12){
-    finish_game();
-  }else{
-    let drawnCards = drawCards(12);
-    var index_ary = [...Array(12).keys()]
-    GameBoard = [];
-    for (let i = 0; i < index_ary.length; i++) {
-      GameBoard[i] = drawnCards[i];
-    }
-    console.log("Redrawn GameBoard: "+ GameBoard.length + JSON.stringify(GameBoard));
-    syncModelAndUIGameBoard();
-    Deck.push.apply(Deck,tempBoard);
-    shuffleDeck();
-  }
+        // copy GameBoard array
+        var tempBoard = [...GameBoard];
+        if (Deck.length < 12) {
+                finish_game();
+        } else {
+                let drawnCards = drawCards(12);
+                var index_ary = [...Array(12).keys()]
+                GameBoard = [];
+                for (let i = 0; i < index_ary.length; i++) {
+                        GameBoard[i] = drawnCards[i];
+                }
+                console.log("Redrawn GameBoard: " + GameBoard.length + JSON.stringify(GameBoard));
+                syncModelAndUIGameBoard();
+                Deck.push.apply(Deck, tempBoard);
+                shuffleDeck();
+        }
 
 }
