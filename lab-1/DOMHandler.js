@@ -69,7 +69,7 @@ function padding(seconds) {
 
 //Begins the clock in the HTML
 function beginClock() {
-        setInterval(function startTimer() {
+      timer =   setInterval(function startTimer() {
                 time++;
                 var seconds = document.getElementById("secs")
                 seconds.innerHTML = padding(time % 60);
@@ -141,7 +141,7 @@ function finish_game() {
 
 // Redraw the GameBoard when the user clicks the redraw button or no set on the board
 function redrawGameBoard() {
-        // Copies the GameBoard array
+  // copy the GameBoard array
 	var tempBoard = [...GameBoard];
 	if (Deck.length < 12) {
         	finish_game();
@@ -157,4 +157,22 @@ function redrawGameBoard() {
                 Deck.push.apply(Deck, tempBoard);
                 shuffleDeck();
 	}
+}
+
+// Restart the game when click the restart button
+function restartGame(){
+  // re-initialize all global variable
+  GameBoard = [];
+  Cards = [];
+  Deck = [];
+  potentialSet = [];
+  scores = [0, 0];
+  playerPlaying = null;
+  StartGame();
+  scoreUpdate();
+  // reset timer
+  clearInterval(timer);
+  document.getElementById("mins").innerHTML = "00";
+  document.getElementById("secs").innerHTML = "00";
+  time = 0;
 }
