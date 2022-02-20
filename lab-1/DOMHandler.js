@@ -3,14 +3,21 @@ function syncModelAndUIGameBoard() {
         console.log("Syncing GameBoard with UI");
         for (let i = 0; i < GameBoard.length; i++) {
                 let el = document.getElementById(i);
-                el.src = idToImageSrc(GameBoard[i].id);
+                if (GameBoard[i] != null) {
+                        el.src = idToImageSrc(GameBoard[i].id);
+                } else {
+                        el.src = "images/82.png";
+                }
         }
+        document.getElementById("hint").innerHTML = "";
 }
 
+// Matches the img id to the images .png
 function idToImageSrc(id) {
         return "images/" + id + ".png";
 }
 
+// Changes the string into the id
 function imageSrcToID(str) {
         let id = parseInt(str.split("images/")[1].replace(".png", ''));
         console.log("Turned " + str + " into " + id);
@@ -19,42 +26,40 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el) {
-        className = 'select';
-        const element = el;
-        if (element.className.indexOf(className) >= 0) {
-                element.className = element.className.replace(className, "");
+        if (el.className.indexOf('select') >= 0) {
+                el.className = el.className.replace('select', "");
         } else {
-                element.className += className;
+                el.className += 'select';
         }
+
 }
 
+// Unhighlights all selected cards. The length of the selected list is dynamically changing based on element criteria, hence the while loop instead of a for loop.
 function unHighlightAll() {
         selectedList = document.getElementsByClassName("select");
-        for (el in document.getElementsByClassName("select")) {
-                console.log(JSON.stringify(el));
-                el.className = "";
+        while (selectedList.length > 0) {
+                selectedList[0].className = selectedList[0].className.replace('select', "");
         }
 }
 
-//Hint
+//Hint button that displays the amount of sets on the board
 function hintReveal() {
         var hinter = document.getElementById("hint")
-        hinter.innerHTML = setsOnBoard();
-        hinter.innerHTML += " sets on the current board";
+        hinter.innerHTML = setsOnBoard() + " sets on the current board";
 
         // display message to redraw game board when there is no set on board
-        if(setsOnBoard()==0){
-          var user_answer = window.confirm('There is no set on the board \n Ready to redraw the gameboard?');
-          if(user_answer){
-            redrawGameBoard();
-          }
+        if (setsOnBoard() == 0) {
+                var user_answer = window.confirm('There is no set on the board \n Ready to redraw the gameboard?');
+                if (user_answer) {
+                        redrawGameBoard();
+                }
         }
 }
 
-//Timer
+//Formatting for the clock
 var time = 0;
 function padding(seconds) {
-        if (seconds > 10) {
+        if (seconds > 9) {
                 return seconds;
         }
         else {
@@ -62,7 +67,7 @@ function padding(seconds) {
         }
 }
 
-
+//Begins the clock in the HTML
 function beginClock() {
         setInterval(function startTimer() {
                 time++;
@@ -73,77 +78,83 @@ function beginClock() {
         }, 1000);
 }
 
-// Changes the player
+// Changes the player who is currently playing
 function changePlayer(playerNumber) {
-        if(playerNumber != null) {
-        document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
-        playerPlaying = playerNumber;
+        if (playerNumber != null) {
+                document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
+                playerPlaying = playerNumber;
         } else {
                 document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
         }
 }
 
+//Prints out the Instructions to the Set Game through a toggle button
 function toggleInstructions() {
         text = `The object of the game is to identify a SET of 3 cards from the 12 cards
-        placed. Each card has four features: Shape, Color, Number, and Shading.
+        on the gameboard. Each card has four features: Shape, Color, Number, and Shading.
 
         A SET consists of 3 cards in which each of the cards' features, looked
         at one by one, are the same on each card, or, are different on each card.
-        All of the features must separately satisfy this rule.
+        All of the four features must satisfy this rule.
 
-        The board will automatically fill up and the timer will begin on its own.
+        The board will automatically fill up with cards  and the clock  will begin on its own.
         When a player sees a Set, they may click the button correponding to their
-        player number. If they correctly highlight a set of 3, they will win a point.
+        player number. If they correctly highlight a set of 3, they will win one point.
+        If they incorrectly highlight a set, they will lose one point. Once players have finished playing,
+        they may hit "Finish" to end the game.
         The player with the most points by the end of the game wins.`
 
         if (document.getElementById("Instructions").innerHTML == "") {
+		document.getElementById("Instructions").style.padding = "150px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = text;
         } else {
+		document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
+
+//Updates the score in the HTML
 function scoreUpdate() {
-document.getElementById("p1score").innerHTML = scores[0];
-document.getElementById("p2score").innerHTML = scores[1];
+        document.getElementById("p1score").innerHTML = scores[0];
+        document.getElementById("p2score").innerHTML = scores[1];
 }
 
-function finish_game(){
+//Finishes the game button that gives an alert on which player won or if it was a draw
+function finish_game() {
 
-     console.log(scores[0]);
-     var p_win = 0;
-     if(scores[0]>scores[1]){
-       p_win = 1;
-     }else if(scores[0]<scores[1]){
-       p_win =2
-     }
+        scoreUpdate();
+        syncModelAndUIGameBoard();
+        var p_win = 0;
+        if (scores[0] > scores[1]) {
+                p_win = 1;
+        } else if (scores[0] < scores[1]) {
+                p_win = 2
+        }
 
-     if(p_win!=0){
-       alert("Game Finished!\n Player " +p_win + " win the game with total scores: " + scores[p_win-1] + " !");
-     }else{
-       alert("Game Finished!\n Its a draw! \n Refresh the page to start a new game!" )
-     }
+        if (p_win != 0) {
+                alert("Game Over!\n Player " + p_win + " wins the game with the score: " + scores[p_win - 1] + "!");
+        } else {
+                alert("Game Over!\n Its a draw!");
+        }
+
 }
 
-//redraw GameBoard when:
-// user click redraw button
-// no set on board
-
+// Redraw the GameBoard when the user clicks the redraw button or no set on the board
 function redrawGameBoard() {
-  // copy GameBoard array
-  var tempBoard = [...GameBoard];
-  if(Deck.length<12){
-    finish_game();
-  }else{
-    let drawnCards = drawCards(12);
-    var index_ary = [...Array(12).keys()]
-    GameBoard = [];
-    for (let i = 0; i < index_ary.length; i++) {
-      GameBoard[i] = drawnCards[i];
-    }
-    console.log("Redrawn GameBoard: "+ GameBoard.length + JSON.stringify(GameBoard));
-    syncModelAndUIGameBoard();
-    Deck.push.apply(Deck,tempBoard);
-    shuffleDeck();
-  }
-
+        // Copies the GameBoard array
+	var tempBoard = [...GameBoard];
+	if (Deck.length < 12) {
+        	finish_game();
+	} else {
+                let drawnCards = drawCards(12);
+                var index_ary = [...Array(12).keys()]
+                GameBoard = [];
+                	for (let i = 0; i < index_ary.length; i++) {
+                        	GameBoard[i] = drawnCards[i];
+                	}
+                console.log("Redrawn GameBoard: " + GameBoard.length + JSON.stringify(GameBoard));
+                syncModelAndUIGameBoard();
+                Deck.push.apply(Deck, tempBoard);
+                shuffleDeck();
+	}
 }
