@@ -57,7 +57,8 @@ function hintReveal() {
 }
 
 //Formatting for the clock
-var time = 0;
+var time;
+var timer;
 function padding(seconds) {
         if (seconds > 9) {
                 return seconds;
@@ -69,7 +70,11 @@ function padding(seconds) {
 
 //Begins the clock in the HTML
 function beginClock() {
-      timer =   setInterval(function startTimer() {
+        clearInterval(timer);
+        document.getElementById("mins").innerHTML = "00";
+        document.getElementById("secs").innerHTML = "00";
+        time = 0;
+        timer = setInterval(function startTimer() {
                 time++;
                 var seconds = document.getElementById("secs")
                 seconds.innerHTML = padding(time % 60);
@@ -105,10 +110,10 @@ function toggleInstructions() {
         The player with the most points by the end of the game wins.`
 
         if (document.getElementById("Instructions").innerHTML == "") {
-		document.getElementById("Instructions").style.padding = "150px 0px 0px 0px";
+                document.getElementById("Instructions").style.padding = "150px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = text;
         } else {
-		document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
+                document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
@@ -141,38 +146,20 @@ function finish_game() {
 
 // Redraw the GameBoard when the user clicks the redraw button or no set on the board
 function redrawGameBoard() {
-  // copy the GameBoard array
-	var tempBoard = [...GameBoard];
-	if (Deck.length < 12) {
-        	finish_game();
-	} else {
+        // copy the GameBoard array
+        var tempBoard = [...GameBoard];
+        if (Deck.length < 12) {
+                finish_game();
+        } else {
                 let drawnCards = drawCards(12);
                 var index_ary = [...Array(12).keys()]
                 GameBoard = [];
-                	for (let i = 0; i < index_ary.length; i++) {
-                        	GameBoard[i] = drawnCards[i];
-                	}
+                for (let i = 0; i < index_ary.length; i++) {
+                        GameBoard[i] = drawnCards[i];
+                }
                 console.log("Redrawn GameBoard: " + GameBoard.length + JSON.stringify(GameBoard));
                 syncModelAndUIGameBoard();
                 Deck.push.apply(Deck, tempBoard);
                 shuffleDeck();
-	}
-}
-
-// Restart the game when click the restart button
-function restartGame(){
-  // re-initialize all global variable
-  GameBoard = [];
-  Cards = [];
-  Deck = [];
-  potentialSet = [];
-  scores = [0, 0];
-  playerPlaying = null;
-  StartGame();
-  scoreUpdate();
-  // reset timer
-  clearInterval(timer);
-  document.getElementById("mins").innerHTML = "00";
-  document.getElementById("secs").innerHTML = "00";
-  time = 0;
+        }
 }
