@@ -26,7 +26,7 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el) {
-        if (el.className === 'select') {
+        if (el.className == 'select') {
                 el.className = "unselect";
         } else {
                 el.className = 'select';
