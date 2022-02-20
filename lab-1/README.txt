@@ -21,6 +21,12 @@ Features:
 
 5) Finish: Concludes the game when the determined game time is up and displays the final winner.
 
+Built With:
+
+-JavaScript
+-HTML
+-CSS
+
 Troubleshooting:
 
 If the cards or the additional game functions are not loading up be sure that the additional files are also in the same folder.
