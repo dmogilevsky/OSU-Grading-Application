@@ -33,7 +33,7 @@ function StartGame() {
         console.log("Initializing cards")
         initializeCards(AttributeMapping);
     }
-    unHighlightAll;
+    unHighlightAll();
     changePlayer(playerPlaying);
     scoreUpdate();
     createGameBoard();
