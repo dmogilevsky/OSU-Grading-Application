@@ -1,4 +1,4 @@
-*{padding: 0; margin: 0; box-sizing: border-box;}
+*{padding: 0; margin: 0; box-sizing: border-box;} /* Page styling with background color and font*/
 body { 
 	height: 700px;
 	font-family: 'Courier New', monospace;
@@ -41,11 +41,11 @@ h1 /* Header for game name */
 	width: 100px;
 	height:40px;
 }
-.shuf
+.shuf /*Shuffle button centering*/
 {
 	padding: 10px 22px;
 }
-.hint
+.hint /*Hint button centering*/
 {
 	padding: 10px 32px;
 }
@@ -62,12 +62,12 @@ h1 /* Header for game name */
 	background-color: #ff0000; 
 }
 
-.fin 
+.fin  /* game end button centering and coloring */
 {
 	background-color: #92999b; 
 	padding: 10px 28px;
 }
-.inst
+.inst /* instructions button centering and coloring */
 {
 	background-color: #92999b; 
 	padding: 10px 6px;
@@ -104,7 +104,7 @@ margin-bottom: -240px;
 	margin-left: 85px;
 	margin-right:auto;
 }
-.spacing
+.spacing /*Instruction text spacing */
 {
 	margin-bottom: -50px;
 }
