@@ -26,10 +26,10 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el) {
-        if (el.className.indexOf('select') >= 0) {
-                el.className = el.className.replace('select', "");
+        if (el.className === 'select') {
+                el.className = "unselect";
         } else {
-                el.className += 'select';
+                el.className = 'select';
         }
 
 }
@@ -38,7 +38,7 @@ function highlight(el) {
 function unHighlightAll() {
         selectedList = document.getElementsByClassName("select");
         while (selectedList.length > 0) {
-                selectedList[0].className = selectedList[0].className.replace('select', "");
+                selectedList[0].className = selectedList[0].className.replace('select', "unselect");
         }
 }
 
