@@ -1,5 +1,6 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}  /* Page styling with background color and font*/
 body {
+	height: 800px;
 	font-family: 'Courier New', monospace;
 	background-color: #b30000;
 	background-image: linear-gradient(#b30000, #0086b3);
@@ -53,7 +54,6 @@ h1 /* Header for game name */
 	max-width:200px;
 	max-height:200px;
 	margin-left:5px;
-	margin-bottom:200px;
 }
 
 .menuHeader /*Menu header */
@@ -70,7 +70,7 @@ h1 /* Header for game name */
 {
 	padding: 10px 22px;
 }
-.hint
+.hint /*Hint button centering*/
 {
 	padding: 10px 32px;
 }
@@ -119,5 +119,5 @@ h1 /* Header for game name */
 	margin-left:auto;
 	margin-right: auto;
 	max-width:500px;
-	align-items: stretch
+	margin-bottom: -240px;
 }
