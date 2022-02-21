@@ -85,11 +85,13 @@ function beginClock() {
 
 // Changes the player who is currently playing
 function changePlayer(playerNumber) {
-        if (playerNumber != null) {
-                document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
-                playerPlaying = playerNumber;
-        } else {
-                document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
+        if (playerPlaying == null) { // Don't change player if a player has already been chosen
+                if (playerNumber != null) {
+                        document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
+                        playerPlaying = playerNumber;
+                } else {
+                        document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
+                }
         }
 }
 

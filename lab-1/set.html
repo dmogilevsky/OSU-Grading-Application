@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <h1 class="title"> Game of Set </h1> <!-- Game title, Timer, hints, player 1 and 2 scores, player chosen-->
+     <!-- Game title, Timer, hints, player 1 and 2 scores, player chosen-->
+    <h1 class="title"> Game of Set </h1>
     <div>Time: <span id="mins">00</span>:<span id="secs">00</span></div>
     <div>Hint: <span id="hint"></span></div>
     <div>Player 1 Score: <span id="p1score">0</span></div>
@@ -39,14 +40,12 @@
     <div class="btnMenu">
         <button class="btn shuf" id="Redraw" onclick="redrawGameBoard()">Shuffle</button> <!-- Shuffles board-->
         <button class="btn hint" id="GiveHint" onclick="hintReveal()">Hint</button> <!-- Hint button-->
-        <button id="playingOne" class="btn p1" onclick="changePlayer(1);">Player One</button>
-        <!-- Select player 1 button-->
-        <button id="playingTwo" class="btn p2" onclick="changePlayer(2);">Player Two</button>
-        <!-- Select player 2 button-->
+        <button id="playingOne" class="btn p1" onclick="changePlayer(1);">Player One</button> <!-- Select player 1 button-->
+        <button id="playingTwo" class="btn p2" onclick="changePlayer(2);">Player Two</button> <!-- Select player 2 button-->
         <button onclick="finish_game();" class="btn fin">Finish</button> <!-- Finish game button-->
         <button onclick="toggleInstructions();" class="btn inst">Instructions</button> <!-- Instructions button-->
-        <button onclick="StartGame();" class="btn">Restart</button>
-    </div> <!-- Restart game button-->
+        <button onclick="StartGame();" class="btn">Restart</button> <!-- Restart game button-->
+    </div>
     <div class="spacing" id="Instructions"></div>
 </body>
 

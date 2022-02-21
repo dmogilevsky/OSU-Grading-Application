@@ -198,7 +198,8 @@ function cardSelected(el) {
     }
 }
 
-/* Unhighlights all the cards and checks for set. If it's a set, increment current player's score, else decrement. Update the score and change player to null */
+/* Unhighlights all the cards and checks for set. If it's a set,
+ increment current player's score, else decrement. Update the score and change player to null */
 function handleSetCheck() {
 
     for (let i = 0; i < 3; i++) {
