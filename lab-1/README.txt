@@ -1,4 +1,5 @@
 README file for lab 1
+TEAM 1 - Daniel Mogilevsky, Vincent Zheng, Kyle Cones, and Lezhi Wang
 
 Installation Instructions:
 
@@ -20,4 +21,26 @@ Instructions:
 	The board will automatically fill up with cards and the clock will begin on its own and the game has begun. When a player sees a Set, they will click the button correponding to their player number and select a Set of 3 cards. If they correctly select a set of 3, they will win one point. If they incorrectly highlight a set, they will lose one point. Once players have finished playing, they may hit "Finish" to end the game or play until there are no sets left. The player with the most points by the end of the game wins. If the players tie then the game ends as a draw.
 
 Additional features:
+
 	The hint button allows players to see how many sets are on the current board. The finish button finishes the current game that is being played. The restart button allows players to restart the game with a new game. The timer is located above the scores to show the duration of the game.
+
+Examples of the game:
+
+	Example 1:
+	Player 1 sees a potential set and selects their respective button.
+	Player 1 selects the following cards:
+		3, Diamonds, Filled, Red
+		3, Diamonds, Crossed, Purple
+		3, Diamonds, Empty, Green
+	Player 1 earns one point.
+	
+	Example 2:
+	Player 2 sees a potential set and selects their respective button.
+	Player 2 selects the following cards:
+		1, Ovals, Filled, Purple
+		2, Ovals, Filled, Green
+		3, Ovals, Crossed, Red
+	Player 2 loses one point. This is because of there being two of the cards being filled meanwhile only one is crossed. All three cards must be the same or all of them different.
+
+
+Have fun playing SET!
