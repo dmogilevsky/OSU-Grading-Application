@@ -33,12 +33,69 @@ h1
 {
 	color: black;
 	outline: black;
-	border-radius: 3px;
-	padding: 1px 1px;
-	display: inline-block;
-	margin: 1px 1px;
+	padding: 12px 26px;
+	display: flex;
 	transition-duration: .5s;
 	cursor: pointer;
+	background-color: #4CAF50; 
+	border: 2px solid black;
+	text-align: center;
+	font-size: 16px;
+	width: 100px;
+	height:40px;
+}
+
+.btnMenu /* Button menu */
+{
+	display:grid;
+	grid-template-columns: repeat(2,1fr);
+	place-items: center;
+	max-width:200px;
+	max-height:200px;
+	margin-left:5px;
+	margin-bottom:50px;
+}
+
+.menuHeader /*Menu header */
+{
+	margin-left: 85px;
+	margin-right:auto;
+}
+.spacing
+{
+	margin-bottom: -50px;
+} 
+
+.shuf
+{
+	padding: 10px 22px;
+}
+.hint
+{
+	padding: 10px 32px;
+}
+.p1 /*Player select buttons */
+{
+	font-size: 14px;
+	padding: 4px 32px;
+	background-color: #0084ff; 
+}
+.p2 /*Player select buttons */
+{
+	font-size: 14px;
+	padding: 4px 32px;
+	background-color: #ff0000; 
+}
+
+.fin 
+{
+	background-color: #92999b; 
+	padding: 10px 28px;
+}
+.inst
+{
+	background-color: #92999b; 
+	padding: 10px 6px;
 }
 
 .grid .select
