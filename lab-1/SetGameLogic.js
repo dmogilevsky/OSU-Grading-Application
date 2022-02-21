@@ -72,7 +72,7 @@ function initializeCards(map) {
         }
     }
     shuffleDeck();
-    //Deck = Deck.slice(0, 12); // For testing end of game functionality
+    Deck = Deck.slice(0, 12); // For testing end of game functionality
 }
 
 // Simply shuffle the Deck array
@@ -178,7 +178,7 @@ function setsOnBoard() {
 //Adds selected card into array. el is td element, with it's child being the image
 function cardSelected(el) {
 
-    if (playerPlaying != null && el.firstChild.getAttribute("src") != "") {
+    if (playerPlaying != null && el.firstChild.getAttribute("src") != "images/82.png") {
         highlight(el);
         let card = GameBoard[parseInt(el.id.replace('A', ''))];
         // Add or remove card from the potential set based on selection
