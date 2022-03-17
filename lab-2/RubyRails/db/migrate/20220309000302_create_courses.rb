@@ -1,6 +1,6 @@
 class CreateCourses < ActiveRecord::Migration[6.1]
-  def change
-    create_table :courses do |c|
+  def self.up
+    create_table :course do |c|
       c.integer :CourseID
       c.text :subject
       c.integer :CourseNumber
@@ -9,13 +9,18 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       c.timestamps
     end
 
-    create_table :sections do |s|
+    create_table :section do |s|
       s.integer :SectionID
-      s.integer :CourseID
+      s.references :course, foreign_key: true
       s.integer :SectionNumber
       s.text :Campus
       s.integer :Year
       s.text :Term
     end
+  end
+
+  def self.down
+    drop_table :course
+    drop_table :section
   end
 end

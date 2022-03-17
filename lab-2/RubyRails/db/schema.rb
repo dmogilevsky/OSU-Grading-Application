@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_03_09_000302) do
 
-  create_table "courses", force: :cascade do |t|
+  create_table "course", force: :cascade do |t|
     t.integer "CourseID"
     t.text "subject"
     t.integer "CourseNumber"
@@ -22,13 +22,15 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "sections", force: :cascade do |t|
+  create_table "section", force: :cascade do |t|
     t.integer "SectionID"
-    t.integer "CourseID"
+    t.integer "course_id"
     t.integer "SectionNumber"
     t.text "Campus"
     t.integer "Year"
     t.text "Term"
+    t.index ["course_id"], name: "index_section_on_course_id"
   end
 
+  add_foreign_key "section", "courses"
 end
