@@ -23,8 +23,8 @@
 
   <div class="field">
     <%= f.label :role %>
-    <%= f.select(:role, [['Student','user'], ['Instructor','instructor'], ['Admin', 'admin']])%>
-
+    <%= f.select(:role, [['Student','student'], ['Instructor','instructor'], ['Admin', 'admin']])%>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up", data: {turbo: false} %>
   </div>
