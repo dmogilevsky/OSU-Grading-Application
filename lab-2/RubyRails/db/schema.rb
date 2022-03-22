@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2022_03_09_000302) do
 
   create_table "courses", force: :cascade do |t|
-    t.integer "CourseID"
     t.text "Subject"
     t.integer "CourseNumber"
     t.text "CourseName"
@@ -23,14 +22,11 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.integer "SectionID"
-    t.integer "courses_id"
+    t.integer "course_id"
     t.integer "SectionNumber"
     t.text "Campus"
     t.integer "Year"
     t.text "Term"
-    t.index ["courses_id"], name: "index_sections_on_courses_id"
   end
 
-  add_foreign_key "sections", "courses", column: "courses_id"
 end

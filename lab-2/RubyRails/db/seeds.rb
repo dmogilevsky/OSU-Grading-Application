@@ -21,10 +21,14 @@ puts "#########################Section keys######################"
 puts response.data["courses"][0]["sections"][0].keys
 response.data["courses"].each { |courseContainer| #Each "course" contains a course (hash) and sections (array)
   course = courseContainer["course"]
-  Course.create(CourseID: course["courseID"],Subject: course["subject"],CourseNumber: course["catologNumber"],
-                CourseName: course["title"])
+  newcourse = Course.new(Subject: course["subject"],CourseNumber: course["catalogNumber"],
+                       CourseName: course["title"])
+  newcourse.save
+  puts course["title"]
+  puts newcourse.id
   courseContainer["sections"].each { |section|
-    puts section["section"]
-    Section.create(SectionID: section["classNumber"], courses_id: section["courseId"])
+    # puts section["courseId"] + " " + section["section"]
+    Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Campus: section["campus"], Term:
+      section["term"])
   }
 }

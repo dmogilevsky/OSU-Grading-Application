@@ -1,7 +1,6 @@
 class CreateCourses < ActiveRecord::Migration[6.1]
   def self.up
     create_table :courses do |c|
-      c.integer :CourseID
       c.text :Subject
       c.integer :CourseNumber
       c.text :CourseName
@@ -10,8 +9,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     end
 
     create_table :sections do |s|
-      s.integer :SectionID
-      s.references :courses, foreign_key: true
+      s.integer :course_id, foreign_key: true
       s.integer :SectionNumber
       s.text :Campus
       s.integer :Year
