@@ -1,3 +1,11 @@
 class User < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  enum role: [:user, :instructor, :admin]
+  after_initialize :set_role_default, :if => :new_record?
+  def set_role_default
+    self.role ||= :user
+  end
 end
