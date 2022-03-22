@@ -10290,3 +10290,1092 @@ Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.2ms | Allocations: 493
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-03-22 18:57:13 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.8ms | Allocations: 888)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 597.8ms | Allocations: 21849)
+Completed 200 OK in 688ms (Views: 618.0ms | ActiveRecord: 0.0ms | Allocations: 27038)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2022-03-22 18:57:17 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.7ms | Allocations: 274)
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 604)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 199.7ms | Allocations: 7970)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 203.5ms | Allocations: 11924)
+Completed 200 OK in 236ms (Views: 207.5ms | ActiveRecord: 0.6ms | Allocations: 18358)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-03-22 18:57:29 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"mogilevsky.daniel@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role"=>"admin"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mogilevsky.daniel@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "role") VALUES (?, ?, ?)[0m  [["email", "mogilevsky.daniel@gmail.com"], ["encrypted_password", "$2a$12$dko7nc1fAhksjjk0pfExj..qiiTbz7HT1W3Eow1xP09NuZxUU6KeO"], ["role", 2]]
+  [1m[36mTRANSACTION (102.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 567ms (ActiveRecord: 102.9ms | Allocations: 12540)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-22 18:57:30 -0400
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:4
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 5237)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.1ms | Allocations: 5782)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "courses"[0m
+  [1m[35m (215.3ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Subject" text, "CourseNumber" integer, "CourseName" text, "Units" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "sections"[0m
+  [1m[35m (127.2ms)[0m  [1m[35mCREATE TABLE "sections" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "SectionNumber" integer, "Campus" text, "Year" integer, "Term" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (131.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "role" integer DEFAULT 0)[0m
+  [1m[35m (182.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (216.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (121.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (105.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220322110804)[0m
+  [1m[35m (107.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220309000302);
+
+[0m
+  [1m[35m (121.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-03-22 23:01:39.987804"], ["updated_at", "2022-03-22 23:01:39.987804"]]
+  [1m[36mTRANSACTION (97.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "b8e30a83075e91e66e3db2a37139433c5009b690"], ["created_at", "2022-03-22 23:01:40.092217"], ["updated_at", "2022-03-22 23:01:40.092217"]]
+  [1m[36mTRANSACTION (154.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "courses"[0m
+  [1m[35m (128.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Subject" text, "CourseNumber" integer, "CourseName" text, "Units" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "sections"[0m
+  [1m[35m (131.8ms)[0m  [1m[35mCREATE TABLE "sections" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "SectionNumber" integer, "Campus" text, "Year" integer, "Term" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (132.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "role" integer DEFAULT 0)[0m
+  [1m[35m (181.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (134.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (131.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (100.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220322110804)[0m
+  [1m[35m (107.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220309000302);
+
+[0m
+  [1m[35m (129.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-03-22 23:01:41.463302"], ["updated_at", "2022-03-22 23:01:41.463302"]]
+  [1m[36mTRANSACTION (105.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2022-03-22 23:01:41.582408"], ["key", "environment"]]
+  [1m[36mTRANSACTION (105.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "b8e30a83075e91e66e3db2a37139433c5009b690"], ["created_at", "2022-03-22 23:01:41.711135"], ["updated_at", "2022-03-22 23:01:41.711135"]]
+  [1m[36mTRANSACTION (102.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:01:42.457343"], ["updated_at", "2022-03-22 23:01:42.457343"]]
+  [1m[36mTRANSACTION (142.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 1], ["SectionNumber", 10], ["Campus", "Newark"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (106.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:01:42.775206"], ["updated_at", "2022-03-22 23:01:42.775206"]]
+  [1m[36mTRANSACTION (106.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 2], ["SectionNumber", 10], ["Campus", "Lima"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.8ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2221], ["CourseName", "Software I: Software Components"], ["created_at", "2022-03-22 23:01:43.018249"], ["updated_at", "2022-03-22 23:01:43.018249"]]
+  [1m[36mTRANSACTION (324.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 3], ["SectionNumber", 11], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (152.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 3], ["SectionNumber", 31], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2231], ["CourseName", "Software II: Software Development and Design"], ["created_at", "2022-03-22 23:01:43.621432"], ["updated_at", "2022-03-22 23:01:43.621432"]]
+  [1m[36mTRANSACTION (105.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 4], ["SectionNumber", 21], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (97.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3241], ["CourseName", "Introduction to Database Systems"], ["created_at", "2022-03-22 23:01:43.840882"], ["updated_at", "2022-03-22 23:01:43.840882"]]
+  [1m[36mTRANSACTION (107.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 5], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (107.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 5], ["SectionNumber", 15], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (109.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mSection Create (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 5], ["SectionNumber", 30], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3461], ["CourseName", "Computer Networking and Internet Technologies"], ["created_at", "2022-03-22 23:01:44.324467"], ["updated_at", "2022-03-22 23:01:44.324467"]]
+  [1m[36mTRANSACTION (108.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 6], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (97.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3901], ["CourseName", "Project: Design, Development, and Documentation of Web Applications"], ["created_at", "2022-03-22 23:01:44.553845"], ["updated_at", "2022-03-22 23:01:44.553845"]]
+  [1m[36mTRANSACTION (152.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 7], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4193], ["CourseName", "Individual Studies in Computer Science and Engineering"], ["created_at", "2022-03-22 23:01:44.822145"], ["updated_at", "2022-03-22 23:01:44.822145"]]
+  [1m[36mTRANSACTION (106.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 30], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 60], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 65], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 110], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 150], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 210], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 253], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (107.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 255], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 270], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 340], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 430], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (108.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 490], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 540], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 550], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 580], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (158.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 587], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (106.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 590], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 630], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (135.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 640], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (117.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 690], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (183.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (2.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 740], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (277.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 785], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 800], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (337.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 920], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (102.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 8], ["SectionNumber", 940], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (108.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.5ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4191], ["CourseName", "Professional Practice in Industry"], ["created_at", "2022-03-22 23:01:48.391161"], ["updated_at", "2022-03-22 23:01:48.391161"]]
+  [1m[36mTRANSACTION (106.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 9], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (150.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 9], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (156.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1110], ["CourseName", "Introduction to Computing Technology"], ["created_at", "2022-03-22 23:01:48.834775"], ["updated_at", "2022-03-22 23:01:48.834775"]]
+  [1m[36mTRANSACTION (104.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 10], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2321], ["CourseName", "Foundations I: Discrete Structures"], ["created_at", "2022-03-22 23:01:49.053816"], ["updated_at", "2022-03-22 23:01:49.053816"]]
+  [1m[36mTRANSACTION (159.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 11], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4193], ["CourseName", "Individual Studies in Computer Science and Engineering"], ["created_at", "2022-03-22 23:01:49.332917"], ["updated_at", "2022-03-22 23:01:49.332917"]]
+  [1m[36mTRANSACTION (107.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 220], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (97.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 250], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 300], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (104.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 500], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 590], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 600], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (101.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 610], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (107.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 12], ["SectionNumber", 620], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (100.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:01:50.330529"], ["updated_at", "2022-03-22 23:01:50.330529"]]
+  [1m[36mTRANSACTION (186.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 70], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 120], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (159.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.9ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 210], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (99.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 220], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (100.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 270], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 320], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (97.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 460], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (106.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 480], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (103.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 530], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (149.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 540], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (104.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 580], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (153.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 13], ["SectionNumber", 590], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (106.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (1.0ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:01:52.025897"], ["updated_at", "2022-03-22 23:01:52.025897"]]
+  [1m[36mTRANSACTION (153.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 60], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (101.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 195], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (147.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 197], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (107.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 233], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (98.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 310], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (261.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 340], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (153.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 350], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 550], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (103.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 580], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (96.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 14], ["SectionNumber", 660], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (104.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4999], ["CourseName", "Computer Science and Engineering Research for Thesis"], ["created_at", "2022-03-22 23:01:53.540961"], ["updated_at", "2022-03-22 23:01:53.540961"]]
+  [1m[36mTRANSACTION (102.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 150], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 200], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (303.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 240], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (103.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 280], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 290], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 490], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (99.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 560], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 570], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (97.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 15], ["SectionNumber", 610], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.9ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4999], ["CourseName", "Computer Science and Engineering Research for Thesis"], ["created_at", "2022-03-22 23:01:54.849956"], ["updated_at", "2022-03-22 23:01:54.849956"]]
+  [1m[36mTRANSACTION (178.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 60], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 82], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 140], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 150], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (98.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 210], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (98.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 295], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (199.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 350], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (104.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 440], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 450], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (100.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 16], ["SectionNumber", 510], ["Campus", "Columbus"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (105.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1111], ["CourseName", "Introduction to Computer-Assisted Problem Solving"], ["created_at", "2022-03-22 23:01:56.262665"], ["updated_at", "2022-03-22 23:01:56.262665"]]
+  [1m[36mTRANSACTION (101.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 17], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 17], ["SectionNumber", 21], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 17], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1222], ["CourseName", "Introduction to Computer Programming in C++ for Engineers and Scientists"], ["created_at", "2022-03-22 23:01:56.701012"], ["updated_at", "2022-03-22 23:01:56.701012"]]
+  [1m[36mTRANSACTION (101.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 18], ["SectionNumber", 170], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (96.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 18], ["SectionNumber", 180], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 18], ["SectionNumber", 181], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1223], ["CourseName", "Introduction to Computer Programming in Java"], ["created_at", "2022-03-22 23:01:57.137378"], ["updated_at", "2022-03-22 23:01:57.137378"]]
+  [1m[36mTRANSACTION (104.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 19], ["SectionNumber", 164], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (109.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 19], ["SectionNumber", 190], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (101.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 19], ["SectionNumber", 193], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2123], ["CourseName", "Data Structures Using Java"], ["created_at", "2022-03-22 23:01:57.597240"], ["updated_at", "2022-03-22 23:01:57.597240"]]
+  [1m[36mTRANSACTION (107.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 20], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2221], ["CourseName", "Software I: Software Components"], ["created_at", "2022-03-22 23:01:57.816100"], ["updated_at", "2022-03-22 23:01:57.816100"]]
+  [1m[36mTRANSACTION (95.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 50], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 60], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 101], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 121], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (97.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 130], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 141], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 21], ["SectionNumber", 144], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2231], ["CourseName", "Software II: Software Development and Design"], ["created_at", "2022-03-22 23:01:58.826341"], ["updated_at", "2022-03-22 23:01:58.826341"]]
+  [1m[36mTRANSACTION (106.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 22], ["SectionNumber", 50], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 22], ["SectionNumber", 131], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (100.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2321], ["CourseName", "Foundations I: Discrete Structures"], ["created_at", "2022-03-22 23:01:59.166364"], ["updated_at", "2022-03-22 23:01:59.166364"]]
+  [1m[36mTRANSACTION (104.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 23], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 23], ["SectionNumber", 90], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 23], ["SectionNumber", 95], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 23], ["SectionNumber", 160], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (101.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 23], ["SectionNumber", 180], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.7ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2331], ["CourseName", "Foundations II: Data Structures and Algorithms"], ["created_at", "2022-03-22 23:01:59.839914"], ["updated_at", "2022-03-22 23:01:59.839914"]]
+  [1m[36mTRANSACTION (106.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 24], ["SectionNumber", 60], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (147.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 24], ["SectionNumber", 100], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2421], ["CourseName", "Systems I: Introduction to Low-Level Programming and Computer Organization"], ["created_at", "2022-03-22 23:02:00.223542"], ["updated_at", "2022-03-22 23:02:00.223542"]]
+  [1m[36mTRANSACTION (151.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 25], ["SectionNumber", 110], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (108.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 25], ["SectionNumber", 130], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (149.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2431], ["CourseName", "Systems II: Introduction to Operating Systems"], ["created_at", "2022-03-22 23:02:00.672866"], ["updated_at", "2022-03-22 23:02:00.672866"]]
+  [1m[36mTRANSACTION (107.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 26], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (108.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 26], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (155.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 26], ["SectionNumber", 50], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 26], ["SectionNumber", 80], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (151.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 26], ["SectionNumber", 90], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3231], ["CourseName", "Software Engineering Techniques"], ["created_at", "2022-03-22 23:02:01.462843"], ["updated_at", "2022-03-22 23:02:01.462843"]]
+  [1m[36mTRANSACTION (104.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 27], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 27], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (100.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3232], ["CourseName", "Software Requirements Analysis"], ["created_at", "2022-03-22 23:02:01.804759"], ["updated_at", "2022-03-22 23:02:01.804759"]]
+  [1m[36mTRANSACTION (99.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 28], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3241], ["CourseName", "Introduction to Database Systems"], ["created_at", "2022-03-22 23:02:02.024318"], ["updated_at", "2022-03-22 23:02:02.024318"]]
+  [1m[36mTRANSACTION (98.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 29], ["SectionNumber", 130], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (130.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3341], ["CourseName", "Principles of Programming Languages"], ["created_at", "2022-03-22 23:02:02.265057"], ["updated_at", "2022-03-22 23:02:02.265057"]]
+  [1m[36mTRANSACTION (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 30], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 30], ["SectionNumber", 70], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3541], ["CourseName", "Computer Game and Animation Techniques"], ["created_at", "2022-03-22 23:02:02.595558"], ["updated_at", "2022-03-22 23:02:02.595558"]]
+  [1m[36mTRANSACTION (102.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 31], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mSection Create (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 31], ["SectionNumber", 30], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3901], ["CourseName", "Project: Design, Development, and Documentation of Web Applications"], ["created_at", "2022-03-22 23:02:02.933733"], ["updated_at", "2022-03-22 23:02:02.933733"]]
+  [1m[36mTRANSACTION (183.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 32], ["SectionNumber", 90], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.6ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3902], ["CourseName", "Project: Design, Development, and Documentation of Interactive Systems"], ["created_at", "2022-03-22 23:02:03.241762"], ["updated_at", "2022-03-22 23:02:03.241762"]]
+  [1m[36mTRANSACTION (101.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 33], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (176.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4193], ["CourseName", "Individual Studies in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:03.548752"], ["updated_at", "2022-03-22 23:02:03.548752"]]
+  [1m[36mTRANSACTION (103.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (149.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 70], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.7ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 82], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (100.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.8ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 85], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 120], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 170], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (100.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 190], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 197], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 310], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 420], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (98.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 450], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 460], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (101.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 540], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (155.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 34], ["SectionNumber", 550], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (153.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4251], ["CourseName", "The UNIX Programming Environment"], ["created_at", "2022-03-22 23:02:05.405195"], ["updated_at", "2022-03-22 23:02:05.405195"]]
+  [1m[36mTRANSACTION (101.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 35], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (96.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.5ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:05.625902"], ["updated_at", "2022-03-22 23:02:05.625902"]]
+  [1m[36mTRANSACTION (127.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 50], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 90], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 220], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (108.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 290], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 300], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 380], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 400], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 36], ["SectionNumber", 420], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:06.671398"], ["updated_at", "2022-03-22 23:02:06.671398"]]
+  [1m[36mTRANSACTION (99.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 55], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 190], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 232], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 240], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (154.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 260], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 37], ["SectionNumber", 430], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (157.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.6ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4999], ["CourseName", "Computer Science and Engineering Research for Thesis"], ["created_at", "2022-03-22 23:02:07.693927"], ["updated_at", "2022-03-22 23:02:07.693927"]]
+  [1m[36mTRANSACTION (101.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 120], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (386.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 130], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 250], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (186.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 270], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (110.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 280], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (97.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 340], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 370], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (519.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 400], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (262.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 38], ["SectionNumber", 430], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (150.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4999], ["CourseName", "Computer Science and Engineering Research for Thesis"], ["created_at", "2022-03-22 23:02:09.795963"], ["updated_at", "2022-03-22 23:02:09.795963"]]
+  [1m[36mTRANSACTION (149.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 140], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 210], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (99.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 290], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (193.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 330], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (104.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 390], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (98.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 455], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 460], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 39], ["SectionNumber", 480], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4471], ["CourseName", "Information Security"], ["created_at", "2022-03-22 23:02:10.916080"], ["updated_at", "2022-03-22 23:02:10.916080"]]
+  [1m[36mTRANSACTION (106.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 40], ["SectionNumber", 40], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (107.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.6ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:11.141256"], ["updated_at", "2022-03-22 23:02:11.141256"]]
+  [1m[36mTRANSACTION (102.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 41], ["SectionNumber", 41], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 41], ["SectionNumber", 111], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (150.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4256], ["CourseName", "Programming in Python"], ["created_at", "2022-03-22 23:02:11.524094"], ["updated_at", "2022-03-22 23:02:11.524094"]]
+  [1m[36mTRANSACTION (106.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 42], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (153.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.5ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4191], ["CourseName", "Professional Practice in Industry"], ["created_at", "2022-03-22 23:02:11.795041"], ["updated_at", "2022-03-22 23:02:11.795041"]]
+  [1m[36mTRANSACTION (99.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 43], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (102.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2193], ["CourseName", "Individual Studies in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:12.011782"], ["updated_at", "2022-03-22 23:02:12.011782"]]
+  [1m[36mTRANSACTION (110.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 44], ["SectionNumber", 10], ["Campus", "Marion"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2193], ["CourseName", "Individual Studies in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:12.246028"], ["updated_at", "2022-03-22 23:02:12.246028"]]
+  [1m[36mTRANSACTION (100.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 45], ["SectionNumber", 10], ["Campus", "Marion"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (101.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:12.462695"], ["updated_at", "2022-03-22 23:02:12.462695"]]
+  [1m[36mTRANSACTION (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mSection Create (0.6ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 46], ["SectionNumber", 20], ["Campus", "Marion"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (102.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:12.694727"], ["updated_at", "2022-03-22 23:02:12.694727"]]
+  [1m[36mTRANSACTION (150.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 47], ["SectionNumber", 10], ["Campus", "Mansfield"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 47], ["SectionNumber", 11], ["Campus", "Mansfield"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1223], ["CourseName", "Introduction to Computer Programming in Java"], ["created_at", "2022-03-22 23:02:13.072788"], ["updated_at", "2022-03-22 23:02:13.072788"]]
+  [1m[36mTRANSACTION (101.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 48], ["SectionNumber", 10], ["Campus", "Newark"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (105.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:13.289208"], ["updated_at", "2022-03-22 23:02:13.289208"]]
+  [1m[36mTRANSACTION (106.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 49], ["SectionNumber", 10], ["Campus", "Newark"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (102.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 1222], ["CourseName", "Introduction to Computer Programming in C++ for Engineers and Scientists"], ["created_at", "2022-03-22 23:02:13.509442"], ["updated_at", "2022-03-22 23:02:13.509442"]]
+  [1m[36mTRANSACTION (102.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 50], ["SectionNumber", 20], ["Campus", "Marion"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (157.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:13.780394"], ["updated_at", "2022-03-22 23:02:13.780394"]]
+  [1m[36mTRANSACTION (99.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[36mSection Create (0.1ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 51], ["SectionNumber", 30], ["Campus", "Marion"], ["Term", "Spring 2022"]]
+  [1m[36mTRANSACTION (106.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2221], ["CourseName", "Software I: Software Components"], ["created_at", "2022-03-22 23:02:13.997504"], ["updated_at", "2022-03-22 23:02:13.997504"]]
+  [1m[36mTRANSACTION (103.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 52], ["SectionNumber", 10], ["Campus", "Marion"], ["Term", "Autumn 2022"]]
+  [1m[36mTRANSACTION (98.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:14.215739"], ["updated_at", "2022-03-22 23:02:14.215739"]]
+  [1m[36mTRANSACTION (106.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  [1m[36mSection Create (0.5ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 53], ["SectionNumber", 10], ["Campus", "Marion"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (98.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:14.446574"], ["updated_at", "2022-03-22 23:02:14.446574"]]
+  [1m[36mTRANSACTION (105.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[36mSection Create (0.3ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 54], ["SectionNumber", 10], ["Campus", "Marion"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (103.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2331], ["CourseName", "Foundations II: Data Structures and Algorithms"], ["created_at", "2022-03-22 23:02:14.666352"], ["updated_at", "2022-03-22 23:02:14.666352"]]
+  [1m[36mTRANSACTION (151.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[36mSection Create (0.4ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 55], ["SectionNumber", 20], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (104.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.8ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 3232], ["CourseName", "Software Requirements Analysis"], ["created_at", "2022-03-22 23:02:14.951722"], ["updated_at", "2022-03-22 23:02:14.951722"]]
+  [1m[36mTRANSACTION (150.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 56], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (105.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 4998], ["CourseName", "Undergraduate Research in Computer Science and Engineering"], ["created_at", "2022-03-22 23:02:15.228088"], ["updated_at", "2022-03-22 23:02:15.228088"]]
+  [1m[36mTRANSACTION (100.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 57], ["SectionNumber", 10], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (193.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("Subject", "CourseNumber", "CourseName", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["Subject", "CSE"], ["CourseNumber", 2111], ["CourseName", "Modeling and Problem Solving with Spreadsheets and Databases"], ["created_at", "2022-03-22 23:02:15.536886"], ["updated_at", "2022-03-22 23:02:15.536886"]]
+  [1m[36mTRANSACTION (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  [1m[36mSection Create (0.2ms)[0m  [1m[32mINSERT INTO "sections" ("course_id", "SectionNumber", "Campus", "Term") VALUES (?, ?, ?, ?)[0m  [["course_id", 58], ["SectionNumber", 11], ["Campus", "Columbus"], ["Term", "Summer 2022"]]
+  [1m[36mTRANSACTION (156.8ms)[0m  [1m[36mcommit transaction[0m
