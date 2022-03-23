@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_110804) do
+ActiveRecord::Schema.define(version: 2022_03_09_000302) do
 
   create_table "courses", force: :cascade do |t|
     t.text "Subject"
     t.integer "CourseNumber"
     t.text "CourseName"
-    t.integer "Units"
+    t.text "Campus"
+    t.text "Career"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -24,8 +25,6 @@ ActiveRecord::Schema.define(version: 2022_03_22_110804) do
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
     t.integer "SectionNumber"
-    t.text "Campus"
-    t.integer "Year"
     t.text "Term"
   end
 

@@ -1,7 +1,8 @@
 require "httparty"
 require "active_record"
 class DbQueryPopulate
-  def populateDB(subject, campus, page, term, academicCareer)
+  def populate_db(subject, campus, page, term, academic_career)
+    clean_db
     url = "https://content.osu.edu/v2/classes/search?q=&"
     if subject != ""
       url = url + "&subject=" + subject
@@ -15,20 +16,23 @@ class DbQueryPopulate
     if term != ""
       url = url + "&term=" + term
     end
-    if academicCareer != ""
-      url = url + "&academic-career=" + academicCareer
+    if academic_career != ""
+      url = url + "&academic-career=" + academic_career
     end
     page_data = HTTParty.get(url)
     response = OpenStruct.new(page_data.parsed_response) # Response is of type Hash, made into OpenStruct
     response.data["courses"].each { |courseContainer| #Each "course" contains a course (hash) and sections (array)
       course = courseContainer["course"]
       newcourse = Course.new(Subject: course["subject"],CourseNumber: course["catalogNumber"],
-                             CourseName: course["title"])
+                             CourseName: course["title"], Campus: course["campus"], Career: course["academicCareer"])
       newcourse.save
       courseContainer["sections"].each { |section|
-        Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Campus: section["campus"], Term:
-          section["term"])
+        Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Term: section["term"])
       }
     }
+  end
+  def clean_db
+    Course.find_each(&:destroy)
+    Section.find_each(&:destroy)
   end
 end
