@@ -6,6 +6,8 @@
   <% if current_user.admin? %>
     <p><%= current_user.role %> is in.</p>
   <%end%>
+  <%= link_to "Edit Profile", edit_user_registration_path %>
+  <br />
   <%= link_to "Sign out", destroy_user_session_path, :method => :delete  %>
   <%else%>
     <p>Must be signed in to access this.</p>
