@@ -1,6 +1,6 @@
 require "httparty"
 require "active_record"
-class DbQueryPopulate
+class DbQueries
   def populate_db(subject, campus, page, term, academic_career)
     clean_db
     url = "https://content.osu.edu/v2/classes/search?q=&"
@@ -34,5 +34,19 @@ class DbQueryPopulate
   def clean_db
     Course.find_each(&:destroy)
     Section.find_each(&:destroy)
+  end
+  def delete_section(section_id)
+    Section.delete(section_id)
+  end
+  def delete_course(course_id)
+    Course.delete(course_id)
+    Section.delete_all "course_id=" + course_id
+  end
+  def create_course(subject, coursenumber, name, campus, career)
+    Course.create(Subject: subject,CourseNumber: coursenumber,
+               CourseName: name, Campus: campus, Career: career)
+  end
+  def create_section(sectionnumber, courseid, term)
+    Section.create(SectionNumber: sectionnumber, course_id: courseid, Term: term)
   end
 end
