@@ -26,10 +26,10 @@ function imageSrcToID(str) {
 
 //Highlights selected card
 function highlight(el) {
-        if (el.className.indexOf('select') >= 0) {
-                el.className = el.className.replace('select', "");
+        if (el.className == 'select') {
+                el.className = "unselect";
         } else {
-                el.className += 'select';
+                el.className = 'select';
         }
 
 }
@@ -38,7 +38,7 @@ function highlight(el) {
 function unHighlightAll() {
         selectedList = document.getElementsByClassName("select");
         while (selectedList.length > 0) {
-                selectedList[0].className = selectedList[0].className.replace('select', "");
+                selectedList[0].className = selectedList[0].className.replace('select', "unselect");
         }
 }
 
@@ -57,7 +57,8 @@ function hintReveal() {
 }
 
 //Formatting for the clock
-var time = 0;
+var time;
+var timer;
 function padding(seconds) {
         if (seconds > 9) {
                 return seconds;
@@ -69,7 +70,11 @@ function padding(seconds) {
 
 //Begins the clock in the HTML
 function beginClock() {
-      timer =   setInterval(function startTimer() {
+        clearInterval(timer);
+        document.getElementById("mins").innerHTML = "00";
+        document.getElementById("secs").innerHTML = "00";
+        time = 0;
+        timer = setInterval(function startTimer() {
                 time++;
                 var seconds = document.getElementById("secs")
                 seconds.innerHTML = padding(time % 60);
@@ -80,35 +85,25 @@ function beginClock() {
 
 // Changes the player who is currently playing
 function changePlayer(playerNumber) {
-        if (playerNumber != null) {
-                document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
-                playerPlaying = playerNumber;
-        } else {
-                document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
+        if (playerPlaying == null) { // Don't change player if a player has already been chosen
+                if (playerNumber != null) {
+                        document.getElementById("playerChosen").innerHTML = "Player " + playerNumber + " is playing.";
+                        playerPlaying = playerNumber;
+                } else {
+                        document.getElementById("playerChosen").innerHTML = "Select who is currently playing.";
+                }
         }
 }
 
 //Prints out the Instructions to the Set Game through a toggle button
 function toggleInstructions() {
-        text = `The object of the game is to identify a SET of 3 cards from the 12 cards
-        on the gameboard. Each card has four features: Shape, Color, Number, and Shading.
-
-        A SET consists of 3 cards in which each of the cards' features, looked
-        at one by one, are the same on each card, or, are different on each card.
-        All of the four features must satisfy this rule.
-
-        The board will automatically fill up with cards  and the clock  will begin on its own.
-        When a player sees a Set, they may click the button correponding to their
-        player number. If they correctly highlight a set of 3, they will win one point.
-        If they incorrectly highlight a set, they will lose one point. Once players have finished playing,
-        they may hit "Finish" to end the game.
-        The player with the most points by the end of the game wins.`
+        text = `The object of the game is to identify a SET of 3 cards from the 12 cards on the gameboard. Each card has four features: Shape, Color, Number, and Shading. A SET consists of 3 cards in which each of the cards' features, looked at one by one, are the same on each card or are different on each card. All of the four features must satisfy this rule. The board will automatically fill up with cards and the clock will begin on its own. When a player sees a Set, they will click the button correponding to their player number and select a Set of 3 cards. If they correctly select a set of 3, they will win one point. If they incorrectly highlight a set, they will lose one point. Once players have finished playing, they may hit "Finish" to end the game or play until there are no sets left. The player with the most points by the end of the game wins. If the players tie then the game ends as a draw. There are additional features that are in the game. The hint button allows players to see how many sets are on the current board. The finish button finishes the current game that is being played. The restart button allows players to restart the game with a new game. The timer is located above the scores to show the duration of the game.`
 
         if (document.getElementById("Instructions").innerHTML == "") {
-		document.getElementById("Instructions").style.padding = "150px 0px 0px 0px";
+                document.getElementById("Instructions").style.padding = "60px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = text;
         } else {
-		document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
+                document.getElementById("Instructions").style.padding = "0px 0px 0px 0px";
                 document.getElementById("Instructions").innerHTML = "";
         }
 }
@@ -141,38 +136,20 @@ function finish_game() {
 
 // Redraw the GameBoard when the user clicks the redraw button or no set on the board
 function redrawGameBoard() {
-  // copy the GameBoard array
-	var tempBoard = [...GameBoard];
-	if (Deck.length < 12) {
-        	finish_game();
-	} else {
+        // copy the GameBoard array
+        var tempBoard = [...GameBoard];
+        if (Deck.length < 12) {
+                finish_game();
+        } else {
                 let drawnCards = drawCards(12);
                 var index_ary = [...Array(12).keys()]
                 GameBoard = [];
-                	for (let i = 0; i < index_ary.length; i++) {
-                        	GameBoard[i] = drawnCards[i];
-                	}
+                for (let i = 0; i < index_ary.length; i++) {
+                        GameBoard[i] = drawnCards[i];
+                }
                 console.log("Redrawn GameBoard: " + GameBoard.length + JSON.stringify(GameBoard));
                 syncModelAndUIGameBoard();
                 Deck.push.apply(Deck, tempBoard);
                 shuffleDeck();
-	}
-}
-
-// Restart the game when click the restart button
-function restartGame(){
-  // re-initialize all global variable
-  GameBoard = [];
-  Cards = [];
-  Deck = [];
-  potentialSet = [];
-  scores = [0, 0];
-  playerPlaying = null;
-  StartGame();
-  scoreUpdate();
-  // reset timer
-  clearInterval(timer);
-  document.getElementById("mins").innerHTML = "00";
-  document.getElementById("secs").innerHTML = "00";
-  time = 0;
+        }
 }
