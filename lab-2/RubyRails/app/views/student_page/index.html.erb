@@ -3,3 +3,6 @@
     <p><%= course.course %></p>
   <% end %>
 <p>this is student page1</p>
+<%= link_to "Edit Profile", edit_user_registration_path %>
+<br />
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete  %>
