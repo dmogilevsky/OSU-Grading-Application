@@ -5,6 +5,7 @@
   <p><%= current_user.email %> is currently logged in.</p>
   <% if current_user.admin? %>
     <p><%= current_user.role %> is in.</p>
+    <%= link_to "Admin", admin_page_path %>
   <%end%>
   <%= link_to "Edit Profile", edit_user_registration_path %>
   <br />
