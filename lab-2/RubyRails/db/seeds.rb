@@ -9,8 +9,8 @@
 
 require_relative 'db_query_populator'
 # Populate DB with all CSE courses
-DbQueryPopulate.new.populate_db("cse", "", "","","")
+DbQueries.new.populate_db("cse", "", "","","")
 
 # Create default admin user
-User.create!(email: "admin@osu.edu", password: "password",
+User.create!(email: "admin.1@osu.edu", password: "password",
              role: 2)

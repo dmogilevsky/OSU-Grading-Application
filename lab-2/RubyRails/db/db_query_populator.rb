@@ -49,4 +49,7 @@ class DbQueries
   def create_section(sectionnumber, courseid, term)
     Section.create(SectionNumber: sectionnumber, course_id: courseid, Term: term)
   end
+  def get_requests
+    User.where(role: 2, approved: nil)
+  end
 end

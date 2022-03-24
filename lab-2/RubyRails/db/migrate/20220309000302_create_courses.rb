@@ -46,6 +46,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       t.integer :role, default: 0
+      t.binary :approved
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
