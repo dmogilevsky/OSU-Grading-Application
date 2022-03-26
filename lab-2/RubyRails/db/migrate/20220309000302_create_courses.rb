@@ -61,5 +61,6 @@ class CreateCourses < ActiveRecord::Migration[6.1]
   def self.down
     drop_table :courses
     drop_table :sections
+    drop_table :users
   end
 end
