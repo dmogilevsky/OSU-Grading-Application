@@ -1,7 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <% if current_user # If the current user is a valid login%>
-  <% if current_user.admin? and not current_user.approved # If the current user is an admin and approved%>
+  <% if (current_user.admin? or current_user.instructor?) and not current_user.approved # If the current user is an admin and approved%>
     <p><%= current_user.email%> Not approved </p>
     <% else %>
     <p><%= current_user.email %> is currently logged in.</p>
