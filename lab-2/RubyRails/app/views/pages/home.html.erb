@@ -1,5 +1,20 @@
-<h1>Pages#home</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title> OSU Course Catalog </title>
+<meta charset="utf-8">
+<meta name= "veiwport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body>
+
+<header>OSU CSE COURSE CATALOG</header>
+
 <p>Find me in app/views/pages/home.html.erb</p>
+
+</body>
+</html>
 
 <% if current_user %>
   <p><%= current_user.email %> is currently logged in.</p>
@@ -11,9 +26,31 @@
   <br />
   <%= link_to "Sign out", destroy_user_session_path, :method => :delete  %>
   <%else%>
+
     <p>Must be signed in to access this.</p>
-    <%= link_to "Register an account", new_user_registration_path %>
-    <br/>
-    <%= link_to "Login", new_user_session_path %>
+
+  <br/>
+
+    <div class="btn btn-primary, container">
+    
+      <%= button_to 'Register an account', new_user_registration_path, method: :get, :class=>'button' ,:style=>'background-color:#b1cbbb;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;'%>
+
+  <br/>
+      <%= button_to 'Login', new_user_session_path, method: :get, class: 'btn btn-info btn-xs', :style=>'background-color:#feb236;color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;' %>
+    </div>
+
   <%end%>
+
+  
       
