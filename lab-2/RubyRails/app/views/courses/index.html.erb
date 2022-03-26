@@ -1,0 +1,33 @@
+<h1>Pages#course overview</h1>
+
+<p>Courses</p>
+
+
+<div style="overflow-x:auto">
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Subject</th>
+      <th>CourseNumber</th>
+      <th>CourseName</th>
+      <th>Campus</th>
+      <th>Career</th>
+      <th>Section</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.id %></td>
+        <td><%= course.Subject %></td>
+        <td><%= course.CourseNumber %></td>
+        <td><%= course.CourseName %></td>
+        <td><%= course.Campus %></td>
+        <td><%= course.Career %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -13,4 +13,4 @@ DbQueries.new.populate_db("cse", "", "","","")
 
 # Create default admin user
 User.create!(email: "admin.1@osu.edu", password: "password",
-             role: 2)
+             role: 2, approved: 1)

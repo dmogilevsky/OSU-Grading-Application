@@ -35,38 +35,40 @@ class DbQueries
     Course.find_each(&:destroy)
     Section.find_each(&:destroy)
   end
-
-  # Delete a section with a given id
   def delete_section(section_id)
     Section.delete(section_id)
   end
-
-  # Delete a course with the given id
   def delete_course(course_id)
     Course.delete(course_id)
     Section.delete_all "course_id=" + course_id
   end
-
-  # Create a course with given params
   def create_course(subject, coursenumber, name, campus, career)
     Course.create(Subject: subject,CourseNumber: coursenumber,
                CourseName: name, Campus: campus, Career: career)
   end
-
-  # Create a section with given params
   def create_section(sectionnumber, courseid, term)
     Section.create(SectionNumber: sectionnumber, course_id: courseid, Term: term)
   end
-
-  # Get all admin users who are pending approval
   def get_requests
     User.where(role: 2, approved: nil)
   end
-
-  # Given a user id, update the approved status to 1
-  def approve_admin_user(user_id)
-    @request = User.find(user_id)
-    @request.approved = 1
-    @request.save
+  def approve_user(user_id)
+    User.where(id: user_id).first.approved = 1
+  end
+  def modify_course(course_id, subject, coursenumber, name, campus, career)
+    course = Course.where(id: course_id).first
+    course.CourseName = name
+    course.Subject = subject
+    course.CourseNumber = coursenumber
+    course.Campus = campus
+    course.Career = career
+    course.save
+  end
+  def modify_section(section_id, sectionnumber, courseid, term)
+    section = Section.where(id: section_id).first
+    section.SectionNumber = sectionnumber
+    section.course_id = courseid
+    section.Term = term
+    section.save
   end
 end
