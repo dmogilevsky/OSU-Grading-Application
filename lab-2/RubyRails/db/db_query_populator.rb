@@ -52,4 +52,7 @@ class DbQueries
   def get_requests
     User.where(role: 2, approved: nil)
   end
+  def approve_user(user_id)
+    User.where(id: user_id).approved = 1
+  end
 end
