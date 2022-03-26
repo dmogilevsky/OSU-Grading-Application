@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #get 'student_page', to: 'pages#home'
   get 'admin', to: 'pages#admin'
 
-
+  resources :users
   resources :courses
 end
 
