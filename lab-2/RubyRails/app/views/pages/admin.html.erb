@@ -1,5 +1,6 @@
 <h1>Admin Page</h1>
 <p>Approved Admin Only Access</p>
+<%= link_to "Return to Home Page",  root_path%>
 <% if (current_user.admin?) and (current_user.approved)%>
 <div style="overflow-x:auto">
   <table>

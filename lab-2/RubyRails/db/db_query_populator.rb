@@ -31,6 +31,7 @@ class DbQueries
       }
     }
   end
+
   def clean_db
     Course.find_each(&:destroy)
     Section.find_each(&:destroy)
