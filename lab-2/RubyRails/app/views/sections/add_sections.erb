@@ -1,31 +1,22 @@
-<h1>Add Course</h1>
+<h1>Add Section</h1>
 <% if current_user.admin? %>
   <p>Update the course information below.</p>
 
-  <%= form_with model: course, url: edit_course_path, method: :patch, local: true, scope: :course do |form| %>
+  <%= form_with(model: Section.new) do |form| %>
+
     <div class="field">
-      <%= form.label :Subject %>
-      <%= form.text_field :Subject %>
+      <%= form.label :CourseID %>
+      <%= form.number_field :CourseID %>
     </div>
 
     <div class="field">
-      <%= form.label :CourseNumber %>
-      <%= form.number_field :CourseNumber %>
+      <%= form.label :SectionNumber %>
+      <%= form.number_field :SectionNumber %>
     </div>
 
     <div class="field">
-      <%= form.label :CourseName %>
-      <%= form.text_field :CourseName %>
-    </div>
-
-    <div class="field">
-      <%= form.label :Campus %>
-      <%= form.text_field :Campus %>
-    </div>
-
-    <div class="field">
-      <%= form.label :Career %>
-      <%= form.text_field :Career %>
+      <%= form.label :Term %>
+      <%= form.text_field :Term %>
     </div>
 
     <div class="actions">
