@@ -2,6 +2,14 @@ class CoursesController < ApplicationController
   def index
     @pagy, @courses = pagy(Course.all.order(params[:sort]))
     @pagy, @sections = pagy(Section.all)
+
+    if params[:search]
+      search_courses
+    end
+  end
+
+  def search_courses
+    @pagy, @courses = pagy(Course.where("CourseNumber LIKE ?", "%" + params[:search]+ "%"))
   end
 
   def delete_course
