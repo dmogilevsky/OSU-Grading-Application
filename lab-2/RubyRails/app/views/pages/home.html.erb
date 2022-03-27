@@ -4,38 +4,29 @@
 <title> OSU Course Catalog </title>
 <meta charset="utf-8">
 <meta name= "veiwport" content="width=device-width, initial-scale=1">
-
-
 </head>
 <body>
 </html>
-
 <header>OSU CSE COURSE CATALOG</header>
 
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<% if current_user # If the current user is a valid login%>
+<% if current_user%>
+       <%# If the current user is a valid login%>
  
-  <% if (current_user.admin? or current_user.instructor?) and not current_user.approved #NEED to ADD condtion to specify a student -> not approved # If the current user is an admin and approved%>
-    <p><%= current_user.email%> Not approved </p>
+       <% if (current_user.admin? or current_user.instructor?) and not current_user.approved%>
+            <%# If the current user is an admin and approved%>
+    <p><%= current_user.email%> has not been approved yet.</p>
     <% else %>
-    <p><%= current_user.email %> is currently logged in.</p>
-    <p><%= current_user.role %> is in.</p>
+      <p><%= current_user.email %> is registered as a <%= current_user.role%>.</p>
+      <%= button_to "Courses", courses_path, :method =>:get %>
     <%= button_to "Admin", admin_path , :method =>:get %>
    <% end %>
    <%= button_to "Edit Profile", edit_user_registration_path, :method => :get  %>
-     <br/>
      <%= button_to "Sign out" ,destroy_user_session_path, :method => :delete %>
 <% else %>
 
-    <p>Must be signed in to access this.</p>
-
-      <br/>
+    <p>Must be signed in to access this database.</p>
 
   <div class="btn btn-primary, container">
-    
-
-
     <%= button_to "Register an account", new_user_registration_path,:method => :get ,class:'btn btn-info btn-xs',:style=>'background-color:#b1cbbb;
     color: white;
     padding: 14px 20px;
@@ -43,19 +34,14 @@
     border: none;
     cursor: pointer;
     width: 100%;' %>
-
     <br/>
-
     <%= button_to 'Login', new_user_session_path, class: 'btn btn-info btn-xs',:method => :get, :style=>'background-color:#feb236;color: white;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 100%;' %>
-
     </div>
-
-
 <% end %>
 
 
