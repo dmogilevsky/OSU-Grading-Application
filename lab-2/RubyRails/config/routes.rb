@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   #get 'student_page', to: 'pages#home'
   get 'admin', to: 'pages#admin'
   get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
-  get 'courses/:id/edit' => 'courses#edit_course', as: 'edit_course'
-  get 'courses/add' => 'courses#add_course', as: 'add_course'
+  get 'courses/add', to: 'courses#add_courses', as: 'add_course'
+  get 'courses/:id/edit', to: 'courses#edit', as: 'edit_course'
+  patch 'courses/:id', to: 'courses#update' # update (as needed)
+  put 'courses/:id', to: 'courses#update' # update (full replacement)
   get '/courses/:id/delete' => 'courses#delete_course', as: 'delete_course'
   resources :users
   resources :courses
