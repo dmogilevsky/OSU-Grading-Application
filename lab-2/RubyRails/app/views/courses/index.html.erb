@@ -2,17 +2,16 @@
 
 <p>Courses</p>
 
-
 <div style="overflow-x:auto">
   <table>
     <thead>
     <tr>
       <th>Id</th>
       <th>Subject</th>
-      <th>CourseNumber</th>
-      <th>CourseName</th>
-      <th>Campus</th>
-      <th>Career</th>
+      <th><%= link_to "Course Number", :sort => "CourseNumber" %></th>
+      <th><%= link_to "Course Name", :sort => "CourseName" %></th>
+      <th><%= link_to "Campus", :sort => "Campus" %></th>
+      <th><%= link_to "Career", :sort => "Career" %></th>
       <th>Section</th>
     </tr>
     </thead>
