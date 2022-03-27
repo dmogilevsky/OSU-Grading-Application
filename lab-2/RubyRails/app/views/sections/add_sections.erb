@@ -2,7 +2,7 @@
 <% if current_user.admin? %>
   <p>Update the course information below.</p>
 
-  <%= form_with(model: Course.new) do |form| %>
+  <%= form_with model: course, url: edit_course_path, method: :patch, local: true, scope: :course do |form| %>
     <div class="field">
       <%= form.label :Subject %>
       <%= form.text_field :Subject %>
