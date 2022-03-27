@@ -19,6 +19,7 @@
 
     <tbody>
     <% @courses.each do |course| %>
+      <% course_id = course.id %>
       <tr>
         <td><%= course.id %></td>
         <td><%= course.Subject %></td>
@@ -27,7 +28,17 @@
         <td><%= course.Campus %></td>
         <td><%= course.Career %></td>
       </tr>
+
+      <% Section.where(["course_id = ?", course_id]).each do |section| %>
+        <tr>
+          <td><%= section.SectionNumber%></td>
+          <td><%= section.Term %></td>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
 </div>
+
+
+<%== pagy_nav(@pagy) %>

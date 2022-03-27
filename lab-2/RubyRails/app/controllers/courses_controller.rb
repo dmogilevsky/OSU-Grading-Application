@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
-    @sections = Section.all
+    @pagy, @courses = pagy(Course.all)
+    @pagy,@sections= pagy(Section.all)
   end
+
 end
