@@ -53,6 +53,22 @@ class DbQueries
     User.where(role: 2, approved: nil)
   end
   def approve_user(user_id)
-    User.where(id: user_id).approved = 1
+    User.where(id: user_id).first.approved = 1
+  end
+  def modify_course(course_id, subject, coursenumber, name, campus, career)
+    course = Course.where(id: course_id).first
+    course.CourseName = name
+    course.Subject = subject
+    course.CourseNumber = coursenumber
+    course.Campus = campus
+    course.Career = career
+    course.save
+  end
+  def modify_section(section_id, sectionnumber, courseid, term)
+    section = Section.where(id: section_id).first
+    section.SectionNumber = sectionnumber
+    section.course_id = courseid
+    section.Term = term
+    section.save
   end
 end
