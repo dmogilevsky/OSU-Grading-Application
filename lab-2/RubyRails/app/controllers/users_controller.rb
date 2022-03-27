@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.approved = 1
     if user.save
-      flash[:notice] = "#{user.id} ur mum"
+      flash[:notice] = "#{user.id} Saved"
     else
-      flash[:alert] = "#{user.id} ur dud"
+      flash[:alert] = "#{user.id} Not saved"
     end
     redirect_back(fallback_location: admin_path)
   end
