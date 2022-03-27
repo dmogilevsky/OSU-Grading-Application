@@ -7,15 +7,16 @@
       <tr>
         <th>Not Approved Emails</th>
         <th>User role</th>
+        <th>Button</th>
       </tr>
     </thead>
     <tbody>
       <% User.all.each do |user| %>
-        <%if user.approved == nil and user.role == "admin" or user.role == "instructor"%>
+        <%if user.approved == nil and (user.role == "instructor" or user.role == "admin")%>
           <tr>
             <td><%= user.email %> </td>
             <td><%= user.role %> </td>
-            <td><%= user.approved %> </td>
+            <td> <%= link_to "Approve", approve_user_path(user) %></td>
           </tr>
           <% end %>
         <% end %>

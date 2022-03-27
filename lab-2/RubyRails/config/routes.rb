@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #get 'admin_page', to: 'pages#home'
   #get 'student_page', to: 'pages#home'
   get 'admin', to: 'pages#admin'
-
+  get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
   resources :users
   resources :courses
 end
