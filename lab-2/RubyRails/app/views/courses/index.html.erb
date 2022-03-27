@@ -1,7 +1,7 @@
 <h1>Courses page</h1>
 <% if current_user%>
 <p>Welcome to the courses database.</p>
-
+  <%= link_to "Home page", root_path%>
   <h4> Search by course number </h4>
   <%= form_tag(courses_path, method: :get) do %>
     <%= text_field_tag(:search, params[:search]) %>
@@ -47,6 +47,10 @@
         <tr>
           <td><%= section.SectionNumber%></td>
           <td><%= section.Term %></td>
+          <%if current_user.admin? %>
+            <td><%= link_to "Delete", delete_section_path(course) %></td>
+            <td><%= link_to "Edit", edit_section_path(course) %></td>
+          <%end %>
         </tr>
     <%end %>
     <% end %>
@@ -57,5 +61,6 @@
 <%== pagy_nav(@pagy) %>
 <%else%>
   <p>Must be signed in to view the courses database.
+    <%= link_to "Home page", root_path%>
 <% end %>
 
