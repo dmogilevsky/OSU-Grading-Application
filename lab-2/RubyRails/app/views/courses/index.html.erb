@@ -1,12 +1,17 @@
 <h1>Courses page</h1>
 <% if current_user%>
 <p>Welcome to the courses database.</p>
-  <%= link_to "Home page", root_path%>
-  <br>
+
+  <h4> Search by course number </h4>
+  <%= form_tag(courses_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
+
 <div style="overflow-x:auto">
   <%if current_user.admin? %>
     <%= link_to "Add Course", add_course_path %>
-    <%= link_to "Add Section", add_section_path %>
   <%end %>
   <table>
     <thead>
@@ -42,10 +47,6 @@
         <tr>
           <td><%= section.SectionNumber%></td>
           <td><%= section.Term %></td>
-          <%if current_user.admin? %>
-            <td><%= link_to "Delete", delete_section_path(course) %></td>
-            <td><%= link_to "Edit", edit_section_path(course) %></td>
-          <%end %>
         </tr>
     <%end %>
     <% end %>
@@ -53,10 +54,8 @@
   </table>
 </div>
 
-
 <%== pagy_nav(@pagy) %>
 <%else%>
-  <p>Must be signed in to view the courses database.</p>
-  <%= link_to "Home page", root_path%>
+  <p>Must be signed in to view the courses database.
 <% end %>
 
