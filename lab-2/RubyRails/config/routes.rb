@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
   resources :users
   resources :courses
+  resources :admin_courses
 end
 

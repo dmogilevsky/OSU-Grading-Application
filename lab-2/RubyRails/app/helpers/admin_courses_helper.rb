@@ -1,0 +1,2 @@
+module AdminCoursesHelper
+end
