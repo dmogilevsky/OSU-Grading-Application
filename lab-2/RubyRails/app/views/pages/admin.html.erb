@@ -1,7 +1,9 @@
 <h1>Admin Page</h1>
 <p>Approved Admin Only Access</p>
 <%= link_to "Return to Home Page",  root_path%>
+<p>Reload Database from OSU Course Catalog</p>
 <% if (current_user.admin?) and (current_user.approved)%>
+<%=link_to "Reload Courses", reload_db_path%>
 <div style="overflow-x:auto">
   <table>
     <thead>

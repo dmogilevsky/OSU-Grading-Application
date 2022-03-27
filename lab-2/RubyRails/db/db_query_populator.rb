@@ -36,6 +36,7 @@ class DbQueries
     Course.find_each(&:destroy)
     Section.find_each(&:destroy)
   end
+
   def delete_section(section_id)
     Section.delete(section_id)
   end
