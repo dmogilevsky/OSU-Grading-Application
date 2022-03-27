@@ -1,7 +1,6 @@
-<h1>Pages#course overview</h1>
-
-<p>Courses</p>
-
+<h1>Courses page</h1>
+<% if current_user%>
+<p>Welcome to the courses database.</p>
 <div style="overflow-x:auto">
   <table>
     <thead>
@@ -41,3 +40,7 @@
 
 
 <%== pagy_nav(@pagy) %>
+<%else%>
+  <p>Must be signed in to view the courses database.
+<% end %>
+

@@ -1,18 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<% if current_user # If the current user is a valid login%>
-  <% if (current_user.admin? or current_user.instructor?) and not current_user.approved # If the current user is an admin and approved%>
-    <p><%= current_user.email%> Not approved </p>
+<h1>Home Page</h1>
+<p>Welcome to the home page.</p>
+<% if current_user %> <%#If the current user is a valid login%>
+      <% if (current_user.admin? or current_user.instructor?) and not current_user.approved%> <%# If the current user is an admin and approved%>
+    <p><%= current_user.email%> has not been approved yet.</p>
     <% else %>
-    <p><%= current_user.email %> is currently logged in.</p>
-    <p><%= current_user.role %> is in.</p>
-    <%= link_to "Admin", admin_path %>
+      <p><%= current_user.email %> is registered as a <%= current_user.role%>.</p>
+      <br/>
+      <%= link_to "Courses", courses_path %>
+      <br/>
+      <%= link_to "Admin", admin_path %>
+      <br/>
   <% end %>
   <%= link_to "Edit Profile", edit_user_registration_path %>
   <br/>
   <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <% else %>
-  <p>Must be signed in to access this.</p>
+  <p>Must be signed in to access this database.</p>
   <%= link_to "Register an account", new_user_registration_path %>
   <br/>
   <%= link_to "Login", new_user_session_path %>
