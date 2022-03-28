@@ -39,32 +39,36 @@
           <% end %>
         </tr>
         <tr>
-          <td>Sections</td>
-          <td>
-          <table>
-            <thead>
-            <tr>
-              <td>Section Number</td>
-              <td>Term</td>
-              <% if current_user.admin? %>
-                <td>Operations</td>
-              <% end %>
-            </tr>
-            </thead>
-            <tbody>
-            <% Section.where(["course_id = ?", course.id]).each do |section| %>
-              <tr>
-                <td><%= section.SectionNumber %></td>
-                <td><%= section.Term %></td>
-                <% if current_user.admin? %>
-                  <td><%= link_to "Delete", delete_section_path(course) %></td>
-                  <td><%= link_to "Edit", edit_section_path(course) %></td>
+          <% if not Section.where(["course_id = ?", course.id]).first %>
+            <td>No Sections</td>
+          <% else %>
+            <td>Sections</td>
+            <td>
+              <table>
+                <thead>
+                <tr>
+                  <td>Section Number</td>
+                  <td>Term</td>
+                  <% if current_user.admin? %>
+                    <td>Operations</td>
+                  <% end %>
+                </tr>
+                </thead>
+                <tbody>
+                <% Section.where(["course_id = ?", course.id]).each do |section| %>
+                  <tr>
+                    <td><%= section.SectionNumber %></td>
+                    <td><%= section.Term %></td>
+                    <% if current_user.admin? %>
+                      <td><%= link_to "Delete", delete_section_path(section) %></td>
+                      <td><%= link_to "Edit", edit_section_path(section) %></td>
+                    <% end %>
+                  </tr>
                 <% end %>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </tr>
+                </tbody>
+              </table>
+            </tr>
+          <% end %>
       <% end %>
     </table>
     </td>
