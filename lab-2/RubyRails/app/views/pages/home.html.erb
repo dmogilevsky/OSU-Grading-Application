@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> OSU Course Catalog </title>
-<meta charset="utf-8">
-<meta name= "veiwport" content="width=device-width, initial-scale=1">
+  <title>OSU Course Catalog </title>
+  <meta charset="utf-8">
+  <meta name="veiwport" content="width=device-width, initial-scale=1">
 </head>
-<body>
 </html>
 <header>OSU CSE COURSE CATALOG</header>
 
-<% if current_user%>
-       <%# If the current user is a valid login%>
- 
-       <% if (current_user.admin? or current_user.instructor?) and not current_user.approved%>
-            <%# If the current user is an admin and approved%>
-    <p><%= current_user.email%> has not been approved yet.</p>
-    <% else %>
-      <p><%= current_user.email %> is registered as a <%= current_user.role%>.</p>
-      <%= button_to "Courses", courses_path, :method =>:get %>
-    <%= button_to "Admin", admin_path , :method =>:get %>
-   <% end %>
-   <%= button_to "Edit Profile", edit_user_registration_path, :method => :get  %>
-     <%= button_to "Sign out" ,destroy_user_session_path, :method => :delete %>
+<% if current_user %>
+  <%# If the current user is a valid login%>
+  <% if (current_user.admin? or current_user.instructor?) and not current_user.approved %>
+    <%# If the current user is an admin and approved%>
+    <p>Sorry <%= current_user.email %>, you have not been approved yet. Please wait for an admin
+      to approve your account.</p>
+  <% else %>
+    <p>Welcome <%= current_user.email %>! Your account is registered as: <%= current_user.role %>. Please choose from
+      the list of options below:</p>
+    <%= button_to "Course Directory", courses_path, :method => :get %>
+    <% if current_user.admin? %>
+      <%= button_to "Admin Functions", admin_path, :method => :get %>
+    <% end %>
+  <% end %>
+  <%= button_to "Edit Profile", edit_user_registration_path, :method => :get %>
+  <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
 <% else %>
 
-    <p>Must be signed in to access this database.</p>
+  <p>Must be signed in to access this database.</p>
 
   <div class="btn btn-primary, container">
-    <%= button_to "Register an account", new_user_registration_path,:method => :get ,class:'btn btn-info btn-xs',:style=>'background-color:#b1cbbb;
+    <%= button_to "Register an account", new_user_registration_path, :method => :get, class: 'btn btn-info btn-xs', :style => 'background-color:#b1cbbb;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -35,13 +37,13 @@
     cursor: pointer;
     width: 100%;' %>
     <br/>
-    <%= button_to 'Login', new_user_session_path, class: 'btn btn-info btn-xs',:method => :get, :style=>'background-color:#feb236;color: white;
+    <%= button_to 'Login', new_user_session_path, class: 'btn btn-info btn-xs', :method => :get, :style => 'background-color:#feb236;color: white;
         padding: 14px 20px;
         margin: 8px 0;
         border: none;
         cursor: pointer;
         width: 100%;' %>
-    </div>
+  </div>
 <% end %>
 
 
