@@ -18,11 +18,13 @@ class CoursesController < ApplicationController
 
   # Delete a course based on id, and first purge all sections belonging to that course
   def delete_course
+    if(current_user.admin?)
     sections = Section.where("course_id=?", params[:id])
     sections.each do |section|
       Section.delete(section.id)
     end
     Course.delete(params[:id])
+    end
     redirect_to(courses_path)
   end
 
