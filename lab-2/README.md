@@ -12,7 +12,8 @@ This project contains a web application for browsing OSU courses and their respe
 3. Enter the RubyRails directory
 4. Run the command ```npm i```
 5. Run the command ```bundle install```
-6. Run the command ```rake db:seed```
+6. Run the command ```rake db:migrate```
+7. Run the command ```rake db:seed```
 
 ### Starting the Application ###
 1. Run the command ```rails s``` and go to http://127.0.0.1:3000/ on your web browser once the server starts
