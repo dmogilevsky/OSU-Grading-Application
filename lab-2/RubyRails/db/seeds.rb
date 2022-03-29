@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-require_relative 'db_query_populator'
 # Populate DB with all CSE courses
-DbQueries.new.populate_db("cse", "", "","","")
+#require 'RubyRails/app/controllers/courses_controller'
+CoursesController.new.populate_db("cse", "", "","","")
 
 # Create default admin user
 User.create!(email: "admin.1@osu.edu", password: "password",
