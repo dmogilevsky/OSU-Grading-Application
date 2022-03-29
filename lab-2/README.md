@@ -1,5 +1,5 @@
-## Introduction ##
-This project contains a web application for browsing OSU courses and their respective sections. The project uses OSU API to retrieve a list of courses and sections which are then stored in a local SQLite database.
+## README ##
+This project contains a web application for browsing OSU courses, specifically CSE, and their respective sections. The project uses OSU API to retrieve the list of courses and sections which are then stored in a local SQLite database. These then can be browsed by Students, Instructors, and Admins meanwhile approved Admins can add, edit, and delete courses and sections. Approved Admins also has the functionality to approve admins and instructors and approved Admins can reload the course database. All types of users can edit their passwords or delete their profiles. 
 
 #### Pre-Installation Requirements ####
 1. Must have git installed
@@ -48,3 +48,14 @@ Next to a section or Course you wish to delete,click the delete button. Deleting
 
 ### Adding a section or course ###
 Click the add Course/Section button and fill in the necessary information
+
+
+### Troubleshooting ###
+If the course database is empty:
+An approved admin must reload the course database.
+If an admin can't add/edit/delete any courses/sections:
+The admin must be approved to use these funcitonalities, so have an already approved admin approve this admin.
+Who is the original approved admin?
+This can be found in the "Starting the Application" part of the README
+What if the approved admin is deleted?
+This can be reset by rake db:drop, rake db:migrate, and rake db:seed commands in sequential order. This also can be used if there are any issues on the database side.
