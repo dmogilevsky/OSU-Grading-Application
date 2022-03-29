@@ -2,7 +2,7 @@
 <% if current_user %>
   <p>Welcome to the courses database.</p>
   <%= button_to "Home Page", root_path, :method => :get %>
-  <% if current_user.admin? %>
+  <% if current_user.admin? and current_user.approved %>
     <%= button_to "Add Course", add_course_path, :method => :get %>
     <%= button_to "Add Section", add_section_path, :method => :get %>
   <% end %>

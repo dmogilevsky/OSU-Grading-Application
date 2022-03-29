@@ -1,5 +1,5 @@
 <h1>Add Section</h1>
-<% if current_user.admin? %>
+<% if current_user.admin? and current_user.approved %>
   <p>Find a Course ID from the courses page to add the section to.</p>
 
   <%= form_with(model: Section.new) do |form| %>
