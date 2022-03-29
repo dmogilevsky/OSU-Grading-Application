@@ -1,0 +1,1 @@
+This project contains a web application for browsing OSU courses and their respective sections. The project uses OSU API to retrieve a list of courses and sections which are then stored in a local SQLite database.

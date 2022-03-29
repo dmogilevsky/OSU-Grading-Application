@@ -1,5 +1,6 @@
 require "httparty"
 require "active_record"
+# The courses controller is responsible for all course related operations
 class CoursesController < ApplicationController
   def index
     @pagy, @courses = pagy(Course.all.order(params[:sort]))
@@ -10,10 +11,12 @@ class CoursesController < ApplicationController
     end
   end
 
+  # Search for courses given a course number
   def search_courses
     @pagy, @courses = pagy(Course.where("CourseNumber LIKE ?", "%" + params[:search]+ "%"))
   end
 
+  # Delete a course based on id, and first purge all sections belonging to that course
   def delete_course
     sections = Section.where("course_id=?", params[:id])
     sections.each do |section|
@@ -23,6 +26,7 @@ class CoursesController < ApplicationController
     redirect_to(courses_path)
   end
 
+  # Create a new course with given parameters
   def create
     new_course = params[:course]
     Course.create(Subject: new_course[:Subject], CourseNumber: new_course[:CourseNumber],
@@ -30,6 +34,7 @@ class CoursesController < ApplicationController
     redirect_to(courses_path)
   end
 
+  # Render the edit form for the course and populate all the form fields with current data for the course
   def edit
     course = Course.find(params[:id])
     respond_to do |format|
@@ -37,6 +42,7 @@ class CoursesController < ApplicationController
     end
   end
 
+  # Update the course with given params
   def update
     course = Course.find(params[:id])
     respond_to do |format|
@@ -63,10 +69,13 @@ class CoursesController < ApplicationController
     course.save
   end
 
+  # Run repopulate db with the default criteria
   def refresh_db
     populate_db("CSE", "", "", "", "")
   end
 
+  # Populates the db from the OSU API based on criteria for subject, campus, page number, term, and academic
+  # career
   def populate_db(subject, campus, page, term, academic_career)
     clean_db
     url = "https://content.osu.edu/v2/classes/search?q=&"
@@ -98,6 +107,7 @@ class CoursesController < ApplicationController
     }
   end
 
+  # Remove all courses and sections from the db, but keep the users
   def clean_db
     Course.find_each(&:destroy)
     Section.find_each(&:destroy)

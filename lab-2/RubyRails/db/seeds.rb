@@ -8,7 +8,6 @@
 #
 
 # Populate DB with all CSE courses
-#require 'RubyRails/app/controllers/courses_controller'
 CoursesController.new.populate_db("cse", "", "","","")
 
 # Create default admin user
