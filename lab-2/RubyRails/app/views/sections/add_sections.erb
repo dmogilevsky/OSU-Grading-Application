@@ -1,16 +1,16 @@
 <h1>Add Section</h1>
 <% if current_user.admin? %>
-  <p>Update the course information below.</p>
+  <p>Find a Course ID from the courses page to add the section to.</p>
 
   <%= form_with(model: Section.new) do |form| %>
 
     <div class="field">
-      <%= form.label :CourseID %>
+      <%= form.label :CourseID, 'Corresponding Course ID'%>
       <%= form.number_field :CourseID %>
     </div>
 
     <div class="field">
-      <%= form.label :SectionNumber %>
+      <%= form.label :SectionNumber, 'Section Number'%>
       <%= form.number_field :SectionNumber %>
     </div>
 
