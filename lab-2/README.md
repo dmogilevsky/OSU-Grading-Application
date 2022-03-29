@@ -9,11 +9,10 @@ This project contains a web application for browsing OSU courses and their respe
 ### Installation Instructions ###
 1. Clone this repository using ```git clone git@github.com:cse-3901-sharkey/team-1.git```
 2. Enter the git directory, and enter the 'lab-2' directory
-3. Enter the RubyRails directory
-4. Run the command ```npm i```
-5. Run the command ```bundle install```
-6. Run the command ```rake db:migrate```
-7. Run the command ```rake db:seed```
+3. Run the command ```npm i```
+4. Run the command ```bundle install```
+5. Run the command ```rake db:migrate```
+6. Run the command ```rake db:seed```
 
 ### Starting the Application ###
 1. Run the command ```rails s``` and go to http://127.0.0.1:3000/ on your web browser once the server starts
