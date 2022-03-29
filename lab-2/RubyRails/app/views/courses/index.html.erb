@@ -1,10 +1,10 @@
 <h1>Courses page</h1>
 <% if current_user %>
   <p>Welcome to the courses database.</p>
-  <%= link_to "Home page", root_path %><br>
+  <%= button_to "Home Page", root_path, :method => :get %>
   <% if current_user.admin? %>
-    <%= link_to "Add Course", add_course_path %><br>
-    <%=link_to "Add Section", add_section_path %>
+    <%= button_to "Add Course", add_course_path, :method => :get %>
+    <%= button_to "Add Section", add_section_path, :method => :get %>
   <% end %>
   <h4> Search by course number </h4>
   <%= form_tag(courses_path, method: :get) do %>
@@ -78,6 +78,6 @@
   <%== pagy_nav(@pagy) %>
 <% else %>
   <p>Must be signed in to view the courses database.
-    <%= link_to "Home page", root_path %>
+  <%= button_to "Home Page", root_path, :method => :get %>
 <% end %>
 

@@ -1,15 +1,15 @@
 <h1>Admin Page</h1>
 <p>Approved Admin Only Access</p>
-<%= link_to "Home Page",  root_path%>
+<%= button_to "Home Page", root_path, :method => :get %>
 <% if (current_user.admin?) and (current_user.approved)%>
   <p>Reload Database from OSU Course Catalog</p>
-<%=link_to "Reload Courses", reload_db_path%>
+  <%=link_to "Reload Courses", reload_db_path%>
   <p>This may take a little while.</p>
 <div style="overflow-x:auto">
-  <table>
+  <table border=1>
     <thead>
       <tr>
-        <th>Not Approved Emails</th>
+        <th>Required Approval</th>
         <th>User role</th>
         <th>Button</th>
       </tr>
@@ -18,9 +18,9 @@
       <% User.all.each do |user| %>
         <%if user.approved == nil and (user.role == "instructor" or user.role == "admin")%>
           <tr>
-            <td><%= user.email %> </td>
-            <td><%= user.role %> </td>
-            <td> <%= link_to "Approve", approve_user_path(user) %></td>
+            <td style="font-weight:bold"><%= user.email %> </td>
+            <td style="font-weight:bold"><%= user.role %> </td>
+            <td style="font-weight:bold"><%= link_to "Approve", approve_user_path(user) %></td>
           </tr>
           <% end %>
         <% end %>
