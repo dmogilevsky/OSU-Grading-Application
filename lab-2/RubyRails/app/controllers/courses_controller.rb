@@ -72,6 +72,7 @@ class CoursesController < ApplicationController
   # Run repopulate db with the default criteria
   def refresh_db
     populate_db("CSE", "", "", "", "")
+    redirect_to(admin_path)
   end
 
   # Populates the db from the OSU API based on criteria for subject, campus, page number, term, and academic
