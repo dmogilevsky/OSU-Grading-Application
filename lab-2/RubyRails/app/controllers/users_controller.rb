@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  def Users
-  end
   def approve_user
     user = User.find(params[:id])
     user.approved = 1
