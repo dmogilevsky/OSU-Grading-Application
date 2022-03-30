@@ -1,0 +1,36 @@
+<h1>Edit Course</h1>
+<% if current_user.admin? and current_user.approved%>
+  <p>Fill in the course information below.</p>
+  <%= form_with model: course, url: update_course_path, method: :patch, local: true, scope: :course do |form| %>
+    <div class="field">
+      <%= form.label :Subject %>
+      <%= form.text_field :Subject %>
+    </div>
+
+    <div class="field">
+      <%= form.label :CourseNumber %>
+      <%= form.number_field :CourseNumber %>
+    </div>
+
+    <div class="field">
+      <%= form.label :CourseName %>
+      <%= form.text_field :CourseName %>
+    </div>
+
+    <div class="field">
+      <%= form.label :Campus %>
+      <%= form.text_field :Campus %>
+    </div>
+
+    <div class="field">
+      <%= form.label :Career %>
+      <%= form.text_field :Career %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Update Course'%>
+    </div>
+  <% end %>
+<% else %>
+  <p>You have to be an admin to add a course.</p>
+<% end %>
