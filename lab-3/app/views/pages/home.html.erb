@@ -18,6 +18,9 @@
     <p>Welcome <%= current_user.email %>! Your account is registered as: <%= current_user.role %>. Please choose from
       the list of options below:</p>
     <%= button_to "Course Directory", courses_path, :method => :get %>
+    <% if current_user.instructor? %>
+      <%= button_to "Recommendations", recommendations_path, :method => :get %>
+    <%end %>
     <% if current_user.admin? %>
       <%= button_to "Admin Functions", admin_path, :method => :get %>
     <% end %>

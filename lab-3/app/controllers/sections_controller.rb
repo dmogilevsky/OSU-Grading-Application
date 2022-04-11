@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   def delete_section
-    if(current_user.admin? and current_user.approved)
+    if current_user.admin? and current_user.approved
     Section.delete(params[:id])
     end
     redirect_to(courses_path)

@@ -52,8 +52,16 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       # t.timestamps null: false
     end
 
+    create_table :recommendations do |r|
+      r.integer :student_id
+      r.integer :instructor_id
+      r.text :Recommendation
+    end
+
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+    add_foreign_key :recommendations, :users, column: :student_id, primary_key: :id
+    add_foreign_key :recommendations, :users, column: :instructor_id, primary_key: :id
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
@@ -62,5 +70,6 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     drop_table :courses
     drop_table :sections
     drop_table :users
+    drop_table :recommendations
   end
 end

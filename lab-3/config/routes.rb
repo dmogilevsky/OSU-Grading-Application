@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'admin', to: 'pages#admin'
   get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
+  get 'recommendations', to: 'pages#recommendations'
 
   # Courses
   get 'courses/add', to: 'courses#add_courses', as: 'add_course'
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   patch 'sections/:id', to: 'sections#update', as: 'update_section'
   put 'sections/:id', to: 'sections#update'
   get '/sections/:id/delete' => 'sections#delete_section', as: 'delete_section'
+
+  # Recommendations
+  get 'recommendations/:id', to: 'recommendations#write_recommendation', as: 'write_recommendation'
 
   # db
   get 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
