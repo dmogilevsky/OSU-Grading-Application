@@ -13,8 +13,8 @@ class RecommendationsController < ApplicationController
   # Create a new course with given parameters
   def create
     recommendation = params[:recommendation]
-    Recommendation.create(Instructor_ID: recommendation[:Instructor_ID], Student_ID: recommendation[:Student_ID],
+    Recommendation.create!(instructor_id: current_user.id, student_id: recommendation[:Student_ID],
                           Recommendation: recommendation[:Recommendation])
-    redirect_to(recommendation_path)
+    redirect_to(recommendations_path)
   end
 end
