@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
     t.integer "SectionNumber"
+    t.integer "MaxGraders", default: 1
     t.text "Term"
   end
 

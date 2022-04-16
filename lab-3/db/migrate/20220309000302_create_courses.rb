@@ -12,6 +12,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     create_table :sections do |s|
       s.integer :course_id, foreign_key: true
       s.integer :SectionNumber
+      s.integer :MaxGraders, :default => 1
       s.text :Term
     end
 
