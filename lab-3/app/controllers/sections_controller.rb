@@ -24,7 +24,7 @@ class SectionsController < ApplicationController
     section = Section.find(params[:id])
     respond_to do |format|
       format.html do
-        if section.update(params.require(:section).permit(:SectionNumber, :Term))
+        if section.update(params.require(:section).permit(:SectionNumber, :Term, :MaxGraders))
           flash[:success] = 'Section updated successfully'
           redirect_to(courses_path)
         else

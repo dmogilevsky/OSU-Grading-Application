@@ -48,21 +48,23 @@
               <table>
                 <thead>
                 <tr>
-                  <td>Section Number</td>
-                  <td>Term</td>
+                  <td align="center">Section Number</td>
+                  <td align="center">Term</td>
+                  <td align="center">Maximum Graders</td>
                   <% if current_user.admin? %>
-                    <td>Operations</td>
+                    <td align="center">Operations</td>
                   <% end %>
                 </tr>
                 </thead>
                 <tbody>
                 <% Section.where(["course_id = ?", course.id]).each do |section| %>
-                  <tr>
-                    <td><%= section.SectionNumber %></td>
-                    <td><%= section.Term %></td>
+                  <tr align="center">
+                    <td align="center"><%= section.SectionNumber %></td>
+                    <td align="center"><%= section.Term %></td>
+                    <td align="center"><%= section.MaxGraders %></td>
                     <% if current_user.admin? %>
-                      <td><%= link_to "Delete", delete_section_path(section) %></td>
-                      <td><%= link_to "Edit", edit_section_path(section) %></td>
+                      <td align="center"><%= link_to "Delete", delete_section_path(section) %></td>
+                      <td align="center"><%= link_to "Edit", edit_section_path(section) %></td>
                     <% end %>
                   </tr>
                 <% end %>
