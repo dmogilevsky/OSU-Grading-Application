@@ -1,3 +1,2 @@
-class GraderForm < ActiveRecord::Base
-  has_one :student, :class_name => 'User'
+class Graderform < ApplicationRecord
 end

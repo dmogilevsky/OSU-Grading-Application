@@ -24,6 +24,9 @@
     <% if current_user.admin? %>
       <%= button_to "Admin Functions", admin_path, :method => :get %>
     <% end %>
+    <% if current_user.student? %>
+    <%= button_to "Teacher's Assistant Application", add_graderform_path, :method => :get  %>
+    <% end %>
   <% end %>
   <%= button_to "Edit Profile", edit_user_registration_path, :method => :get %>
   <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>

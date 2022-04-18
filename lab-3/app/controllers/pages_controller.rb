@@ -8,8 +8,4 @@ class PagesController < ApplicationController
 
   end
 
-  def Grader
-
-  end
-
 end

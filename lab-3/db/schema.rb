@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_000302) do
+ActiveRecord::Schema.define(version: 2022_04_18_042622) do
 
   create_table "courses", force: :cascade do |t|
     t.text "Subject"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.text "Form"
   end
 
+  create_table "graderforms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "recommendations", force: :cascade do |t|
     t.integer "student_id"
     t.integer "instructor_id"
@@ -39,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.integer "MaxGraders", default: 1
     t.text "Term"
     t.text "MeetingTime"
+    t.integer "Graders"
   end
 
   create_table "users", force: :cascade do |t|

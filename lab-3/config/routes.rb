@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'pages#home'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -8,12 +9,7 @@ Rails.application.routes.draw do
   get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
   
   # Grader
-  get 'grader', to: 'pages#grader'
-  get 'graders/add', to: 'graders#add_graders', as: 'add_grader'
-  get 'graders/:id/edit', to: 'graders#edit', as: 'edit_grader'
-  patch 'graders/:id', to: 'graders#update', as: 'update_grader'
-  put 'graders/:id', to: 'graders#update'
-  get '/graders/:id/delete' => 'graders#delete_grader', as: 'delete_grader'
+  get 'graderform/add', to: 'graderforms#add_graderform', as: 'add_graderform'
 
   # Courses
   get 'courses/add', to: 'courses#add_courses', as: 'add_course'
@@ -35,10 +31,12 @@ Rails.application.routes.draw do
   # db
   get 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
 
+
   # Resources
   resources :users
   resources :courses
   resources :sections
   resources :recommendations
+  resources :graderforms
 end
 
