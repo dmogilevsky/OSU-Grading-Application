@@ -137,7 +137,6 @@ class CoursesController < ApplicationController
             more_than_1_meeting = true
           end
         }
-        puts timestring
         Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Term: section["term"],
                         MeetingTime: timestring)
       }
