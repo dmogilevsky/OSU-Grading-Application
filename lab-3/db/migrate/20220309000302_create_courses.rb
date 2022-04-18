@@ -10,7 +10,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     end
 
     create_table :sections do |s|
-      s.integer :course_id, foreign_key: true
+      s.integer :course_id
       s.integer :SectionNumber
       s.integer :MaxGraders, :default => 1
       s.text :Term
@@ -59,10 +59,17 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       r.text :Recommendation
     end
 
+    create_table :grader_forms do |g|
+      g.integer :student_id
+      g.text :Form
+    end
+
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_foreign_key :recommendations, :users, column: :student_id, primary_key: :id
     add_foreign_key :recommendations, :users, column: :instructor_id, primary_key: :id
+    add_foreign_key :grader_forms, :users, column: :student_id, primary_key: :id
+    add_foreign_key :sections, :courses, column: :course_id, primary_key: :id
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
@@ -72,5 +79,6 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     drop_table :sections
     drop_table :users
     drop_table :recommendations
+    drop_table :grader_forms
   end
 end
