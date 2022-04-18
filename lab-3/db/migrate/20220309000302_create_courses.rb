@@ -14,6 +14,7 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       s.integer :SectionNumber
       s.integer :MaxGraders, :default => 1
       s.text :Term
+      s.text :MeetingTime
     end
 
     create_table :users do |t|

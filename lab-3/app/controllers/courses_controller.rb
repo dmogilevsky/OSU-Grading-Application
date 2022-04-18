@@ -13,17 +13,17 @@ class CoursesController < ApplicationController
 
   # Search for courses given a course number
   def search_courses
-    @pagy, @courses = pagy(Course.where("CourseNumber LIKE ?", "%" + params[:search]+ "%"))
+    @pagy, @courses = pagy(Course.where("CourseNumber LIKE ?", "%" + params[:search] + "%"))
   end
 
   # Delete a course based on id, and first purge all sections belonging to that course
   def delete_course
     if current_user.admin? and current_user.approved
-    sections = Section.where("course_id=?", params[:id])
-    sections.each do |section|
-      Section.delete(section.id)
-    end
-    Course.delete(params[:id])
+      sections = Section.where("course_id=?", params[:id])
+      sections.each do |section|
+        Section.delete(section.id)
+      end
+      Course.delete(params[:id])
     end
     redirect_to(courses_path)
   end
@@ -101,11 +101,45 @@ class CoursesController < ApplicationController
     response = OpenStruct.new(page_data.parsed_response) # Response is of type Hash, made into OpenStruct
     response.data["courses"].each { |courseContainer| #Each "course" contains a course (hash) and sections (array)
       course = courseContainer["course"]
-      newcourse = Course.new(Subject: course["subject"],CourseNumber: course["catalogNumber"],
+      newcourse = Course.new(Subject: course["subject"], CourseNumber: course["catalogNumber"],
                              CourseName: course["title"], Campus: course["campus"], Career: course["academicCareer"])
       newcourse.save
       courseContainer["sections"].each { |section|
-        Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Term: section["term"])
+        timestring = ""
+        more_than_1_meeting = false
+        section["meetings"].each { |meeting|
+          if meeting["startTime"]
+            if more_than_1_meeting
+              timestring.concat(", ")
+            end
+            timestring.concat(meeting["startTime"] + "-" + meeting["endTime"] + ": ")
+            if meeting["monday"]
+              timestring.concat("M")
+            end
+            if meeting["tuesday"]
+              timestring.concat("T")
+            end
+            if meeting["wednesday"]
+              timestring.concat("W")
+            end
+            if meeting["thursday"]
+              timestring.concat("TH")
+            end
+            if meeting["friday"]
+              timestring.concat("F")
+            end
+            if meeting["saturday"]
+              timestring.concat("SAT")
+            end
+            if meeting["sunday"]
+              timestring.concat("SUN")
+            end
+            more_than_1_meeting = true
+          end
+        }
+        puts timestring
+        Section.create!(SectionNumber: section["section"], course_id: newcourse.id, Term: section["term"],
+                        MeetingTime: timestring)
       }
     }
   end

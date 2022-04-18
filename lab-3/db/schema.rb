@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.integer "SectionNumber"
     t.integer "MaxGraders", default: 1
     t.text "Term"
+    t.text "MeetingTime"
   end
 
   create_table "users", force: :cascade do |t|
