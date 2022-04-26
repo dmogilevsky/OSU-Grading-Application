@@ -1,0 +1,23 @@
+<h1>GradderForms Page</h1>
+
+<div style="overflow-x:auto">
+  <table border=1>
+    <thead>
+    <p> Grader application </p>
+    <tr>
+      <th>Student ID</th>
+      <th>Application Forms</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% Graderform.all.each do |graderform| %>
+      <tr>
+        <td style="font-weight:bold"><%= graderform.student_id %> </td>
+        <td style="font-weight:bold"><%= graderform.Form %> </td>
+      </tr>
+
+    <% end %>
+    </tbody>
+  </table>
+</div>

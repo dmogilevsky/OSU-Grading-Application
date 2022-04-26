@@ -20,6 +20,10 @@ class GraderformsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to(graderform_path)
+  end
+
   def update
     new_graderform = Graderform.find(params[:id])
     respond_to do |format|
