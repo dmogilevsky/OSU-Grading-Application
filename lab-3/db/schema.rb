@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "graderassignments", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "section_id"
+  end
+
   create_table "graderforms", force: :cascade do |t|
     t.integer "student_id"
     t.text "Form"
@@ -53,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "graderassignments", "sections"
+  add_foreign_key "graderassignments", "users", column: "student_id"
   add_foreign_key "graderforms", "users", column: "student_id"
   add_foreign_key "recommendations", "users", column: "instructor_id"
   add_foreign_key "recommendations", "users", column: "student_id"

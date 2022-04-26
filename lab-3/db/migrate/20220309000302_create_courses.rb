@@ -65,12 +65,19 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       g.text :Form
     end
 
+    create_table :graderassignments do |a|
+      a.integer :student_id
+      a.integer :section_id
+    end
+
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_foreign_key :recommendations, :users, column: :student_id, primary_key: :id
     add_foreign_key :recommendations, :users, column: :instructor_id, primary_key: :id
     add_foreign_key :graderforms, :users, column: :student_id, primary_key: :id
     add_foreign_key :sections, :courses, column: :course_id, primary_key: :id
+    add_foreign_key :graderassignments, :users, column: :student_id, primary_key: :id
+    add_foreign_key :graderassignments, :sections, column: :section_id, primary_key: :id
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end

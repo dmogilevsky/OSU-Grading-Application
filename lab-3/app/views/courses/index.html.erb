@@ -48,9 +48,11 @@
               <table>
                 <thead>
                 <tr>
+                  <td align="center">ID</td>
                   <td align="center">Section Number</td>
                   <td align="center">Term</td>
                   <td align="center">Maximum Graders</td>
+                  <td align="center">Meeting Time</td>
                   <% if current_user.admin? %>
                     <td align="center">Operations</td>
                   <% end %>
@@ -59,9 +61,11 @@
                 <tbody>
                 <% Section.where(["course_id = ?", course.id]).each do |section| %>
                   <tr align="center">
+                    <td align="center"><%= section.id %></td>
                     <td align="center"><%= section.SectionNumber %></td>
                     <td align="center"><%= section.Term %></td>
                     <td align="center"><%= section.MaxGraders %></td>
+                    <td align="center"><%= section.MeetingTime %></td>
                     <% if current_user.admin? %>
                       <td align="center"><%= link_to "Delete", delete_section_path(section) %></td>
                       <td align="center"><%= link_to "Edit", edit_section_path(section) %></td>
