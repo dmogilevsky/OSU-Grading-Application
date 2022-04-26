@@ -1,7 +1,9 @@
 class GraderformsController < ApplicationController
 
-  def delete_grader
-    Graderform.delete(params[:id])
+  def delete_graderform
+    if current_user.admin? and current_user.approved
+    Graderform.destroy(params[:id])
+    end
     redirect_to(admin_path)
   end
 
@@ -12,22 +14,22 @@ class GraderformsController < ApplicationController
   end
 
   def edit
-    grader = Graderform.find(params[:id])
+    new_graderform = Graderform.find(params[:id])
     respond_to do |format|
-      format.html { render :edit_graders, locals: { grader: grader } }
+      format.html { render :edit, locals: { graderform: graderform } }
     end
   end
 
   def update
-    grader = Graderform.find(params[:id])
+    new_graderform = Graderform.find(params[:id])
     respond_to do |format|
       format.html do
-        if grader.update(params.require(:grader).permit(:CourseNumber, :Grader))
-          flash[:success] = 'Grader updated'
-          redirect_to(grader_path)
+        if graderform.update(params.require(:graderform).permit(:graderform))
+          flash[:success] = 'Grader forms updated'
+          redirect_to(root_path)
         else
-          flash.now[:error] = 'Error: Grader could not be updated'
-          render :edit, locals: { grader: grader }
+          flash.now[:error] = 'Error: Grader forms could not be updated'
+          render :edit, locals: { graderform: graderform }
         end
       end
     end

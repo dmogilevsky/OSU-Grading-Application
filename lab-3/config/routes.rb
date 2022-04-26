@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # Grader
   get 'graderform/add', to: 'graderforms#add_graderform', as: 'add_graderform'
   get 'graderform/:id/edit', to: 'graderforms#edit', as: 'edit_graderform'
+  patch 'graderform/:id', to: 'graderforms#update', as: 'update_graderform'
+  put 'graderform/:id', to: 'graderforms#update'
+  get '/graderform/:id/delete' => 'graderforms#delete_graderform', as: 'delete_graderform'
 
   # Courses
   get 'courses/add', to: 'courses#add_courses', as: 'add_course'

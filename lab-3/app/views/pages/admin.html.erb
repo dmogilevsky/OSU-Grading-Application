@@ -34,6 +34,7 @@
       <tr>
         <th>Student ID</th>
         <th>Application Forms</th>
+        <th>Deny Forms</th>
        </tr>
     </thead>
 
@@ -41,7 +42,8 @@
     <% Graderform.all.each do |graderform| %>
         <tr>
           <td style="font-weight:bold"><%= graderform.student_id %> </td>
-          <td style="font-weight:bold" <%= button_to "View Form", edit_graderform_path(graderform), :method => :get %> </td>
+          <td align="center"><%= link_to "View Form", edit_graderform_path(graderform)%> </td>
+          <td align="center"><%= link_to "Deny Form", delete_graderform_path(graderform)%> </td>
         </tr>
 
     <% end %>
