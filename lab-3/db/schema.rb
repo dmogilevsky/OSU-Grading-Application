@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_042622) do
+ActiveRecord::Schema.define(version: 2022_03_09_000302) do
 
   create_table "courses", force: :cascade do |t|
     t.text "Subject"
@@ -22,14 +22,9 @@ ActiveRecord::Schema.define(version: 2022_04_18_042622) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "grader_forms", force: :cascade do |t|
+  create_table "graderforms", force: :cascade do |t|
     t.integer "student_id"
     t.text "Form"
-  end
-
-  create_table "graderforms", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -44,7 +39,6 @@ ActiveRecord::Schema.define(version: 2022_04_18_042622) do
     t.integer "MaxGraders", default: 1
     t.text "Term"
     t.text "MeetingTime"
-    t.integer "Graders"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_04_18_042622) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "grader_forms", "users", column: "student_id"
+  add_foreign_key "graderforms", "users", column: "student_id"
   add_foreign_key "recommendations", "users", column: "instructor_id"
   add_foreign_key "recommendations", "users", column: "student_id"
   add_foreign_key "sections", "courses"
