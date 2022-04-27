@@ -1,10 +1,9 @@
-<h1>Grader Forms Page</h1>
+<h1>Grader Form</h1>
 <% form = Graderform.find(id = params[:id]) %>
   <p>Application submitted by
     <%=User.find(id = form.student_id).email %></p>
   <p><%= form.Form %></p>
-
-<p> Recommendations for this application </p>
+<p> Instructor Recommendations for this student </p>
 <table border=1>
   <thead>
   <tr>
