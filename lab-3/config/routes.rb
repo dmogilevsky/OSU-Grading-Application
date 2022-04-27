@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   # Recommendations
   get 'recommendations/:id', to: 'recommendations#write_recommendations', as: 'write_recommendation'
-  get 'recommendations/:id/show' => 'recommendations#show_graderform', as: 'show_recommendation'
+  get 'recommendations/:id/show' => 'recommendations#show_recommendation', as: 'show_recommendation'
 
   # db
   get 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
