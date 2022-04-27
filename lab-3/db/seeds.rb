@@ -13,7 +13,3 @@ CoursesController.new.populate_db("cse", "", "","","")
 # Create default admin user
 User.create!(email: "admin.1@osu.edu", password: "password",
              role: 2, approved: 1)
-
-User.create!(email: "student.1@osu.edu", password: "password", role: 0)
-# temp grader form
-Graderform.create!(student_id: 2, Form: "123455")

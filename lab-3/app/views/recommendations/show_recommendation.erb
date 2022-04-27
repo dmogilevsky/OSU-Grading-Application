@@ -1,0 +1,5 @@
+<h1>Grader Forms Page</h1>
+<% recommendation = Recommendation.find(id = params[:id]) %>
+<p>Recommendation submitted by
+  <%= (User.find(id = recommendation.instructor_id)).email %></p>
+<p><%= form.Form %></p>

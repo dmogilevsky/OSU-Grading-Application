@@ -1,5 +1,23 @@
 <h1>Grader Forms Page</h1>
 <% form = Graderform.find(id = params[:id]) %>
   <p>Application submitted by
-    <%= (User.find(id = form.student_id)).email %></p>
+    <%=User.find(id = form.student_id).email %></p>
   <p><%= form.Form %></p>
+
+<p> Recommendations for this application </p>
+<table border=1>
+  <thead>
+  <tr>
+    <th>Instructor Email</th>
+    <th>View Recommendation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Recommendation.where(["student_id = ?", form.student_id]).each do |recommendation| %>
+    <tr>
+      <td style="font-weight:bold"><%= User.find(id = recommendation.instructor_id).email  %> </td>
+      <td align="center"><%= link_to "View Recommendation", show_recommendation_path(recommendation)%> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

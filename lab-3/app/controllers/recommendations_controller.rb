@@ -1,6 +1,6 @@
 class RecommendationsController < ApplicationController
   def index
-    @pagy, @reommendations= pagy(Recommendation.all.order(params[:sort]))
+    @pagy, @recommendations= pagy(Recommendation.all.order(params[:sort]))
   end
 
   def write_recommendation
@@ -15,6 +15,10 @@ class RecommendationsController < ApplicationController
     recommendation = params[:recommendation]
     Recommendation.create!(instructor_id: current_user.id, student_id: recommendation[:student_id],
                           Recommendation: recommendation[:Recommendation])
+    redirect_to(recommendations_path)
+  end
+
+  def show
     redirect_to(recommendations_path)
   end
 end
