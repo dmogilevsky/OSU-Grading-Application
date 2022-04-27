@@ -14,9 +14,9 @@ class GraderformsController < ApplicationController
   end
 
   def edit
-    new_graderform = Graderform.find(params[:id])
+    graderform = Graderform.find(params[:id])
     respond_to do |format|
-      format.html { render :edit, locals: { graderform: graderform } }
+      format.html { render :edit_graderform, locals: { graderform: graderform } }
     end
   end
 
@@ -25,15 +25,15 @@ class GraderformsController < ApplicationController
   end
 
   def update
-    new_graderform = Graderform.find(params[:id])
+    graderform = Graderform.find(params[:id])
     respond_to do |format|
       format.html do
-        if graderform.update(params.require(:graderform).permit(:graderform))
+        if graderform.update(params.require(:graderform).permit(:Form))
           flash[:success] = 'Grader forms updated'
           redirect_to(root_path)
         else
           flash.now[:error] = 'Error: Grader forms could not be updated'
-          render :edit, locals: { graderform: graderform }
+          render :edit_graderform, locals: { graderform: graderform }
         end
       end
     end

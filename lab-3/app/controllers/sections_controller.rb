@@ -29,7 +29,7 @@ class SectionsController < ApplicationController
           redirect_to(courses_path)
         else
           flash.now[:error] = 'Error: Section could not be updated'
-          render :edit, locals: { section: section }
+          render :edit_sections, locals: { section: section }
         end
       end
     end
