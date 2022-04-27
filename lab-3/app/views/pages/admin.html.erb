@@ -41,7 +41,7 @@
     <tbody>
     <% Graderform.all.each do |graderform| %>
         <tr>
-          <td style="font-weight:bold"><%= graderform.student_id %> </td>
+          <td style="font-weight:bold"><%= graderform.student_id  %> </td>
           <td align="center"><%= link_to "View Form", show_graderform_path(graderform)%> </td>
           <td align="center"><%= link_to "Deny Form", delete_graderform_path(graderform)%> </td>
         </tr>
