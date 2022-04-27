@@ -1,21 +1,5 @@
 <h1>Grader Forms Page</h1>
-
-<div style="overflow-x:auto">
-  <table border=1>
-    <thead>
-    <p> Grader application </p>
-    <tr>
-      <th>Student ID</th>
-      <th>Application Forms</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% form = Graderform.find(id = params[:id])%>
-      <tr>
-        <td style="font-weight:bold"><%= form.student_id %> </td>
-        <td style="font-weight:bold"><%= form.Form %> </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<% form = Graderform.find(id = params[:id]) %>
+  <p>Application submitted by
+    <%= (User.find(id = form.student_id)).email %></p>
+  <p><%= form.Form %></p>
