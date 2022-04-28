@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   get 'recommendations/:id/show' => 'recommendations#show_recommendation', as: 'show_recommendation'
 
   # Grader Assignments
-  get 'graderassignments/add/:student_id/:section_id', to: 'graderassignments#create', as: 'assign_grader'
+  post 'graderassignments/add/:student_id/:section_id', to: 'graderassignments#create', as: 'assign_grader'
+
   # db
   post 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
 
