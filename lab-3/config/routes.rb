@@ -19,17 +19,17 @@ Rails.application.routes.draw do
 
   # Courses
   get 'courses/add', to: 'courses#add_courses', as: 'add_course'
-  get 'courses/:id/edit', to: 'courses#edit', as: 'edit_course'
+  post 'courses/:id/edit', to: 'courses#edit', as: 'edit_course'
   patch 'courses/:id', to: 'courses#update', as: 'update_course' # update (as needed)
   put 'courses/:id', to: 'courses#update' # update (full replacement)
-  get '/courses/:id/delete' => 'courses#delete_course', as: 'delete_course'
+  post '/courses/:id/delete' => 'courses#delete_course', as: 'delete_course'
 
   # Sections
   get 'sections/add', to: 'sections#add_sections', as: 'add_section'
-  get 'sections/:id/edit', to: 'sections#edit', as: 'edit_section'
+  post 'sections/:id/edit', to: 'sections#edit', as: 'edit_section'
   patch 'sections/:id', to: 'sections#update', as: 'update_section'
   put 'sections/:id', to: 'sections#update'
-  get '/sections/:id/delete' => 'sections#delete_section', as: 'delete_section'
+  post '/sections/:id/delete' => 'sections#delete_section', as: 'delete_section'
 
   # Recommendations
   get 'recommendations/:id', to: 'recommendations#write_recommendations', as: 'write_recommendation'

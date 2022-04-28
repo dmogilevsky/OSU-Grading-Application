@@ -17,7 +17,7 @@
 
 
   <div style="overflow-x:auto">
-    <table border=1>
+    <table border=1 style="width:100%">
       <tr>
         <th>Subject</th>
         <th><%= link_to "Course Name", :sort => "CourseName" %></th>
@@ -27,49 +27,49 @@
         <th>ID</th>
       </tr>
       <% @courses.each do |course| %>
-        <tr>
-          <td style="font-weight: bold"><%= course.Subject %></td>
-          <td style="font-weight: bold"><%= course.CourseName %></td>
-          <td style="font-weight: bold"><%= course.CourseNumber %></td>
-          <td style="font-weight: bold"><%= course.Campus %></td>
-          <td style="font-weight: bold"><%= course.Career %></td>
-          <td style="font-weight: bold"><%= course.id %></td>
+        <tr style="font-weight: bold">
+          <td><%= course.Subject %></td>
+          <td><%= course.CourseName %></td>
+          <td><%= course.CourseNumber %></td>
+          <td><%= course.Campus %></td>
+          <td><%= course.Career %></td>
+          <td><%= course.id %></td>
           <% if current_user.admin? %>
-            <td><%= link_to "Delete", delete_course_path(course) %></td>
-            <td><%= link_to "Edit", edit_course_path(course) %></td>
+            <td class="shrink"><%= button_to "Delete", delete_course_path(course), form_class: 'coursetableform', class: 'coursetabledeletebutton'%></td>
+            <td class="shrink"><%= button_to "Edit", edit_course_path(course), form_class: 'coursetableform', class: 'coursetablebutton'%></td>
           <% end %>
         </tr>
         <tr>
           <% if not Section.where(["course_id = ?", course.id]).first %>
-            <td>No Sections</td>
+            <th>No Sections</th>
           <% else %>
-            <td>Sections</td>
-            <td style="column-span: all">
-              <table>
+            <th>Sections</th>
+            <td colspan="100%">
+              <table style="width:100%">
                 <thead>
-                <tr>
-                  <td align="center">Number</td>
-                  <td align="center">Term</td>
-                  <td align="center">Meeting Time</td>
-                  <td align="center">Max Graders</td>
-                  <td align="center">Graders</td>
+                <tr style="font-weight: bold">
+                  <td>Section Number</td>
+                  <td>Term</td>
+                  <td>Meeting Time</td>
+                  <td>Max Graders</td>
+                  <td>Graders</td>
                 </tr>
                 </thead>
                 <tbody>
                 <% Section.where(["course_id = ?", course.id]).each do |section| %>
-                  <tr align="center">
-                    <td align="center"><%= section.SectionNumber %></td>
-                    <td align="center"><%= section.Term %></td>
-                    <td align="center"><%= section.MeetingTime %></td>
-                    <td align="center"><%= section.MaxGraders %></td>
-                    <td align="center">
+                  <tr>
+                    <td class="shorter_text"><%= section.SectionNumber %></td>
+                    <td class="shorter_text"><%= section.Term %></td>
+                    <td class="meetingtime"><%= section.MeetingTime %></td>
+                    <td class="shorter_text"><%= section.MaxGraders %></td>
+                    <td>
                       <% Graderassignment.where(["section_id = ?", section.id]).each do |assignment| %>
                         <%= User.find(assignment.student_id).email %>
                       <% end %>
                     </td>
                     <% if current_user.admin? %>
-                      <td align="center"><%= link_to "Delete", delete_section_path(section) %></td>
-                      <td align="center"><%= link_to "Edit", edit_section_path(section) %></td>
+                      <td class="shrink"><%= button_to "Delete", delete_section_path(section), form_class: 'coursetableform', class: 'coursetabledeletebutton' %></td>
+                      <td class="shrink"><%= button_to "Edit", edit_section_path(section), form_class: 'coursetableform', class: 'coursetablebutton' %></td>
                     <% end %>
                   </tr>
                 <% end %>
