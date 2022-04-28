@@ -38,16 +38,14 @@
       <table border=1>
         <tr>
           <th>Subject</th>
-          <th><%= link_to "Course Name", :sort => "CourseName" %></th>
-          <th><%= link_to "Course Number", :sort => "CourseNumber" %></th>
-          <th><%= link_to "Campus", :sort => "Campus" %></th>
-          <th><%= link_to "Career", :sort => "Career" %></th>
+          <th>Course Name</th>
+          <th>Campus</th>
+          <th>Career</th>
         </tr>
         <% Course.where(["CourseNumber = ?", params[:search]]).each do |course| %>
           <tr>
             <td style="font-weight: bold"><%= course.Subject %></td>
             <td style="font-weight: bold"><%= course.CourseName %></td>
-            <td style="font-weight: bold"><%= course.CourseNumber %></td>
             <td style="font-weight: bold"><%= course.Campus %></td>
             <td style="font-weight: bold"><%= course.Career %></td>
           </tr>
@@ -75,7 +73,11 @@
                       <td align="center"><%= section.Term %></td>
                       <td align="center"><%= section.MaxGraders %></td>
                       <td align="center"><%= section.MeetingTime %></td>
-                      <td align="center"><%= link_to "Assign Grader", assign_grader_path(form.student_id, section.id) %></td>
+                      <% if Graderassignment.where(["student_id = ? and section_id = ?", form.student_id, section.id]).first %>
+                        <td align="right">Assigned</td>
+                      <% else %>
+                        <td align="right"><%= link_to "Assign Grader", assign_grader_path(form.student_id, section.id) %></td>
+                      <% end %>
                     </tr>
                   <% end %>
                   </tbody>
@@ -87,4 +89,4 @@
       </table>
     </div>
   </div>
-<%end %>
+<% end %>

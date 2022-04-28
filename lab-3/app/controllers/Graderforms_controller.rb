@@ -10,7 +10,7 @@ class GraderformsController < ApplicationController
   def approve_graderform
     graderform = params[:graderform]
     if current_user.admin? and current_user.approved
-      GraderAssignment.create(student_id: graderform.student_id, section_id: params[:section_id])
+      Graderassignment.create(student_id: graderform.student_id, section_id: params[:section_id])
       Graderform.destroy(params[:id])
     end
   end

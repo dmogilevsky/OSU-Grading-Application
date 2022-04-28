@@ -1,4 +1,4 @@
 class Section < ActiveRecord::Base
   belongs_to :course
-  has_many :GraderAssignment
+  has_many :Graderassignment
 end

@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :written_recommendations, :class_name => 'Recommendation', :foreign_key => 'student_id'
   has_many :received_recommendations, :class_name => 'Recommendation', :foreign_key => 'instructor_id'
-  has_many :GraderAssignments, :class_name => 'GraderAssignment', :foreign_key => 'student_id'
+  has_many :GraderAssignments, :class_name => 'Graderassignment', :foreign_key => 'student_id'
 
   def set_role_default
     self.role ||= :student

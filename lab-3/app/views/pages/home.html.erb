@@ -20,13 +20,17 @@
     <%= button_to "Course Directory", courses_path, :method => :get %>
     <% if current_user.instructor? %>
       <%= button_to "Recommendations", recommendations_path, :method => :get %>
-    <%end %>
+    <% end %>
     <% if current_user.admin? %>
       <%= button_to "Admin Functions", admin_path, :method => :get %>
     <% end %>
     <% if current_user.student? %>
-      <%= button_to "Grader Application", add_graderform_path, :method => :get  %> 
-  <% end %>
+      <% if not Graderform.where(["student_id = ?", current_user.id]).first %>
+        <%= button_to "Grader Application", add_graderform_path, :method => :get %>
+      <% else %>
+        <%= button_to "Grader Application", edit_graderform_path(Graderform.where(["student_id = ?", current_user.id]).first), :method => :get %>
+      <% end %>
+    <% end %>
   <% end %>
   <%= button_to "Edit Profile", edit_user_registration_path, :method => :get %>
   <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>
