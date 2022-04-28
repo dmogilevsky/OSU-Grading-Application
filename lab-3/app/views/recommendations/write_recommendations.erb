@@ -3,8 +3,7 @@
   <p>Write the recommendation for the student below.</p>
   <%= form_with(model: Recommendation.new) do |form| %>
     <div class="field">
-      <%= form.label :Student_ID, 'Student ID'%>
-      <%= form.number_field :student_id %>
+      <%= form.hidden_field :student_id, :value=> params[:id].to_i %>
     </div>
     <div class="field">
       <%= form.text_area :Recommendation, size: "100x25"%>

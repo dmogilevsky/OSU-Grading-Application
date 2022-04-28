@@ -28,15 +28,15 @@
       </tr>
       <% @courses.each do |course| %>
         <tr style="font-weight: bold">
-          <td><%= course.Subject %></td>
+          <td class="shorter_text"><%= course.Subject %></td>
           <td><%= course.CourseName %></td>
-          <td><%= course.CourseNumber %></td>
+          <td class="shorter_text"><%= course.CourseNumber %></td>
           <td><%= course.Campus %></td>
           <td><%= course.Career %></td>
           <td><%= course.id %></td>
           <% if current_user.admin? %>
-            <td class="shrink"><%= button_to "Delete", delete_course_path(course), form_class: 'coursetableform', class: 'coursetabledeletebutton'%></td>
-            <td class="shrink"><%= button_to "Edit", edit_course_path(course), form_class: 'coursetableform', class: 'coursetablebutton'%></td>
+            <td class="shrink"><%= button_to "Edit", edit_course_path(course), :method =>:get, form_class: 'tableform', class: 'tablebutton'%></td>
+            <td class="shrink"><%= button_to "Delete", delete_course_path(course), form_class: 'tableform', class: 'tabledeletebutton'%></td>
           <% end %>
         </tr>
         <tr>
@@ -68,8 +68,8 @@
                       <% end %>
                     </td>
                     <% if current_user.admin? %>
-                      <td class="shrink"><%= button_to "Delete", delete_section_path(section), form_class: 'coursetableform', class: 'coursetabledeletebutton' %></td>
-                      <td class="shrink"><%= button_to "Edit", edit_section_path(section), form_class: 'coursetableform', class: 'coursetablebutton' %></td>
+                      <td class="shrink"><%= button_to "Edit", edit_section_path(section), :method =>:get ,form_class: 'tableform', class: 'tablebutton'%></td>
+                      <td class="shrink"><%= button_to "Delete", delete_section_path(section), form_class: 'tableform', class: 'tabledeletebutton' %></td>
                     <% end %>
                   </tr>
                 <% end %>

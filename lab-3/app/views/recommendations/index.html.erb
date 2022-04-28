@@ -4,7 +4,7 @@ is not in this list, please instruct them to create an account first.</p>
 
 <% if current_user&.instructor? %>
   <div style="overflow-x:auto">
-    <table>s
+    <table border=1>
       <tr>
         <th>Student ID</th>
         <th>Student Email</th>
@@ -16,7 +16,8 @@ is not in this list, please instruct them to create an account first.</p>
             <%if Recommendation.where(["student_id = ? AND instructor_id = ?", student.id, current_user.id]).first %>
               <td>Recommendation Received</td>
             <% else %>
-              <td><%= link_to "Write Recommendation", write_recommendation_path(student) %></td>
+              <td><%= button_to "Write Recommendation", write_recommendation_path(student), :method=> :get,
+                                form_class: 'tableform', class: 'tablebutton'%></td>
             <%end %>
           </tr>
       <% end %>

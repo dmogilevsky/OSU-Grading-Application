@@ -1,10 +1,8 @@
 <h1>Grader Application Page</h1>
 <% if not Graderform.where(["student_id = ?", current_user.id]).first %>
-<p>Please input all of your information in the form below to apply for a grader position.</p>
-<%= button_to "Home Page", root_path, :method => :get %>
 <div style="overflow-x:auto">
   <%= form_with(model: Graderform.new) do |form| %>
-    <p> <br> Please write out course taken and grade received along with a (P) to select preferred Example:
+    <p> Please write out course taken and grade received along with a (P) to select preferred Example:
       <br> (P) CSE 1222 A
       <br> CSE 2221 A
       <br> CSE 3241 A

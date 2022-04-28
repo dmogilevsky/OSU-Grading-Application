@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   # Admin
   get 'admin', to: 'pages#admin'
-  get 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
+  post 'users/:id/edit' => 'users#approve_user', as: 'approve_user'
   
   # Grader
   get 'graderform/add', to: 'graderforms#add_graderform', as: 'add_graderform'
@@ -19,14 +19,14 @@ Rails.application.routes.draw do
 
   # Courses
   get 'courses/add', to: 'courses#add_courses', as: 'add_course'
-  post 'courses/:id/edit', to: 'courses#edit', as: 'edit_course'
+  get 'courses/:id/edit', to: 'courses#edit', as: 'edit_course'
   patch 'courses/:id', to: 'courses#update', as: 'update_course' # update (as needed)
   put 'courses/:id', to: 'courses#update' # update (full replacement)
   post '/courses/:id/delete' => 'courses#delete_course', as: 'delete_course'
 
   # Sections
   get 'sections/add', to: 'sections#add_sections', as: 'add_section'
-  post 'sections/:id/edit', to: 'sections#edit', as: 'edit_section'
+  get 'sections/:id/edit', to: 'sections#edit', as: 'edit_section'
   patch 'sections/:id', to: 'sections#update', as: 'update_section'
   put 'sections/:id', to: 'sections#update'
   post '/sections/:id/delete' => 'sections#delete_section', as: 'delete_section'
