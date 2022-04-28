@@ -17,7 +17,6 @@ This project contains a web application for browsing OSU courses, specifically C
 ### Starting the Application ###
 1. Run the command ```rails s``` and go to http://127.0.0.1:3000/ on your web browser once the server starts
 2. Login as the default admin user. The email is "admin.1@osu.edu" and the password is "password", both without the quotes
-3. For first time configuration, go to "Admin" and click the button to reload the database.
 
 ### Registering new users ###
 1. Logout if you are logged in
@@ -28,13 +27,27 @@ This project contains a web application for browsing OSU courses, specifically C
 ### Viewing the Course Catalog ###
 Click on the courses button to view the course catalog
 
+## Student Functionality ##
+Students may submit applications to become graders by clicking on the Grader Application button on their home page. If they have already submitted an application, they will be able to edit it by clicking the same button
+
+## Instructor Functionality ##
+Instructors can write recommendations for students by clicking the Recommendations buttons from their home page. Select a student, and then write a recommendation for them. Recommendations can not later be retracted or edited by design, so make sure to write a good recommendation
+
 ## Admin Functionality ##
 The below functionality is only available to admin users
 
 ### Approving a User ###
-1. Login as an existing admin
-2. Go to "Admin Functions"
-3. Approve the newly registered user
+1. Go to "Admin Functions"
+2. Approve the newly registered user
+
+### Assigning Graders ###
+1. Go to "Admin Functions"
+2. Under grader applications, click on "View Form"
+3. If there are recommendation for the student, you can view them by clicking on view recommendation
+4. Search for the course the student wishes to grade for on the right
+5. Find a section that matches the student's availability
+6. Click Assign Grader to assign the student to grade that section, you may assign a student to multiple section of varying courses
+7. Once you are done assigning the student to sections (or no sections), you may delete the form by clicking delete form
 
 ### Refreshing the database ###
 Click the refresh database button on the admin page
