@@ -39,25 +39,29 @@
             <td>No Sections</td>
           <% else %>
             <td>Sections</td>
-            <td>
+            <td style="column-span: all">
               <table>
                 <thead>
                 <tr>
-                  <td align="center">ID</td>
-                  <td align="center">Section Number</td>
+                  <td align="center">Number</td>
                   <td align="center">Term</td>
-                  <td align="center">Max Graders</td>
                   <td align="center">Meeting Time</td>
+                  <td align="center">Max Graders</td>
+                  <td align="center">Graders</td>
                 </tr>
                 </thead>
                 <tbody>
                 <% Section.where(["course_id = ?", course.id]).each do |section| %>
                   <tr align="center">
-                    <td align="center"><%= section.id %></td>
                     <td align="center"><%= section.SectionNumber %></td>
                     <td align="center"><%= section.Term %></td>
-                    <td align="center"><%= section.MaxGraders %></td>
                     <td align="center"><%= section.MeetingTime %></td>
+                    <td align="center"><%= section.MaxGraders %></td>
+                    <td align="center">
+                      <% Graderassignment.where(["section_id = ?", section.id]).each do |assignment| %>
+                        <%= User.find(assignment.student_id).email %>
+                      <% end %>
+                    </td>
                     <% if current_user.admin? %>
                       <td align="center"><%= link_to "Delete", delete_section_path(section) %></td>
                       <td align="center"><%= link_to "Edit", edit_section_path(section) %></td>
@@ -67,8 +71,8 @@
                 </tbody>
               </table>
             </td>
-            </tr>
           <% end %>
+        </tr>
       <% end %>
     </table>
   </div>
@@ -76,6 +80,6 @@
   <%== pagy_nav(@pagy) %>
 <% else %>
   <p>Must be signed in to view the courses database.
-  <%= button_to "Home Page", root_path, :method => :get %>
+    <%= button_to "Home Page", root_path, :method => :get %>
 <% end %>
 

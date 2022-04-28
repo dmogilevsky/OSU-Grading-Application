@@ -16,7 +16,7 @@
       </tr>
       </thead>
       <tbody>
-      <% User.where(["approved = ? and (role = ? or role = ?)", nil, "instructor", "admin"]) do |user| %>
+      <% User.where(["approved IS ? and role > ?", nil, 0]).each do |user| %>
           <tr>
             <td style="font-weight:bold"><%= user.email %> </td>
             <td style="font-weight:bold"><%= user.role %> </td>

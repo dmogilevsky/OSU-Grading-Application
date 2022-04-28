@@ -1,6 +1,6 @@
 <h1>Edit Grader Forms</h1>
 <% if current_user.student? and graderform.student_id? == current_user.id? %>
- <p> Edit your grader form. </p>
+  <p> <br> Please write out course taken and grade received along with a (P) to select preferred Example: <br> (P) CSE 1222 A <br> CSE 2221 A <br> CSE 3241 A <br> Please write out when you are available for the upcoming semester such as this example:<br>S: UNAVAILABLE<br>M: 8-11am,2-4pm<br>T: 8-10am,1-3pm<br>W: 8-11am,2-4pm<br>Th: 8-10am,1-3pm<br>F: 8-11am,2-4pm<br>Sa: AVAILABLE </p>
  <%= form_with model: graderform, url: update_graderform_path, method: :patch, local: true, scope: :graderform do |form| %>
    <div class="field">
      <%= form.text_area :Form, size: "100x25"%>

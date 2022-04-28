@@ -111,7 +111,6 @@ class CoursesController < ApplicationController
             if more_than_1_meeting
               timestring.concat(", ")
             end
-            timestring.concat(meeting["startTime"] + "-" + meeting["endTime"] + ": ")
             if meeting["monday"]
               timestring.concat("M")
             end
@@ -133,6 +132,7 @@ class CoursesController < ApplicationController
             if meeting["sunday"]
               timestring.concat("SUN")
             end
+            timestring.concat(": " +meeting["startTime"] + "-" + meeting["endTime"])
             more_than_1_meeting = true
           end
         }

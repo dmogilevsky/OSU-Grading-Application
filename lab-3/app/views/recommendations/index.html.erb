@@ -18,11 +18,15 @@ is not in this list, please instruct them to create an account first.</p>
         <th>Student ID</th>
         <th>Student Email</th>
       </tr>
-      <% User.where(["role = ?", 0]).each do |user| %>
+      <% User.where(["role = ?", 0]).each do |student| %>
           <tr>
-            <td style="font-weight: bold"><%= user.id %></td>
-            <td style="font-weight: bold"><%= user.email%></td>
-            <td><%= link_to "Write Recommendation", write_recommendation_path(user) %></td>
+            <td style="font-weight: bold"><%= student.id %></td>
+            <td style="font-weight: bold"><%= student.email%></td>
+            <%if Recommendation.where(["student_id = ? AND instructor_id = ?", student.id, current_user.id]).first %>
+              <td>Recommendation Received</td>
+            <% else %>
+              <td><%= link_to "Write Recommendation", write_recommendation_path(student) %></td>
+            <%end %>
           </tr>
       <% end %>
     </table>

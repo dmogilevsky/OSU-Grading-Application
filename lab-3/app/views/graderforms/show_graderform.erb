@@ -5,7 +5,7 @@
   <% form = Graderform.find(id = params[:id]) %>
   <p>Application submitted by
     <%= User.find(id = form.student_id).email %></p>
-  <p><%= form.Form %></p>
+  <p style="width:70%;background-color:#FFFFFF;border: 5px solid #000000;padding: 1em;"><%= form.Form %></p>
   <p> Instructor Recommendations for this student </p>
   <table border=1>
     <thead>
@@ -28,7 +28,8 @@
 <%# Admin section %>
 <% if (current_user.admin?) and (current_user.approved) %>
   <div style="float:left;width:60%">
-    <td align="center"><%= button_to "Deny Form", delete_graderform_path(params[:id]) %> </td>
+    <p>Once the grader has been assigned to all appropriate sections (or none, if so desired), delete the form</p>
+    <td align="center"><%= button_to "Delete Form", delete_graderform_path(params[:id]) %> </td>
     <p>Find all sections for course:</p>
     <%= form_tag(show_graderform_path(params[:id]), method: :get) do %>
       <%= number_field_tag(:search, params[:search]) %>
@@ -67,18 +68,21 @@
                   </thead>
                   <tbody>
                   <% Section.where(["course_id = ?", course.id]).each do |section| %>
-                    <tr align="center">
-                      <td align="center"><%= section.id %></td>
-                      <td align="center"><%= section.SectionNumber %></td>
-                      <td align="center"><%= section.Term %></td>
-                      <td align="center"><%= section.MaxGraders %></td>
-                      <td align="center"><%= section.MeetingTime %></td>
-                      <% if Graderassignment.where(["student_id = ? and section_id = ?", form.student_id, section.id]).first %>
-                        <td align="right">Assigned</td>
-                      <% else %>
-                        <td align="right"><%= link_to "Assign Grader", assign_grader_path(form.student_id, section.id) %></td>
-                      <% end %>
-                    </tr>
+                    <% if section.MaxGraders > Graderassignment.where(["section_id = ?", section.id]).size or
+                      Graderassignment.where(["student_id = ? and section_id = ?", form.student_id, section.id]).first%>
+                      <tr align="center">
+                        <td align="center"><%= section.id %></td>
+                        <td align="center"><%= section.SectionNumber %></td>
+                        <td align="center"><%= section.Term %></td>
+                        <td align="center"><%= section.MaxGraders %></td>
+                        <td align="center"><%= section.MeetingTime %></td>
+                        <% if Graderassignment.where(["student_id = ? and section_id = ?", form.student_id, section.id]).first %>
+                          <td align="right">Assigned</td>
+                        <% else %>
+                          <td align="right"><%= link_to "Assign Grader", assign_grader_path(form.student_id, section.id) %></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
                   <% end %>
                   </tbody>
                 </table>

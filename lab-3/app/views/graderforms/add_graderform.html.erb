@@ -1,9 +1,21 @@
 <h1>Grader Page</h1>
+<% if not Graderform.where(["student_id = ?", current_user.id]).first %>
 <p>Please input all of your information in the form below to apply for a grader position.</p>
 <%= button_to "Home Page", root_path, :method => :get %>
 <div style="overflow-x:auto">
   <%= form_with(model: Graderform.new) do |form| %>
-    <p> <br> Please write out course taken and grade received along with a (P) to select preferred Example: <br> (P) CSE 1222 A <br> CSE 2221 A <br> CSE 3241 A <br> Please write out when you are available for the upcoming semester such as this example:<br>S: UNAVAILABLE<br>M: 8-11am,2-4pm<br>T: 8-10am,1-3pm<br>W: 8-11am,2-4pm<br>Th: 8-10am,1-3pm<br>F: 8-11am,2-4pm<br>Sa: AVAILABLE </p>
+    <p> <br> Please write out course taken and grade received along with a (P) to select preferred Example:
+      <br> (P) CSE 1222 A
+      <br> CSE 2221 A
+      <br> CSE 3241 A
+      <br>Please write out when you are available for the upcoming semester such as this example:
+      <br>S: UNAVAILABLE
+      <br>M: 8-11am,2-4pm
+      <br>T: 8-10am,1-3pm
+      <br>W: 8-11am,2-4pm
+      <br>Th: 8-10am,1-3pm
+      <br>F: 8-11am,2-4pm
+      <br>Sa: AVAILABLE </p>
     <div class="field">
       <%= form.text_area :Form, size: "100x25"%>
     </div>
@@ -12,3 +24,6 @@
     </div>
   <%end%>
 </div>
+  <% else %>
+  <p>You've already submitted an application. Stop trying to cheat the system :(</p>
+<%end %>
