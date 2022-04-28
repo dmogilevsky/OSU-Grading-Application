@@ -49,8 +49,7 @@ class CoursesController < ApplicationController
     course = Course.find(params[:id])
     respond_to do |format|
       format.html do
-        if course.update(params.require(:course).permit(:CourseName, :Subject, :CourseNumber, :Campus,
-                                                        :Career))
+        if course.update(params.require(:course).permit(:CourseName, :Subject, :CourseNumber, :Campus, :Career))
           flash[:success] = 'Course updated successfully'
           redirect_to(courses_path)
         else

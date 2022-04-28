@@ -1,22 +1,90 @@
+<%= button_to "Home Page", root_path, :method => :get %>
 <h1>Grader Form</h1>
-<% form = Graderform.find(id = params[:id]) %>
+<%# View graderform section %>
+<div style="float:left;width:40%">
+  <% form = Graderform.find(id = params[:id]) %>
   <p>Application submitted by
-    <%=User.find(id = form.student_id).email %></p>
+    <%= User.find(id = form.student_id).email %></p>
   <p><%= form.Form %></p>
-<p> Instructor Recommendations for this student </p>
-<table border=1>
-  <thead>
-  <tr>
-    <th>Instructor Email</th>
-    <th>View Recommendation</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% Recommendation.where(["student_id = ?", form.student_id]).each do |recommendation| %>
+  <p> Instructor Recommendations for this student </p>
+  <table border=1>
+    <thead>
     <tr>
-      <td style="font-weight:bold"><%= User.find(id = recommendation.instructor_id).email  %> </td>
-      <td align="center"><%= link_to "View Recommendation", show_recommendation_path(recommendation)%> </td>
+      <th>Instructor Email</th>
+      <th>View Recommendation</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <% Recommendation.where(["student_id = ?", form.student_id]).each do |recommendation| %>
+      <tr>
+        <td style="font-weight:bold"><%= User.find(id = recommendation.instructor_id).email %> </td>
+        <td align="center"><%= link_to "View Recommendation", show_recommendation_path(recommendation) %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%# Admin section %>
+<% if (current_user.admin?) and (current_user.approved) %>
+  <div style="float:left;width:60%">
+    <td align="center"><%= button_to "Deny Form", delete_graderform_path(params[:id]) %> </td>
+    <p>Find all sections for course:</p>
+    <%= form_tag(show_graderform_path(params[:id]), method: :get) do %>
+      <%= number_field_tag(:search, params[:search]) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+    <div style="overflow-x:auto">
+      <table border=1>
+        <tr>
+          <th>Subject</th>
+          <th><%= link_to "Course Name", :sort => "CourseName" %></th>
+          <th><%= link_to "Course Number", :sort => "CourseNumber" %></th>
+          <th><%= link_to "Campus", :sort => "Campus" %></th>
+          <th><%= link_to "Career", :sort => "Career" %></th>
+        </tr>
+        <% Course.where(["CourseNumber = ?", params[:search]]).each do |course| %>
+          <tr>
+            <td style="font-weight: bold"><%= course.Subject %></td>
+            <td style="font-weight: bold"><%= course.CourseName %></td>
+            <td style="font-weight: bold"><%= course.CourseNumber %></td>
+            <td style="font-weight: bold"><%= course.Campus %></td>
+            <td style="font-weight: bold"><%= course.Career %></td>
+          </tr>
+          <tr>
+            <% if not Section.where(["course_id = ?", course.id]).first %>
+              <td>No Sections</td>
+            <% else %>
+              <td>Sections</td>
+              <td>
+                <table>
+                  <thead>
+                  <tr>
+                    <td align="center">ID</td>
+                    <td align="center">Section Number</td>
+                    <td align="center">Term</td>
+                    <td align="center">Max Graders</td>
+                    <td align="center">Meeting Time</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% Section.where(["course_id = ?", course.id]).each do |section| %>
+                    <tr align="center">
+                      <td align="center"><%= section.id %></td>
+                      <td align="center"><%= section.SectionNumber %></td>
+                      <td align="center"><%= section.Term %></td>
+                      <td align="center"><%= section.MaxGraders %></td>
+                      <td align="center"><%= section.MeetingTime %></td>
+                      <td align="center"><%= link_to "Assign Grader", assign_grader_path(form.student_id, section.id) %></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </td>
+              </tr>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+<%end %>

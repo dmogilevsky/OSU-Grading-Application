@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch 'graderform/:id', to: 'graderforms#update', as: 'update_graderform'
   put 'graderform/:id', to: 'graderforms#update'
   get '/graderform/:id/show' => 'graderforms#show_graderform', as: 'show_graderform'
+  get '/graderform/:id/approve' => 'graderforms#approve_graderform', as: 'approve_graderform'
   get '/graderform/:id/delete' => 'graderforms#delete_graderform', as: 'delete_graderform'
 
   # Courses
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
   get 'recommendations/:id', to: 'recommendations#write_recommendations', as: 'write_recommendation'
   get 'recommendations/:id/show' => 'recommendations#show_recommendation', as: 'show_recommendation'
 
+  # Grader Assignments
+  get 'graderassignments/add/:student_id/:section_id', to: 'graderassignments#create', as: 'assign_grader'
   # db
   get 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
 

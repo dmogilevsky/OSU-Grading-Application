@@ -1,9 +1,9 @@
+<%= button_to "Home Page", root_path, :method => :get %>
 <h1>Admin Page</h1>
 <p>Approved Admin Only Access</p>
-<%= button_to "Home Page", root_path, :method => :get %>
 <% if (current_user.admin?) and (current_user.approved) %>
   <p>Reload Database from OSU Course Catalog, please be patient as this operation may take a couple of minutes</p>
-  <%= link_to "Reload Courses", reload_db_path %>
+  <%= button_to "Reload Courses", reload_db_path %>
 
   <p>Users pending approval:</p>
   <div style="overflow-x:auto">
@@ -16,14 +16,12 @@
       </tr>
       </thead>
       <tbody>
-      <% User.all.each do |user| %>
-        <% if user.approved == nil and (user.role == "instructor" or user.role == "admin") %>
+      <% User.where(["approved = ? and (role = ? or role = ?)", nil, "instructor", "admin"]) do |user| %>
           <tr>
             <td style="font-weight:bold"><%= user.email %> </td>
             <td style="font-weight:bold"><%= user.role %> </td>
             <td style="font-weight:bold"><%= link_to "Approve", approve_user_path(user) %></td>
           </tr>
-        <% end %>
       <% end %>
       </tbody>
     </table>
@@ -34,7 +32,6 @@
       <tr>
         <th>Student ID</th>
         <th>Application Forms</th>
-        <th>Deny Forms</th>
       </tr>
       </thead>
       <tbody>
@@ -42,7 +39,6 @@
         <tr>
           <td style="font-weight:bold"><%= graderform.student_id %> </td>
           <td align="center"><%= link_to "View Form", show_graderform_path(graderform) %> </td>
-          <td align="center"><%= link_to "Deny Form", delete_graderform_path(graderform) %> </td>
         </tr>
       <% end %>
       </tbody>
