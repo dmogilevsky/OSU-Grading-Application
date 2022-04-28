@@ -8,7 +8,7 @@ This project contains a web application for browsing OSU courses, specifically C
 
 ### Installation Instructions ###
 1. Clone this repository using ```git clone git@github.com:cse-3901-sharkey/team-1.git```
-2. Enter the git directory, and enter the 'lab-2' directory
+2. Enter the git directory, and enter the 'lab-3' directory
 3. Run the command ```npm i```
 4. Run the command ```bundle install```
 5. Run the command ```rake db:migrate```
