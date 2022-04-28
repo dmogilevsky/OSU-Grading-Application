@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_000302) do
   create_table "graderassignments", force: :cascade do |t|
     t.integer "student_id"
     t.integer "section_id"
+    t.index ["section_id", "student_id"], name: "index_graderassignments_on_section_id_and_student_id", unique: true
   end
 
   create_table "graderforms", force: :cascade do |t|

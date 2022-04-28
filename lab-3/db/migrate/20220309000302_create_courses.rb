@@ -72,7 +72,8 @@ class CreateCourses < ActiveRecord::Migration[6.1]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    add_index :graderassignments, :section_id, :student_id, unique: true
+    add_index :graderassignments, [:section_id, :student_id], unique: true
+    add_index :recommendations, [:instructor_id, :student_id], unique: true
     add_foreign_key :recommendations, :users, column: :student_id, primary_key: :id
     add_foreign_key :recommendations, :users, column: :instructor_id, primary_key: :id
     add_foreign_key :graderforms, :users, column: :student_id, primary_key: :id
