@@ -1,15 +1,15 @@
 class SectionsController < ApplicationController
   def delete_section
     if current_user.admin? and current_user.approved
-    Section.delete(params[:id])
+      Section.delete(params[:id])
     end
     redirect_to(courses_path)
   end
 
   def create
-    new_section= params[:section]
+    new_section = params[:section]
     Section.create(Term: new_section[:Term], course_id: new_section[:CourseID],
-    SectionNumber: new_section[:SectionNumber])
+                   SectionNumber: new_section[:SectionNumber], MeetingTime: new_section[:MeetingTime])
     redirect_to(courses_path)
   end
 
@@ -24,7 +24,7 @@ class SectionsController < ApplicationController
     section = Section.find(params[:id])
     respond_to do |format|
       format.html do
-        if section.update(params.require(:section).permit(:SectionNumber, :Term, :MaxGraders))
+        if section.update(params.require(:section).permit(:SectionNumber, :Term, :MaxGraders, :MeetingTime))
           flash[:success] = 'Section updated successfully'
           redirect_to(courses_path)
         else
@@ -35,4 +35,4 @@ class SectionsController < ApplicationController
     end
   end
 
-  end
+end
