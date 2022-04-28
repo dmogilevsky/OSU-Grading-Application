@@ -1,0 +1,14 @@
+<h1>Edit Grader Forms</h1>
+<% if current_user.student? and graderform.student_id? == current_user.id? %>
+ <p> Edit your grader form. </p>
+ <%= form_with model: graderform, url: update_graderform_path, method: :patch, local: true, scope: :graderform do |form| %>
+   <div class="field">
+     <%= form.text_area :Form, size: "100x25"%>
+   </div>
+   <div class="actions">
+     <%= form.submit 'Update Grader Form'%>
+   </div>
+ <%end%>
+ <% else %>
+   <p> Must be signed into the respective student account to edit the application.</p>
+ <% end %>
