@@ -1,8 +1,11 @@
 <h1>Courses page</h1>
 <% if current_user %>
-  <p>Welcome to the courses database.</p>
-  <%= button_to "Home Page", root_path, :method => :get %>
+  <p style="width:50%">Welcome to the courses database. Click on the table headers
+  to sort courses by those attributes. You may also search for courses by course number.
+    Courses will have a sub-table of sections in the row below the course listing.</p>
   <% if current_user.admin? and current_user.approved %>
+    <p>As an admin, you can add courses and section with the button below. You can also delete/edit courses and sections
+    by clicking on the delete/edit buttons next to the corresponding courses and sections.</p>
     <%= button_to "Add Course", add_course_path, :method => :get %>
     <%= button_to "Add Section", add_section_path, :method => :get %>
   <% end %>
@@ -21,6 +24,7 @@
         <th><%= link_to "Course Number", :sort => "CourseNumber" %></th>
         <th><%= link_to "Campus", :sort => "Campus" %></th>
         <th><%= link_to "Career", :sort => "Career" %></th>
+        <th>ID</th>
       </tr>
       <% @courses.each do |course| %>
         <tr>
@@ -29,6 +33,7 @@
           <td style="font-weight: bold"><%= course.CourseNumber %></td>
           <td style="font-weight: bold"><%= course.Campus %></td>
           <td style="font-weight: bold"><%= course.Career %></td>
+          <td style="font-weight: bold"><%= course.id %></td>
           <% if current_user.admin? %>
             <td><%= link_to "Delete", delete_course_path(course) %></td>
             <td><%= link_to "Edit", edit_course_path(course) %></td>

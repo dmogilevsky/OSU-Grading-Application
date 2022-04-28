@@ -144,8 +144,8 @@ class CoursesController < ApplicationController
 
   # Remove all courses and sections from the db, but keep the users
   def clean_db
-    Course.find_each(&:destroy)
     Section.find_each(&:destroy)
+    Course.find_each(&:destroy)
   end
 end
 

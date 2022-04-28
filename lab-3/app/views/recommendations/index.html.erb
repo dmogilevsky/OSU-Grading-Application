@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Recommendations</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-</html>
-<header>Recommend Students</header>
-<%= button_to "Home Page", root_path, :method => :get %>
+<h1>Recommend Students</h1>
 <p>Below, you may select a student to write a recommendation for. If the student you wish to recommend
 is not in this list, please instruct them to create an account first.</p>
 
 <% if current_user&.instructor? %>
   <div style="overflow-x:auto">
-    <table>
+    <table>s
       <tr>
         <th>Student ID</th>
         <th>Student Email</th>

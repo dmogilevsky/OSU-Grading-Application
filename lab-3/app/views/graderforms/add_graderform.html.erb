@@ -1,4 +1,4 @@
-<h1>Grader Page</h1>
+<h1>Grader Application Page</h1>
 <% if not Graderform.where(["student_id = ?", current_user.id]).first %>
 <p>Please input all of your information in the form below to apply for a grader position.</p>
 <%= button_to "Home Page", root_path, :method => :get %>

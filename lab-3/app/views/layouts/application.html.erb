@@ -13,6 +13,9 @@
   </head>
 
   <body>
-    <%= yield %>
+  <% unless current_page?(root_path) %>
+    <%= button_to "Home Page", root_path, :method => :get %>
+  <% end %>
+  <%=yield %>
   </body>
 </html>

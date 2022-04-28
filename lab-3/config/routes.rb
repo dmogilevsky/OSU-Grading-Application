@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   # Grader Assignments
   get 'graderassignments/add/:student_id/:section_id', to: 'graderassignments#create', as: 'assign_grader'
   # db
-  get 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
+  post 'courses/db_refresh', to: 'courses#refresh_db', as: 'reload_db'
 
 
   # Resources
