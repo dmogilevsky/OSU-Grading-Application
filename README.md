@@ -1,12 +1,15 @@
-## README ##
+## OSU Grading Application ##
+
+### Introduction ###
 This project contains a web application for browsing OSU courses, specifically CSE, and their respective sections. The project uses OSU API to retrieve the list of courses and sections which are then stored in a local SQLite database. These then can be browsed by Students, Instructors, and Admins meanwhile approved Admins can add, edit, and delete courses and sections. Approved Admins also has the functionality to approve admins and instructors and approved Admins can reload the course database. All types of users can edit their passwords or delete their profiles. 
 
+### Installation Instructions ###
 #### Pre-Installation Requirements ####
 1. Must have git installed
-2. Must have node.js installed
+2. Must have npm and node.js installed
 3. Must have ruby rails installed
 
-### Installation Instructions ###
+#### Installation ####
 1. Clone this repository using ```git clone git@github.com:cse-3901-sharkey/team-1.git```
 2. Enter the git directory, and enter the 'lab-3' directory
 3. Run the command ```npm i```
