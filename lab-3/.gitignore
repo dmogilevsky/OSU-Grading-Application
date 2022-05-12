@@ -1,5 +1,0 @@
-*.sqlite3
-tmp/
-node_modules/
-.DS_Store
-*.log
